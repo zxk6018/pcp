@@ -5,7 +5,7 @@
   },
   "logoInfo": {
     "title": "LAYUI MINI",
-    "image": "images/logo.png",
+    "image": "/layui/images/logo.png",
     "href": ""
   },
   "menuInfo": [
@@ -23,18 +23,18 @@
           "child": [
             {
               "title": "管理员管理",
-              "href": "admin.html",
+              "href": "admin/admin.html",
               "icon": "fa fa-tachometer",
               "target": "_self"
             },
             {
-              "title": "主页二",
+              "title": "用户管理",
               "href": "page/welcome-2.html",
               "icon": "fa fa-tachometer",
               "target": "_self"
             },
             {
-              "title": "主页三",
+              "title": "救助队管理",
               "href": "page/welcome-3.html",
               "icon": "fa fa-tachometer",
               "target": "_self"

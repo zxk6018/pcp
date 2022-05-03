@@ -84,6 +84,6 @@ public class AdminController {
     public String findAdminById(@PathVariable("adminId") Integer adminId, Model model){
         System.out.println("id========="+adminId);
         model.addAttribute("ad",adminService.findAdminById(adminId));
-        return  "admin_edit";
+        return  "admin/admin_edit";
     }
 }
