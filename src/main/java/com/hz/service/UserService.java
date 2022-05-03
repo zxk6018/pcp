@@ -1,7 +1,6 @@
 package com.hz.service;
 
 import com.hz.pojo.User;
-
 import java.util.List;
 
 public interface UserService {
@@ -12,20 +11,31 @@ public interface UserService {
      * @return
      */
 
-    List<User> findUserList(Integer pyl, Integer pageSize, String userName);
+    List<User> findUserList(Integer pyl,
+                            Integer pageSize,
+                            String userName,
+                            String userTime
+    );
 
+    /**
+     * 修改用户
+     * @param user
+     * @return
+     */
+
+    Integer updateUser(User user);
     /**
      * 总记录数
      * @return
      */
-    Integer UserCount(String adminName);
+    Integer UserCount(String userName,String userTime);
 
     /**
      * 删除用户
-     * @param id
+     * @param userId
      * @return
      */
-    Integer deleteUserById(Integer id);
+    Integer deleteUserById(Integer userId);
 
     /**
      * 新增用户
@@ -33,5 +43,12 @@ public interface UserService {
      * @return
      */
     Integer saveUser(User user);
+
+    /**
+     * 根据ID  获得用户对象
+     * @param userId
+     * @return
+     */
+    User findUserById(Integer userId);
 
 }
