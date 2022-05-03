@@ -87,4 +87,14 @@ public class AdminServiceImpl extends ServiceImpl<BaseMapper<Admin>,Admin> imple
         return adminDao.findAdminById(id);
     }
 
+    /**
+     * 查看管理员具体信息
+     * @param admin
+     * @return
+     */
+    @Override
+    public Integer seeAdmin(Admin admin) {
+        return adminDao.seeAdmin(admin);
+    }
+
 }

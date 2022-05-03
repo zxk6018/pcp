@@ -86,4 +86,23 @@ public class AdminController {
         model.addAttribute("ad",adminService.findAdminById(adminId));
         return  "admin/admin_edit";
     }
+
+    /**
+     * 查看管理员详情
+     * @param adminId
+     * @param model
+     * @return
+     */
+    @RequestMapping("/seeAdminById/{adminId}")
+    public String seeAdminById(@PathVariable("adminId") Integer adminId, Model model){
+        System.out.println("id========="+adminId);
+        model.addAttribute("ad",adminService.findAdminById(adminId));
+        return  "admin/admin_see";
+    }
+    @RequestMapping(value = "/seeAdmin",method = RequestMethod.POST)
+    @ResponseBody
+    public String seeAdmin(Admin admin){
+        Integer i = adminService.seeAdmin(admin);
+        return "";
+    }
 }
