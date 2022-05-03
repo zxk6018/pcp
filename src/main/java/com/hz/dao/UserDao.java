@@ -3,7 +3,6 @@ package com.hz.dao;
 
 import com.hz.pojo.User;
 import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
 
 public interface UserDao {
@@ -20,6 +19,13 @@ public interface UserDao {
                             @Param("userName") String userName
     );
 
+    /**
+     * 修改用户
+     * @param user
+     * @return
+     */
+
+    Integer updateAdmin(User user);
     /**
      * 总记录数
      * @return
@@ -39,4 +45,11 @@ public interface UserDao {
      * @return
      */
     Integer saveUser(User user);
+
+    /**
+     * 根据ID  获得用户对象
+     * @param user_id
+     * @return
+     */
+    User findAdminById(Integer user_id);
 }
