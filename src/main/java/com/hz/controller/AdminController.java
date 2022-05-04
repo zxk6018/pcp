@@ -17,7 +17,6 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
-
     /**
      * 删除供应商
      * @param adminId
@@ -90,7 +89,6 @@ public class AdminController {
      */
     @RequestMapping("/seeAdminById/{adminId}")
     public String seeAdminById(@PathVariable("adminId") Integer adminId, Model model){
-        System.out.println("id========="+adminId);
         model.addAttribute("ad",adminService.findAdminById(adminId));
         return  "admin/admin_see";
     }

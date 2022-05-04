@@ -30,7 +30,6 @@ public class UserController {
                                                 @RequestParam(value = "limit",defaultValue ="10") Integer limit,
                                                 String userName,String userTime){
         List<User> list = userService.findUserList(page, limit, userName,userTime);
-        System.out.println(userName);
         Integer count = userService.UserCount(userName,userTime);
         JsonMassage<List<User>> jsonMassage = new JsonMassage<List<User>>();
         jsonMassage.setCode(0);
