@@ -6,6 +6,7 @@ import com.hz.service.UserService;
 import com.hz.utils.JsonMassage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,36 +20,35 @@ public class UserController {
 
     /**
      * 分页查询
-     * @param pageNo  当前页
+     * @param page  当前页
      * @param limit 每页显示条数
      * @return
      */
-    @RequestMapping(value = "/findUserList",method = RequestMethod.POST)
+    @RequestMapping(value = "/findUserList",method = RequestMethod.GET)
     @ResponseBody
-    public JsonMassage<List<User>> findProvideList(@RequestParam(value = "pageNo",defaultValue = "1") Integer pageNo,
-                                                   @RequestParam(value = "limit",defaultValue ="1") Integer limit,
-                                                   String userName){
-        List<User> list = userService.findUserList(pageNo, limit, userName);
+    public JsonMassage<List<User>> findUserList(@RequestParam(value = "page",defaultValue = "1") Integer page,
+                                                @RequestParam(value = "limit",defaultValue ="10") Integer limit,
+                                                String userName,String userTime){
+        List<User> list = userService.findUserList(page, limit, userName,userTime);
         System.out.println(userName);
-        Integer count = userService.UserCount(userName);
+        Integer count = userService.UserCount(userName,userTime);
         JsonMassage<List<User>> jsonMassage = new JsonMassage<List<User>>();
-        jsonMassage.setCode(200);
-        jsonMassage.setMsg("ok");
+        jsonMassage.setCode(0);
+        jsonMassage.setMsg("请求成功");
         jsonMassage.setCount(count);
         jsonMassage.setData(list);
-        System.out.println(jsonMassage.toString());
         return jsonMassage;
     }
 
     /**
      * 删除用户
-     * @param id
+     * @param userId
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/deleteUserById",method = RequestMethod.POST)
-    public JsonMassage deleteAdminById(Integer id){
-        Integer i = userService.deleteUserById(id);
+    public JsonMassage deleteAdminById(Integer userId){
+        Integer i = userService.deleteUserById(userId);
         return new JsonMassage(i);
     }
 
@@ -62,5 +62,27 @@ public class UserController {
     public JsonMassage saveUser(User user){
         Integer i = userService.saveUser(user);
         return new JsonMassage(i);
+    }
+    /**
+     * 修改管理员
+     * @param user
+     * @return
+     */
+    @RequestMapping(value = "/updateUser",method = RequestMethod.POST)
+    @ResponseBody
+    public JsonMassage updateAdmin(User user){
+        Integer i = userService.updateUser(user);
+        return new JsonMassage(i);
+    }
+    /**
+     * 根据ID查询用户
+     * @param userId
+     * @param model
+     * @return
+     */
+    @RequestMapping("/findUserById/{userId}")
+    public String findAdminById(@PathVariable("userId") Integer userId, Model model){
+        model.addAttribute("user",userService.findUserById(userId));
+        return  "user/user_edit";
     }
 }

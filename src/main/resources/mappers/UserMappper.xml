@@ -9,13 +9,16 @@
             <if test="userName!=null">
                 user_name like concat('%',#{userName},'%')
             </if>
+            <if test="userTime!=null">
+                and user_time like concat('%',#{userTime},'%')
+            </if>
         </where>
     </sql>
 
     <select id="findUserList" resultType="User">
         select * from user
         <include refid="user_where"/>
-        order by user_id asc limit #{pyl},#{pageSize}
+        limit #{pyl},#{pageSize}
     </select>
 
     <select id="UserCount" resultType="Integer">
@@ -24,12 +27,27 @@
     </select>
 
     <delete id="deleteUserById">
-        delete from user where user_id=#{adminId}
+        delete from user where user_id=#{userId}
     </delete>
 
+    <update id="updateUser" >
+        update user
+        <set>
+            <if test="userName!=null">user_name=#{userName},</if>
+            <if test="userPassword!=null">user_password=#{userPassword},</if>
+            <if test="userPhone!=null">user_phone=#{userPhone},</if>
+            <if test="userAge!=null">user_age=#{userAge},</if>
+            <if test="userSex!=null">user_sex=#{userSex}</if>
+        </set>
+        where user_id=#{userId}
+    </update>
     <insert id="saveUser" >
-        insert into user(user_name,user_password,user_sex,user_age,user_phone)
-        values (#{userName},#{userPassword},#{userSex},#{userAge},#{userPhone}
+        insert into user(user_name,user_password,user_sex,user_age,user_phone,user_address)
+        values (#{userName},#{userPassword},#{userSex},#{userAge},#{userPhone},#{userAddress}
         )
     </insert>
+
+    <select id="findUserById" resultType="User">
+        select * from user where user_id=#{userId}
+    </select>
 </mapper>

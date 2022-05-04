@@ -1,9 +1,7 @@
 package com.hz.dao;
 
-
 import com.hz.pojo.User;
 import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
 
 public interface UserDao {
@@ -17,21 +15,30 @@ public interface UserDao {
 
     List<User> findUserList(@Param("pyl") Integer pyl,
                             @Param("pageSize") Integer pageSize,
-                            @Param("userName") String userName
+                            @Param("userName") String userName,
+                            @Param("userTime") String userTime
     );
 
+    /**
+     * 修改用户
+     * @param user
+     * @return
+     */
+
+    Integer updateUser(User user);
     /**
      * 总记录数
      * @return
      */
-    Integer UserCount(String userName);
+    Integer UserCount(@Param("userName") String userName,
+                      @Param("userTime") String userTime);
 
     /**
      * 删除用户
-     * @param id
+     * @param userId
      * @return
      */
-    Integer deleteUserById(Integer id);
+    Integer deleteUserById(Integer userId);
 
     /**
      * 新增用户
@@ -39,4 +46,11 @@ public interface UserDao {
      * @return
      */
     Integer saveUser(User user);
+
+    /**
+     * 根据ID  获得用户对象
+     * @param userId
+     * @return
+     */
+    User findUserById(Integer userId);
 }

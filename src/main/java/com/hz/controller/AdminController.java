@@ -18,7 +18,6 @@ public class AdminController {
     private AdminService adminService;
 
 
-
     /**
      * 删除供应商
      * @param adminId
@@ -66,9 +65,6 @@ public class AdminController {
     public JsonMassage<List<Admin>> findProvideList(@RequestParam(value = "page",defaultValue = "1") Integer page,
                                                     @RequestParam(value = "limit",defaultValue ="10") Integer limit,
                                                     String adminName,String adminPhone){
-
-        System.out.println("adminId==========="+adminName);
-        System.out.println("adminPhone==========="+adminPhone);
         List<Admin> list = adminService.findAdminList(page,limit,adminName,adminPhone);
         Integer count = adminService.AdminCount(adminName,adminPhone);
         JsonMassage<List<Admin>> jsonMassage = new JsonMassage<List<Admin>>();
@@ -82,7 +78,6 @@ public class AdminController {
 
     @RequestMapping("/findAdminById/{adminId}")
     public String findAdminById(@PathVariable("adminId") Integer adminId, Model model){
-        System.out.println("id========="+adminId);
         model.addAttribute("ad",adminService.findAdminById(adminId));
         return  "admin/admin_edit";
     }

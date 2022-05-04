@@ -29,13 +29,13 @@
             },
             {
               "title": "用户管理",
-              "href": "page/welcome-2.html",
+              "href": "user/user.html",
               "icon": "fa fa-tachometer",
               "target": "_self"
             },
             {
               "title": "救助队管理",
-              "href": "page/welcome-3.html",
+              "href": "pethelper/pethelper.html",
               "icon": "fa fa-tachometer",
               "target": "_self"
             }

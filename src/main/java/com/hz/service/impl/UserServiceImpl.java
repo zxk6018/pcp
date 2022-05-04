@@ -15,23 +15,33 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Override
-    public List<User> findUserList(Integer pageNo, Integer pageSize, String userName) {
-        Integer pyl = (pageNo-1)*pageSize;
-        return userDao.findUserList(pyl, pageSize, userName);
+    public List<User> findUserList(Integer page, Integer pageSize, String userName,String userTime) {
+        Integer pyl = (page-1)*pageSize;
+        return userDao.findUserList(pyl, pageSize, userName,userTime);
     }
 
     @Override
-    public Integer UserCount(String user_name) {
-        return userDao.UserCount(user_name);
+    public Integer updateUser(User user) {
+        return userDao.updateUser(user);
     }
 
     @Override
-    public Integer deleteUserById(Integer id) {
-        return userDao.deleteUserById(id);
+    public Integer UserCount(String userName,String userTime) {
+        return userDao.UserCount(userName,userTime);
+    }
+
+    @Override
+    public Integer deleteUserById(Integer userId) {
+        return userDao.deleteUserById(userId);
     }
 
     @Override
     public Integer saveUser(User user) {
         return userDao.saveUser(user);
+    }
+
+    @Override
+    public User findUserById(Integer userId) {
+        return userDao.findUserById(userId);
     }
 }
