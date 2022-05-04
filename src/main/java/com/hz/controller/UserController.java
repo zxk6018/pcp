@@ -53,7 +53,7 @@ public class UserController {
     }
 
     /**
-     * 新增管理员
+     * 新增用户
      * @param user
      * @return
      */
@@ -64,7 +64,7 @@ public class UserController {
         return new JsonMassage(i);
     }
     /**
-     * 修改管理员
+     * 修改用户
      * @param user
      * @return
      */
