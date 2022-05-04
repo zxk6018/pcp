@@ -48,6 +48,7 @@
         <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
 
         <script type="text/html" id="currentTableBar">
+            <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="see">查看</a>
             <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">编辑</a>
             <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
         </script>
@@ -158,6 +159,13 @@
                     },"json");
                     layer.close(index);
                 });
+            }else if (obj.event == 'see'){
+                window.parent.open("查看用户信息",
+                    "/user/seeUserById/"+data.userId,
+                    "800px",
+                    "600px",
+                    tab1)
+                return false;
             }
         });
 

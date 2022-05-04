@@ -30,13 +30,7 @@
             <input type="text" name="userPassword" lay-verify="required" lay-reqtext="用户密码不能为空" placeholder="请输入用户密码" th:value="${user.userPassword}"  class="layui-input">
         </div>
     </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">性别</label>
-            <div class="layui-input-block">
-                <input type="radio" name="userSex" th:value="${user.userSex}" title="男" checked="">
-                <input type="radio" name="userSex" th:value="${user.userSex}" title="女" checked="">
-            </div>
-        </div>
+
         <div class="layui-form-item">
             <label class="layui-form-label required">电话</label>
             <div class="layui-input-block">
@@ -50,6 +44,13 @@
             </div>
         </div>
 
+        <div class="layui-form-item">
+            <label class="layui-form-label required">电话</label>
+            <div class="layui-input-block">
+                <input type="text" name="userPhone" lay-verify="required" lay-reqtext="电话不能为空" placeholder="请输入电话" th:value="${user.userPhone}" class="layui-input">
+            </div>
+        </div>
+
     <div class="layui-form-item">
         <div class="layui-input-block">
             <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">确认保存</button>
@@ -59,6 +60,7 @@
 <script src="/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
 <script>
     layui.use(['form', 'laydate'], function () {
+
         var form = layui.form,
             layer = layui.layer,
             $ = layui.$,
