@@ -49,7 +49,7 @@
     </select>
 
     <select id="findAdminById" resultType="Admin">
-        select * from admin where admin_id=#{admin_id}
+        select * from admin where admin_id=#{adminId}
     </select>
 
 </mapper>

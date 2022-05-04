@@ -18,18 +18,19 @@
                 <form class="layui-form layui-form-pane" action="">
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">用户名</label>
+                            <label class="layui-form-label">管理员账号</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="userName" autocomplete="off" class="layui-input">
+                                <input type="text" name="adminName" autocomplete="off" class="layui-input">
                             </div>
                         </div>
-                       <!-- <div class="layui-inline">
-                            <label class="layui-form-label">注册时间</label>
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label">管理员手机号</label>
                             <div class="layui-input-inline">
-                               &lt;!&ndash; <input type="text" name="adminTime" autocomplete="off" class="layui-input">&ndash;&gt;
-                                <input type="text" name="adminTime" id="adminTime" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                                <input type="text" name="adminPhone" autocomplete="off" class="layui-input">
                             </div>
-                        </div>-->
+                        </div>
+
                         <div class="layui-inline">
                             <button type="submit" class="layui-btn layui-btn-primary"  lay-submit lay-filter="data-search-btn"><i class="layui-icon"></i> 搜 索</button>
                         </div>
@@ -65,7 +66,7 @@
 
         tab1=table.render({
             elem: '#currentTableId',
-            url: '/user/findUserList',
+            url: '/admin/findAdminList',
             toolbar: '#toolbarDemo',
             defaultToolbar: ['filter', 'exports', 'print', {
                 title: '提示',
@@ -74,22 +75,27 @@
             }],
             cols: [[
                 {type: "checkbox", width: 50},
-                {field: 'userId', width: 110, title: '用户ID', sort: true},
-                {field: 'userName', width: 120, title: '用户名', sort: true},
-                {field: 'userSex', width: 80, title: '性别',templet:function (res) {
-                        if (res.userSex==0){
+                {field: 'adminId', width: 110, title: '管理员ID', sort: true},
+                {field: 'adminName', width: 180, title: '管理员账号', sort: true},
+                // {field: 'adminPassword', width: 100, title: '管理员密码'},
+               /* {field: 'sex', width: 80, title: '性别',templet:function (res) {
+                        if (res.sex==0){
                             return "女";
                         }else {
                             return "男";
                         }
-                    }},
-                {field: 'userAge', width: 120, title: '年龄', sort: true},
-                {field: 'userPhone', width: 150, title: '电话'},
-                {field: 'userAddress', title: '地址', minWidth: 150},
-                {fixed: 'right',title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
+                    }},*/
+                {field: 'adminPhone', width: 180, title: '管理员电话', sort: true},
+                // {field: 'adminRoleAuthoId', width: 100, title: '创建人ID'},
+                {field: 'adminRoleTime', title: '创建时间', minWidth: 200},
+                // {field: 'adminAuthoId', width: 90, title: '权限ID', sort: true},
+                {field: 'adminAuthoName', width: 150, title: '权限名', sort: true},
+                // {field: 'adminUsertime', width: 200, title: '日志操作时间(开始时间)', sort: true},
+                // {field: 'adminEndtime', width: 200, title: '日志操作时间(结束时间)', sort: true},
+                {fixed: 'right',title: '操作', minWidth: 20, toolbar: '#currentTableBar', align: "center"}
             ]],
-            limits: [10, 15, 20, 25, 50, 100],
-            limit: 10,
+            limits: [20, 20, 20, 25, 50, 100],
+            limit: 20,
             page: true,
             skin: 'line'
         });
@@ -107,8 +113,8 @@
                     curr: 1
                 }
                 , where: {
-                    "userName":data.field.userName,
-                    "userTime":data.field.userTime
+                    "adminName":data.field.adminName,
+                    "adminPhone":data.field.adminPhone
                 }
             }, 'data');
 
@@ -120,8 +126,8 @@
          */
         table.on('toolbar(currentTableFilter)', function (obj) {
             if (obj.event === 'add') {  // 监听添加操作
-               window.parent.open("新增用户",
-                                   "user/user_add.html",
+               window.parent.open("新增管理员",
+                                   "admin/admin_add.html",
                                    "800px",
                                    "600px",
                                     tab1)
@@ -140,8 +146,8 @@
         table.on('tool(currentTableFilter)', function (obj) {
             var data = obj.data;
             if (obj.event === 'edit') {
-                window.parent.open("修改用户",
-                    "/user/findUserById/"+data.userId,
+                window.parent.open("修改管理员",
+                    "/admin/findAdminById/"+data.adminId,
                     "800px",
                     "600px",
                     tab1)
@@ -149,7 +155,7 @@
             } else if (obj.event === 'delete') {
                 layer.confirm('真的删除行么', function (index) {
                     parent.layer.load(1, {shade: [0.1,'#fff'] });//开启遮罩
-                    $.post("/user/deleteUserById",{"userId":data.userId},function(res){
+                    $.post("/admin/deleteAdminById",{"adminId":data.adminId},function(res){
                         var index = parent.layer.alert(res.msg, function () {
                             // 关闭弹出层
                             obj.del();
@@ -160,8 +166,8 @@
                     layer.close(index);
                 });
             }else if (obj.event == 'see'){
-                window.parent.open("查看用户信息",
-                    "/user/seeUserById/"+data.userId,
+                window.parent.open("查看管理员信息",
+                    "/admin/seeAdminById/"+data.adminId,
                     "800px",
                     "600px",
                     tab1)

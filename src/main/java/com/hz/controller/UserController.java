@@ -85,4 +85,17 @@ public class UserController {
         model.addAttribute("user",userService.findUserById(userId));
         return  "user/user_edit";
     }
+
+    @RequestMapping("/seeUserById/{userId}")
+    public String seeAdminById(@PathVariable("userId") Integer userId, Model model){
+        model.addAttribute("user",userService.findUserById(userId));
+        return  "user/user_see";
+    }
+
+    @RequestMapping(value = "/seeUser",method = RequestMethod.POST)
+    @ResponseBody
+    public String seeAdmin(User user){
+        Integer i = userService.seeAdmin(user);
+        return "";
+    }
 }

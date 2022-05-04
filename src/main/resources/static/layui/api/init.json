@@ -35,7 +35,24 @@
             },
             {
               "title": "救助队管理",
-              "href": "pethelper/pethelper.html",
+              "href": "pethelp/pethelp.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "角色管理",
+              "href": "role/role.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "证书管理",
+              "href": "certificate/certificate.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },{
+              "title": "宠物管理",
+              "href": "pet/pet.html",
               "icon": "fa fa-tachometer",
               "target": "_self"
             }

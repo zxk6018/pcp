@@ -51,10 +51,10 @@ public interface AdminService extends IService<Admin> {
 
     /**
      * 根据ID  获得管理员对象
-     * @param id
+     * @param adminId
      * @return
      */
-    Admin findAdminById(Integer id);
+    Admin findAdminById(Integer adminId);
 
     /**
      * 查看管理员具体信息
