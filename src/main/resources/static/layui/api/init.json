@@ -28,6 +28,12 @@
               "target": "_self"
             },
             {
+              "title": "权限管理",
+              "href": "system/system.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
               "title": "用户管理",
               "href": "user/user.html",
               "icon": "fa fa-tachometer",
