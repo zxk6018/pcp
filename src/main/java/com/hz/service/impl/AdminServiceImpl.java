@@ -79,12 +79,12 @@ public class AdminServiceImpl extends ServiceImpl<BaseMapper<Admin>,Admin> imple
 
     /**
      * 根据ID查找管理员
-     * @param id
+     * @param adminId
      * @return
      */
     @Override
-    public Admin findAdminById(Integer id) {
-        return adminDao.findAdminById(id);
+    public Admin findAdminById(Integer adminId) {
+        return adminDao.findAdminById(adminId);
     }
 
     /**
