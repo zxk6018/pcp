@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/layui/lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="/layui/css/public.css" media="all">
+    <style>
+        body {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-form layuimini-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label ">救助队ID：</label>
+        <div class="layui-input-block">
+            <input type="text" readonly name="adminName"   th:value="${ph.pethelpId}" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label ">救助队名</label>
+        <div class="layui-input-block">
+            <input type="text" readonly name="adminPassword"   th:value="${ph.pethelpName}"  class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label ">用户ID（组织者）</label>
+        <div class="layui-input-block">
+            <input type="text" readonly name="adminPhone" th:value="${ph.pethelpUserId}" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label ">队标（图片）</label>
+        <div class="layui-input-block">
+            <input type="text" readonly name="adminAuthoId" th:value="${ph.pethelpImg}" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+    <label class="layui-form-label ">电话（联系救助电话）</label>
+    <div class="layui-input-block">
+        <input type="text" readonly placeholder="yyyy-MM-dd" id="adminRoleTime" name="adminRoleTime"
+         th:value="${ph.pethelpUserPhone}" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label ">救助地区（例：郑州市，洛阳市）</label>
+        <div class="layui-input-block">
+            <input type="text" readonly name="adminAuthoId" th:value="${ph.pethelpAddress}"  class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label ">证件编号</label>
+        <div class="layui-input-block">
+            <input type="text" readonly name="adminAuthoId" th:value="${ph.pethelpPapersNum}"  class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label ">证件图片</label>
+        <div class="layui-input-block">
+            <input type="text" readonly name="adminAuthoId" th:value="${ph.pethelpPapersImg}"  class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label ">救助站地址</label>
+        <div class="layui-input-block">
+            <input type="text" readonly name="adminAuthoId" th:value="${ph.pethelpHomeAddress}"  class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label ">审核状态</label>
+        <div class="layui-input-block">
+            <input type="text" readonly name="adminAuthoId" th:value="${ph.pethelpState}"  class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label ">处理时间</label>
+        <div class="layui-input-block">
+            <input type="text" readonly name="adminAuthoId" th:value="${ph.pethelpDisposetime}"  class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">关闭</button>
+        </div>
+    </div>
+</div>
+<script src="/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+<script>
+    layui.use(['form', 'laydate'], function () {
+        var form = layui.form,
+            layer = layui.layer,
+            $ = layui.$,
+            laydate = layui.laydate;
+
+        form.on('submit(saveBtn)', function (data) {
+
+                    parent.layer.closeAll();
+
+                });
+        return false;
+            });
+
+</script>
+</body>
+</html>
