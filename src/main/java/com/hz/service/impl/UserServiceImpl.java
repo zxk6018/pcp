@@ -44,4 +44,9 @@ public class UserServiceImpl implements UserService {
     public User findUserById(Integer userId) {
         return userDao.findUserById(userId);
     }
+
+    @Override
+    public Integer seeAdmin(User user) {
+        return userDao.seeAdmin(user);
+    }
 }
