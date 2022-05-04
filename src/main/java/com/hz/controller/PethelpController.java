@@ -87,7 +87,7 @@ public class PethelpController {
         return new JsonMassage(i);
     }
     /**
-     * 查看管理员详情
+     * 根据ID查看救助队
      * @param pethelpId
      * @param model
      * @return
@@ -97,6 +97,12 @@ public class PethelpController {
         model.addAttribute("ph",pethelpService.findPethelpById(pethelpId));
         return  "pethelp/pethelp_see";
     }
+
+    /**
+     * 查看救助队详情
+     * @param pethelp
+     * @return
+     */
     @RequestMapping(value = "/seePethelp",method = RequestMethod.POST)
     @ResponseBody
     public String seePethelp(Pethelp pethelp){
