@@ -30,7 +30,6 @@ public class UserController {
                                                 @RequestParam(value = "limit",defaultValue ="10") Integer limit,
                                                 String userName,String userTime){
         List<User> list = userService.findUserList(page, limit, userName,userTime);
-        System.out.println(userName);
         Integer count = userService.UserCount(userName,userTime);
         JsonMassage<List<User>> jsonMassage = new JsonMassage<List<User>>();
         jsonMassage.setCode(0);
@@ -85,13 +84,23 @@ public class UserController {
         model.addAttribute("user",userService.findUserById(userId));
         return  "user/user_edit";
     }
-
+    /**
+     * 根据ID查询用户
+     * @param userId
+     * @param model
+     * @return
+     */
     @RequestMapping("/seeUserById/{userId}")
     public String seeAdminById(@PathVariable("userId") Integer userId, Model model){
         model.addAttribute("user",userService.findUserById(userId));
         return  "user/user_see";
     }
 
+    /**
+     * 查看用户详情
+     * @param user
+     * @return
+     */
     @RequestMapping(value = "/seeUser",method = RequestMethod.POST)
     @ResponseBody
     public String seeAdmin(User user){

@@ -35,8 +35,6 @@ public class PethelpController {
     public JsonMassage<List<Pethelp>> findPethelpList(@RequestParam(value = "page",defaultValue = "1") Integer page,
                                                     @RequestParam(value = "limit",defaultValue ="10") Integer limit,
                                                     String pethelpName, String pethelpUserPhone){
-        System.out.println("pethelpName==========="+pethelpName);
-        System.out.println("pethelpUserPhone==========="+pethelpUserPhone);
         List<Pethelp> list = pethelpService.findPethelpList(page,limit,pethelpName,pethelpUserPhone);
         Integer count = pethelpService.PethelpCount(pethelpName,pethelpUserPhone);
         JsonMassage<List<Pethelp>> jsonMassage = new JsonMassage<List<Pethelp>>();
@@ -89,17 +87,22 @@ public class PethelpController {
         return new JsonMassage(i);
     }
     /**
-     * 查看管理员详情
+     * 根据ID查看救助队
      * @param pethelpId
      * @param model
      * @return
      */
     @RequestMapping("/seePethelpById/{pethelpId}")
     public String seePethelpById(@PathVariable("pethelpId") Integer pethelpId, Model model){
-        System.out.println("id========="+pethelpId);
         model.addAttribute("ph",pethelpService.findPethelpById(pethelpId));
         return  "pethelp/pethelp_see";
     }
+
+    /**
+     * 查看救助队详情
+     * @param pethelp
+     * @return
+     */
     @RequestMapping(value = "/seePethelp",method = RequestMethod.POST)
     @ResponseBody
     public String seePethelp(Pethelp pethelp){

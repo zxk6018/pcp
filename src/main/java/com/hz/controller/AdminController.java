@@ -17,9 +17,8 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
-
     /**
-     * 删除供应商
+     * 删除管理员
      * @param adminId
      * @return
      */
@@ -75,7 +74,12 @@ public class AdminController {
         return jsonMassage;
 
     }
-
+    /**
+     * 根据ID查找管理员
+     * @param adminId
+     * @param model
+     * @return
+     */
     @RequestMapping("/findAdminById/{adminId}")
     public String findAdminById(@PathVariable("adminId") Integer adminId, Model model){
         model.addAttribute("ad",adminService.findAdminById(adminId));
@@ -83,17 +87,22 @@ public class AdminController {
     }
 
     /**
-     * 查看管理员详情
+     * 根据ID查找管理员
      * @param adminId
      * @param model
      * @return
      */
     @RequestMapping("/seeAdminById/{adminId}")
     public String seeAdminById(@PathVariable("adminId") Integer adminId, Model model){
-        System.out.println("id========="+adminId);
         model.addAttribute("ad",adminService.findAdminById(adminId));
         return  "admin/admin_see";
     }
+
+    /**
+     * 查看管理员
+     * @param admin
+     * @return
+     */
     @RequestMapping(value = "/seeAdmin",method = RequestMethod.POST)
     @ResponseBody
     public String seeAdmin(Admin admin){
