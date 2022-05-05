@@ -17,7 +17,7 @@
 <body>
 <div class="layui-form layuimini-form">
     <div class="layui-form-item">
-        <label class="layui-form-label required">宠物ID：</label>
+        <label class="layui-form-label">宠物ID：</label>
         <div class="layui-input-block">
 
             <input type="text" readonly name="petId"   th:value="${pet.petId}" class="layui-input">
@@ -25,60 +25,47 @@
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label required">宠物名</label>
+        <label class="layui-form-label">宠物名</label>
         <div class="layui-input-block">
             <input type="text" readonly name="petName"   th:value="${pet.petName}"  class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label required">宠物类型</label>
+        <label class="layui-form-label">宠物类型</label>
         <div class="layui-input-block">
             <input type="text" readonly name="pettypeId" th:value="${pet.pettypeId}" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label required">宠物品种</label>
+        <label class="layui-form-label">宠物品种</label>
         <div class="layui-input-block">
             <input type="text" readonly name="pettypeName" th:value="${pet.pettypeName}" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
-    <label class="layui-form-label required">宠物性别</label>
+    <label class="layui-form-label">宠物性别</label>
     <div class="layui-input-block">
-        <input type="text" readonly  id="adminRoleTime" name="petSex"
-         th:value="${pet.petSex}" class="layui-input">
+        <input type="text" readonly  name="petSex" th:value="${pet.petSex}" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label required">所属用户</label>
+        <label class="layui-form-label">所属用户</label>
         <div class="layui-input-block">
             <input type="text" readonly name="petUserId" th:value="${pet.petUserId}"  class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label required">宠物年龄</label>
+        <label class="layui-form-label">宠物年龄</label>
         <div class="layui-input-block">
             <input type="text" readonly name="petAge" th:value="${pet.petAge}"  class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label required">宠物图片</label>
+        <label class="layui-form-label">宠物图片</label>
         <div class="layui-input-block">
             <input type="text" readonly name="petImg" th:value="${pet.petImg}"  class="layui-input">
         </div>
     </div>
-   <!-- <div class="layui-form-item">
-        <label class="layui-form-label required">日志操作时间(开始)</label>
-        <div class="layui-input-block">
-            <input type="text" readonly name="adminAuthoId" th:value="${ad.adminUsertime}"  class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label required">日志操作时间(结束)</label>
-        <div class="layui-input-block">
-            <input type="text" readonly name="adminAuthoId" th:value="${ad.adminEndtime}"  class="layui-input">
-        </div>
-    </div>-->
     <div class="layui-form-item">
         <div class="layui-input-block">
             <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">关闭</button>
