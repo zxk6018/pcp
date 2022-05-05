@@ -17,33 +17,51 @@
     <body>
     <div class="layui-form layuimini-form">
         <div class="layui-form-item">
-            <label class="layui-form-label required">管理员账号</label>
+            <label class="layui-form-label required">宠物ID</label>
             <div class="layui-input-block">
-                <input name="adminId" type="hidden" th:value="${ad.adminId}">
-                <input type="text" name="adminName" lay-verify="required" lay-reqtext="管理员账号不能为空" placeholder="请输入管理员账号" th:value="${ad.adminName}" class="layui-input">
+                <input name="petId" type="hidden" th:value="${pet.petId}">
+                <input type="text" name="petId" lay-verify="required" lay-reqtext="宠物Id不能为空" placeholder="请输入宠物Id账号" th:value="${pet.petId}" class="layui-input">
             </div>
         </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label required">管理员密码</label>
+        <label class="layui-form-label required">宠物名</label>
         <div class="layui-input-block">
-            <input type="text" name="adminPassword" lay-verify="required" lay-reqtext="供应商名称不能为空" placeholder="请输入供应商名称" th:value="${ad.adminPassword}"  class="layui-input">
+            <input type="text" name="petName" lay-verify="required" lay-reqtext="宠物名不能为空" placeholder="请输入宠物名名称" th:value="${pet.petName}"  class="layui-input">
         </div>
     </div>
         <div class="layui-form-item">
-            <label class="layui-form-label required">管理员手机号</label>
+            <label class="layui-form-label required">宠物类型</label>
             <div class="layui-input-block">
-                <input type="text" name="adminPhone" lay-verify="required" lay-reqtext="供应商名称不能为空" placeholder="请输入供应商名称" th:value="${ad.adminPhone}"  class="layui-input">
+                <input type="text" name="pettypeId" lay-verify="required" lay-reqtext="宠物类型不能为空" placeholder="请输入宠物类型名称" th:value="${pet.pettypeId}"  class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label required">权限ID</label>
+            <label class="layui-form-label required">宠物品种</label>
             <div class="layui-input-block">
-                <input type="text" name="adminAuthoId" lay-verify="required" lay-reqtext="创建人ID不能为空" placeholder="请输入权限ID" th:value="${ad.adminAuthoId}" class="layui-input">
-
+                <input type="text" name="pettypeName" lay-verify="required" lay-reqtext="宠物品种不能为空" placeholder="请输入宠物品种" th:value="${pet.pettypeName}" class="layui-input">
             </div>
         </div>
-    <!--<div class="layui-form-item">
+        <div class="layui-form-item">
+            <label class="layui-form-label required">宠物性别</label>
+            <div class="layui-input-block">
+                <input type="text" name="petSex" lay-verify="required" lay-reqtext="宠物性别不能为空" placeholder="请输入宠物性别" th:value="${pet.petSex}" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label required">所属用户</label>
+            <div class="layui-input-block">
+                <input type="text" name="petUserId" lay-verify="required" lay-reqtext="所属用户不能为空" placeholder="请输入所属用户" th:value="${pet.petUserId}" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label required">宠物年龄</label>
+            <div class="layui-input-block">
+                <input type="text" name="petAge" lay-verify="required" lay-reqtext="宠物年龄不能为空" placeholder="请输入宠物年龄" th:value="${pet.petAge}" class="layui-input">
+            </div>
+        </div>
+    <!--<div class="layu
+    i-form-item">
         <label class="layui-form-label required">创建时间</label>
         <div class="layui-input-block">
             <input type="text" placeholder="yyyy-MM-dd" id="creationDate" name="creationDate" lay-verify="required" lay-reqtext="日期不能为空" th:value="${pro.creationDate}" class="layui-input">
@@ -71,7 +89,7 @@
         form.on('submit(saveBtn)', function (data) {
             parent.layer.load(1, {shade: [0.1,'#fff'] });//开启遮罩
 
-            $.post("/admin/updateAdmin",data.field,function(res){
+            $.post("/pet/updatePet",data.field,function(res){
                 var index = parent.layer.alert(res.msg, function () {
 
                     //刷新表格
