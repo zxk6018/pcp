@@ -63,7 +63,7 @@ public class Helpmember implements Serializable{
 	 * 身份证号码
 	 */
 	@Column(name = "helpmember_idcard")
-	private int helpmemberIdcard;
+	private String helpmemberIdcard;
 
 	/**
 	 * 照片
