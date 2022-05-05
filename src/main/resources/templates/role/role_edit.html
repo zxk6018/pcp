@@ -17,38 +17,29 @@
     <body>
     <div class="layui-form layuimini-form">
         <div class="layui-form-item">
-            <label class="layui-form-label required">管理员账号</label>
+            <label class="layui-form-label required">角色名称</label>
             <div class="layui-input-block">
-                <input name="adminId" type="hidden" th:value="${ad.adminId}">
-                <input type="text" name="adminName" lay-verify="required" lay-reqtext="管理员账号不能为空" placeholder="请输入管理员账号" th:value="${ad.adminName}" class="layui-input">
+                <input name="roleId" type="hidden" th:value="${role.roleId}">
+
+                <input type="text" name="roleName" lay-verify="required" lay-reqtext="角色名称不能为空" placeholder="请输入角色名称" th:value="${role.roleName}" class="layui-input">
             </div>
         </div>
 
-    <div class="layui-form-item">
-        <label class="layui-form-label required">管理员密码</label>
+        <div class="layui-form-item">
+        <label class="layui-form-label required">角色权限描述</label>
         <div class="layui-input-block">
-            <input type="text" name="adminPassword" lay-verify="required" lay-reqtext="供应商名称不能为空" placeholder="请输入供应商名称" th:value="${ad.adminPassword}"  class="layui-input">
+            <input type="text" name="roleDesc" lay-verify="required" lay-reqtext="角色权限描述不能为空" placeholder="请输入角色权限描述" th:value="${role.roleDesc}"  class="layui-input">
         </div>
     </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label required">管理员手机号</label>
-            <div class="layui-input-block">
-                <input type="text" name="adminPhone" lay-verify="required" lay-reqtext="供应商名称不能为空" placeholder="请输入供应商名称" th:value="${ad.adminPhone}"  class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label required">权限ID</label>
-            <div class="layui-input-block">
-                <input type="text" name="adminAuthoId" lay-verify="required" lay-reqtext="创建人ID不能为空" placeholder="请输入权限ID" th:value="${ad.adminAuthoId}" class="layui-input">
 
-            </div>
-        </div>
-    <!--<div class="layui-form-item">
-        <label class="layui-form-label required">创建时间</label>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label required">创建人ID</label>
         <div class="layui-input-block">
-            <input type="text" placeholder="yyyy-MM-dd" id="creationDate" name="creationDate" lay-verify="required" lay-reqtext="日期不能为空" th:value="${pro.creationDate}" class="layui-input">
+            <input type="text" name="roleRoleId" lay-verify="required" lay-reqtext="创建人ID不能为空" placeholder="请输入创建人ID" th:value="${role.roleRoleId}"  class="layui-input">
         </div>
-    </div>-->
+    </div>
+
     <div class="layui-form-item">
         <div class="layui-input-block">
             <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">确认保存</button>
@@ -65,13 +56,13 @@
 
         /*//日期
         laydate.render({
-            elem: '#creationDate'
+            elem: '#roleTime'
         });*/
         //监听提交
         form.on('submit(saveBtn)', function (data) {
             parent.layer.load(1, {shade: [0.1,'#fff'] });//开启遮罩
-
-            $.post("/admin/updateAdmin",data.field,function(res){
+            alert(data.field.roleDesc);
+            $.post("/role/updateRole",data.field,function(res){
                 var index = parent.layer.alert(res.msg, function () {
 
                     //刷新表格
