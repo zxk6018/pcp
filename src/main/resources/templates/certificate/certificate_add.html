@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <title>layui</title>
@@ -17,30 +17,23 @@
 <body>
 <div class="layui-form layuimini-form">
     <div class="layui-form-item">
-        <label class="layui-form-label required">管理员账号</label>
+        <label class="layui-form-label required">宠物ID</label>
         <div class="layui-input-block">
-            <input type="text" name="adminName" lay-verify="required" lay-reqtext="管理员账号不能为空" placeholder="请输入管理员账号" value="" class="layui-input">
+            <input type="text" name="certPetId" lay-verify="required" lay-reqtext="证书路径不能为空" placeholder="请输入宠物ID" value=""  class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label required">管理员密码</label>
+        <label class="layui-form-label required">证书路径</label>
         <div class="layui-input-block">
-            <input type="text" name="adminPassword" lay-verify="required" lay-reqtext="管理员密码不能为空" placeholder="请输入管理员密码" value="" class="layui-input">
+            <input type="text" name="certUrl" lay-verify="required" lay-reqtext="证书路径不能为空" placeholder="请输入证书路径" value=""  class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label required">管理员手机号</label>
+        <label class="layui-form-label required">证书描述</label>
         <div class="layui-input-block">
-            <input type="text" name="adminPhone" lay-verify="required" lay-reqtext="管理员手机号不能为空" placeholder="请输入管理员手机号" value="" class="layui-input">
-        </div>
-    </div>
-
-    <div class="layui-form-item">
-        <label class="layui-form-label required">创建人ID</label>
-        <div class="layui-input-block">
-            <input type="text" name="adminRoleAuthoId" lay-verify="required" lay-reqtext="创建人ID不能为空" placeholder="请输入创建人ID" value="" class="layui-input">
+            <input type="text" name="certDesc" lay-verify="required" lay-reqtext="证书描述不能为空" placeholder="请输入证书描述" value="" class="layui-input">
         </div>
     </div>
 
@@ -52,30 +45,32 @@
 </div>
 <script src="/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
 <script>
-    layui.use(['form','laydate'], function () {
+    layui.use(['form', 'laydate'], function () {
         var form = layui.form,
             layer = layui.layer,
             $ = layui.$,
             laydate = layui.laydate;
 
-       /* //日期
+        /*//日期
         laydate.render({
-            elem: '#adminRoleTime'
+            elem: '#creationDate'
         });*/
         //监听提交
         form.on('submit(saveBtn)', function (data) {
-            parent.layer.load(1, {shade: [0.1,'#fff'] });//开启遮罩
+            // parent.layer.load(1, {shade: [0.1,'#fff'] });//开启遮罩
 
-            $.post("/admin/saveAdmin",data.field,function(res){
+            $.post("/certificate/saveCertificate",data.field,function(res){
                 var index = parent.layer.alert(res.msg, function () {
-                    //刷新表格
+
+                   // 刷新表格
                     parent.tab.reload();
                     // 关闭弹出层
                     parent.layer.close(index);
                     parent.layer.closeAll();
-                });
 
+                });
             },"json");
+
             return false;
         });
 

@@ -30,25 +30,21 @@
             <input type="text" name="adminPassword" lay-verify="required" lay-reqtext="供应商名称不能为空" placeholder="请输入供应商名称" th:value="${ad.adminPassword}"  class="layui-input">
         </div>
     </div>
+
         <div class="layui-form-item">
             <label class="layui-form-label required">管理员手机号</label>
             <div class="layui-input-block">
                 <input type="text" name="adminPhone" lay-verify="required" lay-reqtext="供应商名称不能为空" placeholder="请输入供应商名称" th:value="${ad.adminPhone}"  class="layui-input">
             </div>
         </div>
+
         <div class="layui-form-item">
             <label class="layui-form-label required">权限ID</label>
             <div class="layui-input-block">
                 <input type="text" name="adminAuthoId" lay-verify="required" lay-reqtext="创建人ID不能为空" placeholder="请输入权限ID" th:value="${ad.adminAuthoId}" class="layui-input">
-
             </div>
         </div>
-    <!--<div class="layui-form-item">
-        <label class="layui-form-label required">创建时间</label>
-        <div class="layui-input-block">
-            <input type="text" placeholder="yyyy-MM-dd" id="creationDate" name="creationDate" lay-verify="required" lay-reqtext="日期不能为空" th:value="${pro.creationDate}" class="layui-input">
-        </div>
-    </div>-->
+
     <div class="layui-form-item">
         <div class="layui-input-block">
             <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">确认保存</button>

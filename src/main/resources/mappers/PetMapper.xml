@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hz.dao.PetDao">
+    <sql id="pet_where">
+        <where>
+            <if test="petName!=null">
+                pet_name like concat('%',#{petName},'%')
+            </if>
+            <if test="pettypeName!=null">
+                and pettype_name like concat('%',#{pettypeName},'%')
+            </if>
+        </where>
+    </sql>
+
+    <select id="findPetList" resultType="Pet">
+        select * from pet
+        <include refid="pet_where"/>
+        limit #{pyl},#{pageSize}
+    </select>
+
+    <select id="PetCount" resultType="Integer">
+        select count(1) from  pet
+        <include refid="pet_where"/>
+    </select>
+
+    <insert id="savePet" >
+        insert into pet(
+        <trim suffixOverrides=",">
+            <if test="petName!=null and petName!=''">pet_name,</if>
+            <if test="pettypeId!=null and pettypeId!=''">pettype_id,</if>
+            <if test="pettypeName!=null and pettypeName!=''">pettype_name,</if>
+            <if test="petSex!=null">pet_sex,</if>
+            <if test="petUserId!=null and petUserId!=''">pet_user_id,</if>
+            <if test="petAge!=null">pet_age,</if>
+            <if test="petImg!=null and petImg!=''">pet_img</if>
+        </trim>
+        )
+        values (
+        <trim suffixOverrides=",">
+            <if test="petName!=null and petName!=''">#{petName},</if>
+            <if test="pettypeId!=null and pettypeId!=''">#{pettypeId},</if>
+            <if test="pettypeName!=null and pettypeName!=''">#{pettypeName},</if>
+            <if test="petSex!=null">#{petSex},</if>
+            <if test="petUserId!=null and petUserId!=''">#{petUserId},</if>
+            <if test="petAge!=null">#{petAge},</if>
+            <if test="petImg!=null and petImg!=''">#{petImg}</if>
+        </trim>
+        )
+    </insert>
+
+    <delete id="deletePetById">
+        delete from pet where pet_id=#{petId}
+    </delete>
+
+
+    <update id="updatePet" >
+        update pet
+        <set>
+            <if test="petName!=null and petName!=''">pet_name=#{petName},</if>
+            <if test="pettypeId!=null">pettype_id=#{pettypeId},</if>
+            <if test="pettypeName!=null">pettype_name=#{pettypeName},</if>
+            <if test="petSex!=null">pet_sex=#{petSex},</if>
+            <if test="petUserId!=null">pet_user_id=#{petUserId},</if>
+            <if test="petAge!=null">pet_age=#{petAge},</if>
+            <if test="petImg!=null">pet_img=#{petImg}</if>
+        </set>
+        where pet_id=#{petId}
+    </update>
+
+
+    <select id="findPetById" resultType="Pet">
+        select * from pet where pet_id=#{petId}
+    </select>
+
+    <select id="seePetById" resultType="Pet">
+        select * from pet where pet_id=#{petId}
+    </select>
+
+</mapper>
