@@ -65,7 +65,7 @@
             <if test="pethelpName!=null and pethelpName!=''">pethelp_name=#{pethelpName},</if>
             <if test="pethelpImg!=null and pethelpImg!=''">pethelp_img=#{pethelpImg},</if>
             <if test="pethelpUserPhone!=null and pethelpUserPhone!=''">pethelp_user_phone=#{pethelpUserPhone},</if>
-            <if test="pethelpAddress!=null pethelpAddress!=''">pethelp_address=#{pethelpAddress},</if>
+            <if test="pethelpAddress!=null and pethelpAddress!=''">pethelp_address=#{pethelpAddress},</if>
             <if test="pethelpHomeAddress!=null and pethelpHomeAddress!=''">pethelp_home_address=#{pethelpHomeAddress}</if>
         </set>
         where pethelp_id=#{pethelpId}

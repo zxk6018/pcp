@@ -11,7 +11,7 @@
                 cert_id like concat('%',#{certId},'%')
             </if>
             <if test="certPetId!=null">
-                and  cert_pet_id like  concat('%',#{certPetId},'%')
+                and cert_pet_id like  concat('%',#{certPetId},'%')
             </if>
         </where>
     </sql>
@@ -19,26 +19,42 @@
     <update id="updateCertificate" >
         update certificate
         <set>
-            <if test="certDesc!=null">cert_desc=#{certDesc},</if>
-            <if test="certUrl!=null">cert_url=#{certUrl}</if>
+            <if test="certDesc!=null and certDesc!=''">cert_desc=#{certDesc},</if>
+            <if test="certUrl!=null and certUrl!=''">cert_url=#{certUrl}</if>
         </set>
         where cert_pet_id=#{certPetId}
     </update>
 
     <insert id="saveCertificate">
-        insert into certificate(cert_id,cert_desc,cert_pet_id,cert_url)
-        values(#{certId},#{certDesc},#{certPetId},#{certUrl})
+        insert into certificate(
+        <trim suffixOverrides=",">
+            <if test="certId!=null and certId!=''">cert_id,</if>
+            <if test="certDesc!=null and certDesc!=''">cert_desc,</if>
+            <if test="certPetId!=null and certPetId!=''">cert_pet_id,</if>
+            <if test="certUrl!=null and certUrl!=''">cert_url</if>
+        </trim>
+        )
+        values(
+        <trim suffixOverrides=",">
+            <if test="certId!=null and certId!=''">#{certId},</if>
+            <if test="certDesc!=null and certDesc!=''">#{certDesc},</if>
+            <if test="certPetId!=null and certPetId!=''">#{certPetId},</if>
+            <if test="certUrl!=null and certUrl!=''">#{certUrl}</if>
+        </trim>
+        )
     </insert>
+
     <select id="certificateCount" resultType="Integer">
         select count(1) from  certificate
         <include refid="cert_where"/>
     </select>
 
-    <select id="certificateList" resultType="certificate">
+    <select id="findCertificateList" resultType="certificate">
         select * from certificate
         <include refid="cert_where"/>
         order by cert_id asc limit #{pyl},#{pageSize}
     </select>
+
     <select id="findCertificateById" resultType="certificate">
         select * from certificate where cert_pet_id=#{certPetId}
     </select>

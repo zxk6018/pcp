@@ -10,7 +10,7 @@ public interface CertificateService {
     Integer saveCertificate(Certificate certificate );
 
 
-    List<Certificate>certificateList(
+    List<Certificate>findCertificateList(
 
             @Param( "pyl" )Integer pyl,
 

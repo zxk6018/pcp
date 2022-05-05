@@ -38,13 +38,37 @@
               "href": "system/system.html",
               "icon": "fa fa-tachometer",
               "target": "_self"
-            },
+            }
+
+          ]
+        },
+        {
+          "title": "用户管理",
+          "href": "",
+          "icon": "fa fa-home",
+          "target": "_self",
+          "child": [
             {
               "title": "用户管理",
               "href": "user/user.html",
               "icon": "fa fa-tachometer",
               "target": "_self"
             },
+            {
+              "title": "寄养人信息管理",
+              "href": "entrust/entrust.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            }
+          ]
+        }
+      ,
+        {
+          "title": "救助队管理",
+          "href": "",
+          "icon": "fa fa-home",
+          "target": "_self",
+          "child": [
             {
               "title": "救助队管理",
               "href": "pethelp/pethelp.html",
@@ -53,25 +77,28 @@
             },
             {
               "title": "救助队队员管理",
-              "href": "helpmember/helpmember.html",
+              "href": "helpMember/helpMember.html",
               "icon": "fa fa-tachometer",
               "target": "_self"
-            },
+            }
+          ]
+        }
+
+      ,
+        {
+          "title": "文章管理",
+          "href": "",
+          "icon": "fa fa-home",
+          "target": "_self",
+          "child": [
             {
-              "title": "宠物管理",
-              "href": "pet/pet.html",
+              "title": "文章管理",
+              "href": "petCircle/petCircle.html",
               "icon": "fa fa-tachometer",
               "target": "_self"
-            },
-            {
-              "title": "宠物类型管理",
-              "href": "pettype/pettype.html",
-              "icon": "fa fa-tachometer",
-              "target": "_self"
-            },
-            {
-              "title": "证书管理",
-              "href": "certificate/certificate.html",
+            },{
+              "title": "文章类型管理",
+              "href": "circlType/circleType.html",
               "icon": "fa fa-tachometer",
               "target": "_self"
             },
@@ -87,6 +114,43 @@
               "icon": "fa fa-tachometer",
               "target": "_self"
             }
+
+          ]
+        }
+      ,
+
+        {
+          "title": "宠物管理",
+          "href": "",
+          "icon": "fa fa-home",
+          "target": "_self",
+          "child": [
+            {
+              "title": "宠物管理",
+              "href": "pet/pet.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "宠物类型管理",
+              "href": "petType/petType.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "证书管理",
+              "href": "certificate/certificate.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "商城管理",
+          "href": "",
+          "icon": "fa fa-home",
+          "target": "_self",
+          "child": [
           ]
         },
         {

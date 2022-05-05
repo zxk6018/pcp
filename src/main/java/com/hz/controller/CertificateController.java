@@ -35,7 +35,7 @@ public class CertificateController {
     public JsonMassage<List<Certificate>> findCertificateList( @RequestParam(value = "page",defaultValue = "1") Integer page,
                                                      @RequestParam(value = "limit",defaultValue ="10") Integer limit,
                                                      Integer certId, Integer certPetId){
-        List<Certificate>list = CertificateService.certificateList( page, limit, certId, certPetId );
+        List<Certificate>list = CertificateService.findCertificateList( page, limit, certId, certPetId );
         Integer cout = CertificateService.certificateCount( certId,certPetId );
         JsonMassage<List<Certificate>>jsonMassage = new JsonMassage<List<Certificate>>(  );
         jsonMassage.setCode( 0 );

@@ -59,12 +59,12 @@
         update pet
         <set>
             <if test="petName!=null and petName!=''">pet_name=#{petName},</if>
-            <if test="pettypeId!=null">pettype_id=#{pettypeId},</if>
-            <if test="pettypeName!=null">pettype_name=#{pettypeName},</if>
+            <if test="pettypeId!=null and pettypeId!=''">pettype_id=#{pettypeId},</if>
+            <if test="pettypeName!=null and pettypeName!=''">pettype_name=#{pettypeName},</if>
             <if test="petSex!=null">pet_sex=#{petSex},</if>
-            <if test="petUserId!=null">pet_user_id=#{petUserId},</if>
+            <if test="petUserId!=null and petUserId!=''">pet_user_id=#{petUserId},</if>
             <if test="petAge!=null">pet_age=#{petAge},</if>
-            <if test="petImg!=null">pet_img=#{petImg}</if>
+            <if test="petImg!=null and petImg!=''">pet_img=#{petImg}</if>
         </set>
         where pet_id=#{petId}
     </update>

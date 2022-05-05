@@ -22,10 +22,10 @@ public class CertificateServiceImpl implements CertificateService {
 
 
     @Override
-    public List<Certificate> certificateList( Integer pageNo, Integer pageSize, Integer certId, Integer certPetId ) {
+    public List<Certificate> findCertificateList( Integer pageNo, Integer pageSize, Integer certId, Integer certPetId ) {
         Integer pyl = (pageNo-1)*pageSize;
 
-        return certificate_dao.certificateList( pyl,pageSize,certId,certPetId );
+        return certificate_dao.findCertificateList( pyl,pageSize,certId,certPetId );
     }
     /**
      * 查看管理员具体信息

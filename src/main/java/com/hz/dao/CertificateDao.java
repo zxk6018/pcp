@@ -8,7 +8,7 @@ import java.util.List;
 public interface CertificateDao {
 
 //根据id查找图片路径和图片信息
-     List<Certificate>certificateList(
+     List<Certificate>findCertificateList(
              @Param( "pyl" )Integer pyl,
 
              @Param( "pageSize" )Integer pageSize,
@@ -22,7 +22,7 @@ public interface CertificateDao {
      * @return
      */
     Integer certificateCount(@Param("certId") Integer certId,
-                       @Param("certPetId") Integer certPetId);
+                             @Param("certPetId") Integer certPetId);
 
     //新增宠物id
     Integer saveCertificate(Certificate certificate );

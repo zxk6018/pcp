@@ -6,10 +6,10 @@
 
     <sql id="system_where">
         <where>
-            <if test="systemId!=null">
+            <if test="systemId!=null and systemId!=''">
                 system_id like concat('%',#{systemId},'%')
             </if>
-            <if test="systemName!=null">
+            <if test="systemName!=null and systemName!=''">
                 and system_name like concat('%',#{systemName},'%')
             </if>
         </where>
@@ -38,7 +38,7 @@
             <if test="systemName!=null and systemName!=''">system_name,</if>
             <if test="systemIco!=null and systemIco!=''">system_ico,</if>
             <if test="systemUrl!=null and systemUrl!=''">system_url,</if>
-            <if test="systemParentId!=null and systemParentId!=''">system_parent_id,</if>
+            <if test="systemParentId!=null and systemParentId!=''">system_parent_id</if>
         </trim>
         )
         values (
