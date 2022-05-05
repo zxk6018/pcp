@@ -26,8 +26,27 @@
     </select>
 
     <insert id="savePet" >
-        insert into pet(pet_name,pettype_id,pettype_name,pet_sex,pet_user_id,pet_age,pet_img)
-        values (#{petName},#{pettypeId},#{pettypeName},#{petSex},#{petUserId},#{petAge},#{petImg}
+        insert into pet(
+        <trim suffixOverrides=",">
+            <if test="petName!=null and petName!=''">pet_name,</if>
+            <if test="pettypeId!=null and pettypeId!=''">pettype_id,</if>
+            <if test="pettypeName!=null and pettypeName!=''">pettype_name,</if>
+            <if test="petSex!=null">pet_sex,</if>
+            <if test="petUserId!=null and petUserId!=''">pet_user_id,</if>
+            <if test="petAge!=null">pet_age,</if>
+            <if test="petImg!=null and petImg!=''">pet_img</if>
+        </trim>
+        )
+        values (
+        <trim suffixOverrides=",">
+            <if test="petName!=null and petName!=''">#{petName},</if>
+            <if test="pettypeId!=null and pettypeId!=''">#{pettypeId},</if>
+            <if test="pettypeName!=null and pettypeName!=''">#{pettypeName},</if>
+            <if test="petSex!=null">#{petSex},</if>
+            <if test="petUserId!=null and petUserId!=''">#{petUserId},</if>
+            <if test="petAge!=null">#{petAge},</if>
+            <if test="petImg!=null and petImg!=''">#{petImg}</if>
+        </trim>
         )
     </insert>
 
@@ -39,7 +58,7 @@
     <update id="updatePet" >
         update pet
         <set>
-            <if test="petName!=null">pet_name=#{petName},</if>
+            <if test="petName!=null and petName!=''">pet_name=#{petName},</if>
             <if test="pettypeId!=null">pettype_id=#{pettypeId},</if>
             <if test="pettypeName!=null">pettype_name=#{pettypeName},</if>
             <if test="petSex!=null">pet_sex=#{petSex},</if>
