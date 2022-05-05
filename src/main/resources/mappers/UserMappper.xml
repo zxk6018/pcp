@@ -6,10 +6,10 @@
 
     <sql id="user_where">
         <where>
-            <if test="userName!=null">
+            <if test="userName!=null and userName!=''">
                 user_name like concat('%',#{userName},'%')
             </if>
-            <if test="userTime!=null">
+            <if test="userTime!=null and userTime!=''">
                 and user_time like concat('%',#{userTime},'%')
             </if>
         </where>
@@ -33,17 +33,35 @@
     <update id="updateUser" >
         update user
         <set>
-            <if test="userName!=null">user_name=#{userName},</if>
-            <if test="userPassword!=null">user_password=#{userPassword},</if>
-            <if test="userPhone!=null">user_phone=#{userPhone},</if>
-            <if test="userAge!=null">user_age=#{userAge},</if>
-            <if test="userSex!=null">user_sex=#{userSex}</if>
+            <if test="userName!=null and userName!=''">user_name=#{userName},</if>
+            <if test="userPassword!=null and userPassword!=''">user_password=#{userPassword},</if>
+            <if test="userPhone!=null and userPhone!=''">user_phone=#{userPhone},</if>
+            <if test="userAge!=null and userAge!=''">user_age=#{userAge},</if>
+            <if test="userSex!=null and userSex!=''">user_sex=#{userSex}</if>
         </set>
         where user_id=#{userId}
     </update>
+
     <insert id="saveUser" >
-        insert into user(user_name,user_password,user_sex,user_age,user_phone,user_address)
-        values (#{userName},#{userPassword},#{userSex},#{userAge},#{userPhone},#{userAddress}
+        insert into user(
+        <trim suffixOverrides=",">
+            <if test="userName!=null and userName!=''">user_name,</if>
+            <if test="userPassword!=null and userPassword!=''">user_password,</if>
+            <if test="userSex!=null">user_sex,</if>
+            <if test="userAge!=null and userAge!=''">user_age,</if>
+            <if test="userPhone!=null and userPhone!=''">user_phone,</if>
+            <if test="userAddress!=null and userAddress!=''">user_address</if>
+        </trim>
+        )
+        values (
+        <trim suffixOverrides=",">
+            <if test="userName!=null and userName!=''">#{userName},</if>
+            <if test="userPassword!=null and userPassword!=''">#{userPassword},</if>
+            <if test="userSex!=null">#{userSex},</if>
+            <if test="userAge!=null and userAge!=''">#{userAge},</if>
+            <if test="userPhone!=null and userPhone!=''">#{userPhone},</if>
+            <if test="userAddress!=null and userAddress!=''">#{userAddress}</if>
+        </trim>
         )
     </insert>
 

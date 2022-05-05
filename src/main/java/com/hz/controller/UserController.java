@@ -30,7 +30,6 @@ public class UserController {
                                                 @RequestParam(value = "limit",defaultValue ="10") Integer limit,
                                                 String userName,String userTime){
         List<User> list = userService.findUserList(page, limit, userName,userTime);
-        System.out.println(userName);
         Integer count = userService.UserCount(userName,userTime);
         JsonMassage<List<User>> jsonMassage = new JsonMassage<List<User>>();
         jsonMassage.setCode(0);
@@ -53,7 +52,7 @@ public class UserController {
     }
 
     /**
-     * 新增管理员
+     * 新增用户
      * @param user
      * @return
      */
@@ -64,7 +63,7 @@ public class UserController {
         return new JsonMassage(i);
     }
     /**
-     * 修改管理员
+     * 修改用户
      * @param user
      * @return
      */
@@ -84,5 +83,28 @@ public class UserController {
     public String findAdminById(@PathVariable("userId") Integer userId, Model model){
         model.addAttribute("user",userService.findUserById(userId));
         return  "user/user_edit";
+    }
+    /**
+     * 根据ID查询用户
+     * @param userId
+     * @param model
+     * @return
+     */
+    @RequestMapping("/seeUserById/{userId}")
+    public String seeAdminById(@PathVariable("userId") Integer userId, Model model){
+        model.addAttribute("user",userService.findUserById(userId));
+        return  "user/user_see";
+    }
+
+    /**
+     * 查看用户详情
+     * @param user
+     * @return
+     */
+    @RequestMapping(value = "/seeUser",method = RequestMethod.POST)
+    @ResponseBody
+    public String seeAdmin(User user){
+        Integer i = userService.seeAdmin(user);
+        return "";
     }
 }

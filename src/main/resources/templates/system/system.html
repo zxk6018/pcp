@@ -12,32 +12,6 @@
 <body>
 <div class="layuimini-container">
     <div class="layuimini-main">
-        <fieldset class="table-search-fieldset">
-            <legend>搜索信息</legend>
-            <div style="margin: 10px 10px 10px 10px">
-                <form class="layui-form layui-form-pane" action="">
-                    <div class="layui-form-item">
-                        <div class="layui-inline">
-                            <label class="layui-form-label">管理员账号</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="adminName" autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
-
-                        <div class="layui-inline">
-                            <label class="layui-form-label">管理员电话</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="adminPhone" autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
-
-                        <div class="layui-inline">
-                            <button type="submit" class="layui-btn layui-btn-primary"  lay-submit lay-filter="data-search-btn"><i class="layui-icon"></i> 搜 索</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </fieldset>
 
         <script type="text/html" id="toolbarDemo">
             <div class="layui-btn-container">
@@ -49,8 +23,6 @@
         <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
 
         <script type="text/html" id="currentTableBar">
-            <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="see">查看</a>
-            <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">编辑</a>
             <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
         </script>
 
@@ -66,7 +38,7 @@
 
         tab1=table.render({
             elem: '#currentTableId',
-            url: '/admin/findAdminList',
+            url: '/system/findSystemList',
             toolbar: '#toolbarDemo',
             defaultToolbar: ['filter', 'exports', 'print', {
                 title: '提示',
@@ -75,34 +47,29 @@
             }],
             cols: [[
                 {type: "checkbox", width: 50},
-                {field: 'adminId', width: 110, title: '管理员ID', sort: true},
-                {field: 'adminName', width: 180, title: '管理员账号', sort: true},
-                {field: 'adminPhone', width: 180, title: '管理员电话', sort: true},
-                {field: 'adminRoleTime', title: '创建时间', minWidth: 200},
-                {field: 'adminAuthoName', width: 150, title: '权限名', sort: true},
+                {field: 'systemId', width: 110, title: '权限ID', sort: true},
+                {field: 'systemName', width: 150, title: '权限名称', sort: true},
+                {field: 'systemIco', width: 150, title: '图标', sort: true},
+                {field: 'systemUrl', width: 150, title: 'URL（权限路径）', sort: true},
+                {field: 'systemParentId', width: 200, title: ' 父级ID（上级权限ID）', sort: true},
                 {fixed: 'right',title: '操作', minWidth: 20, toolbar: '#currentTableBar', align: "center"}
             ]],
-            limits: [1, 5, 10, 25, 50, 100],
-            limit: 10,
+            limits: [20, 20, 20, 25, 50, 100],
+            limit: 20,
             page: true,
             skin: 'line'
         });
 
         // 监听搜索操作
         form.on('submit(data-search-btn)', function (data) {
-          /*  var result = JSON.stringify(data.field);
-            layer.alert(result, {
-                title: '最终的搜索信息'
-            });*/
 
-            //执行搜索重载
             table.reload('currentTableId', {
                 page: {
                     curr: 1
                 }
                 , where: {
-                    "adminName":data.field.adminName,
-                    "adminPhone":data.field.adminPhone
+                    "pethelpName":data.field.pethelpName,
+                    "pethelpUserPhone":data.field.pethelpUserPhone
                 }
             }, 'data');
 
@@ -114,8 +81,8 @@
          */
         table.on('toolbar(currentTableFilter)', function (obj) {
             if (obj.event === 'add') {  // 监听添加操作
-               window.parent.open("新增管理员",
-                                   "admin/admin_add.html",
+               window.parent.open("新增权限",
+                                   "/system/system_add.html",
                                    "800px",
                                    "600px",
                                     tab1)
@@ -133,17 +100,11 @@
 
         table.on('tool(currentTableFilter)', function (obj) {
             var data = obj.data;
-            if (obj.event === 'edit') {
-                window.parent.open("修改管理员",
-                    "/admin/findAdminById/"+data.adminId,
-                    "800px",
-                    "600px",
-                    tab1)
-                return false;
-            } else if (obj.event === 'delete') {
+
+             if (obj.event === 'delete') {
                 layer.confirm('真的删除行么', function (index) {
                     parent.layer.load(1, {shade: [0.1,'#fff'] });//开启遮罩
-                    $.post("/admin/deleteAdminById",{"adminId":data.adminId},function(res){
+                    $.post("/system/deleteSystemById",{"systemId":data.systemId},function(res){
                         var index = parent.layer.alert(res.msg, function () {
                             // 关闭弹出层
                             obj.del();
@@ -153,14 +114,8 @@
                     },"json");
                     layer.close(index);
                 });
-            }else if (obj.event == 'see'){
-                window.parent.open("查看管理员信息",
-                    "/admin/seeAdminById/"+data.adminId,
-                    "800px",
-                    "600px",
-                    tab1)
-                return false;
             }
+
         });
 
     });

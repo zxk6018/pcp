@@ -35,29 +35,15 @@
         <label class="layui-form-label required">管理员手机号</label>
         <div class="layui-input-block">
             <input type="text" name="adminPhone" lay-verify="required" lay-reqtext="管理员手机号不能为空" placeholder="请输入管理员手机号" value="" class="layui-input">
-
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label required">创建人ID</label>
         <div class="layui-input-block">
             <input type="text" name="adminRoleAuthoId" lay-verify="required" lay-reqtext="创建人ID不能为空" placeholder="请输入创建人ID" value="" class="layui-input">
-
         </div>
     </div>
-    <div class="layui-form-item">
-    <label class="layui-form-label required">创建时间</label>
-    <div class="layui-input-block">
-        <input type="text" placeholder="yyyy-MM-dd" id="adminRoleTime" name="adminRoleTime" lay-verify="required" lay-reqtext="日期不能为空" value="" class="layui-input">
-    </div>
-</div>
 
-    <!--<div class="layui-form-item layui-form-text">
-        <label class="layui-form-label">供应商描述</label>
-        <div class="layui-input-block">
-            <textarea name="proDesc" class="layui-textarea" placeholder="请输入备注信息"></textarea>
-        </div>
-    </div>-->
     <div class="layui-form-item">
         <div class="layui-input-block">
             <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">确认保存</button>
@@ -72,10 +58,10 @@
             $ = layui.$,
             laydate = layui.laydate;
 
-        //日期
+       /* //日期
         laydate.render({
             elem: '#adminRoleTime'
-        });
+        });*/
         //监听提交
         form.on('submit(saveBtn)', function (data) {
             parent.layer.load(1, {shade: [0.1,'#fff'] });//开启遮罩

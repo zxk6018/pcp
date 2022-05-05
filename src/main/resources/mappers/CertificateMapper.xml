@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hz.dao.CertificateDao">
+
+
+       <sql id="cert_where">
+        <where>
+            <if test="certId!=null">
+                cert_id like concat('%',#{certId},'%')
+            </if>
+            <if test="certPetId!=null">
+                and cert_pet_id like  concat('%',#{certPetId},'%')
+            </if>
+        </where>
+    </sql>
+
+    <update id="updateCertificate" >
+        update certificate
+        <set>
+            <if test="certDesc!=null and certDesc!=''">cert_desc=#{certDesc},</if>
+            <if test="certUrl!=null and certUrl!=''">cert_url=#{certUrl}</if>
+        </set>
+        where cert_pet_id=#{certPetId}
+    </update>
+
+    <insert id="saveCertificate">
+        insert into certificate(
+        <trim suffixOverrides=",">
+            <if test="certId!=null and certId!=''">cert_id,</if>
+            <if test="certDesc!=null and certDesc!=''">cert_desc,</if>
+            <if test="certPetId!=null and certPetId!=''">cert_pet_id,</if>
+            <if test="certUrl!=null and certUrl!=''">cert_url</if>
+        </trim>
+        )
+        values(
+        <trim suffixOverrides=",">
+            <if test="certId!=null and certId!=''">#{certId},</if>
+            <if test="certDesc!=null and certDesc!=''">#{certDesc},</if>
+            <if test="certPetId!=null and certPetId!=''">#{certPetId},</if>
+            <if test="certUrl!=null and certUrl!=''">#{certUrl}</if>
+        </trim>
+        )
+    </insert>
+
+    <select id="certificateCount" resultType="Integer">
+        select count(1) from  certificate
+        <include refid="cert_where"/>
+    </select>
+
+    <select id="findCertificateList" resultType="certificate">
+        select * from certificate
+        <include refid="cert_where"/>
+        order by cert_id asc limit #{pyl},#{pageSize}
+    </select>
+
+    <select id="findCertificateById" resultType="certificate">
+        select * from certificate where cert_pet_id=#{certPetId}
+    </select>
+
+    <delete id="deleteCertificateById">
+        delete from certificate where cert_pet_id=#{certPetId}
+    </delete>
+</mapper>

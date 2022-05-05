@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/layui/lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="/layui/css/public.css" media="all">
+    <style>
+        body {
+            background-color: #ffffff;
+        }
+    </style>
+    </head>
+    <body>
+    <div class="layui-form layuimini-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label required">宠物ID</label>
+            <div class="layui-input-block">
+                <input name="petId" type="hidden" th:value="${pet.petId}">
+                <input type="text" name="petId" lay-verify="required" lay-reqtext="宠物Id不能为空" placeholder="请输入宠物Id账号" th:value="${pet.petId}" class="layui-input">
+            </div>
+        </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label required">宠物名</label>
+        <div class="layui-input-block">
+            <input type="text" name="petName" lay-verify="required" lay-reqtext="宠物名不能为空" placeholder="请输入宠物名名称" th:value="${pet.petName}"  class="layui-input">
+        </div>
+    </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label required">宠物类型</label>
+            <div class="layui-input-block">
+                <input type="text" name="pettypeId" lay-verify="required" lay-reqtext="宠物类型不能为空" placeholder="请输入宠物类型名称" th:value="${pet.pettypeId}"  class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label required">宠物品种</label>
+            <div class="layui-input-block">
+                <input type="text" name="pettypeName" lay-verify="required" lay-reqtext="宠物品种不能为空" placeholder="请输入宠物品种" th:value="${pet.pettypeName}" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label required">宠物性别</label>
+            <div class="layui-input-block">
+                <input type="text" name="petSex" lay-verify="required" lay-reqtext="宠物性别不能为空" placeholder="请输入宠物性别" th:value="${pet.petSex}" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label required">所属用户</label>
+            <div class="layui-input-block">
+                <input type="text" name="petUserId" lay-verify="required" lay-reqtext="所属用户不能为空" placeholder="请输入所属用户" th:value="${pet.petUserId}" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label required">宠物年龄</label>
+            <div class="layui-input-block">
+                <input type="text" name="petAge" lay-verify="required" lay-reqtext="宠物年龄不能为空" placeholder="请输入宠物年龄" th:value="${pet.petAge}" class="layui-input">
+            </div>
+        </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">确认保存</button>
+        </div>
+    </div>
+</div>
+<script src="/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+<script>
+    layui.use(['form', 'laydate'], function () {
+        var form = layui.form,
+            layer = layui.layer,
+            $ = layui.$,
+            laydate = layui.laydate;
+
+        //监听提交
+        form.on('submit(saveBtn)', function (data) {
+            parent.layer.load(1, {shade: [0.1,'#fff'] });//开启遮罩
+
+            $.post("/pet/updatePet",data.field,function(res){
+                var index = parent.layer.alert(res.msg, function () {
+
+                    //刷新表格
+                    parent.tab.reload();
+                    // 关闭弹出层
+                    parent.layer.close(index);
+                    parent.layer.closeAll();
+
+                });
+            },"json");
+
+            return false;
+        });
+
+    });
+</script>
+</body>
+</html>
