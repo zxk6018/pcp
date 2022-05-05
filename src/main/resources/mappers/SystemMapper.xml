@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hz.dao.SystemDao">
+
+    <sql id="system_where">
+        <where>
+            <if test="systemId!=null">
+                system_id like concat('%',#{systemId},'%')
+            </if>
+            <if test="systemName!=null">
+                and system_name like concat('%',#{systemName},'%')
+            </if>
+        </where>
+    </sql>
+    <!--只写增删查-->
+
+    <!--分页查询-->
+    <select id="findSystemList" resultType="System">
+        select * from system
+        <include refid="system_where"/>
+        order by system_id asc limit #{pyl},#{pageSize}
+    </select>
+
+    <select id="SystemCount" resultType="Integer">
+        select count(1) from  system
+        <include refid="system_where"/>
+    </select>
+
+    <select id="findSystemById" resultType="System">
+        select * from system where system_id=#{systemId}
+    </select>
+    <!--新增权限-->
+    <insert id="saveSystem" >
+        insert into system(
+        <trim suffixOverrides=",">
+            <if test="systemName!=null and systemName!=''">system_name,</if>
+            <if test="systemIco!=null and systemIco!=''">system_ico,</if>
+            <if test="systemUrl!=null and systemUrl!=''">system_url,</if>
+            <if test="systemParentId!=null and systemParentId!=''">system_parent_id,</if>
+        </trim>
+        )
+        values (
+        <trim suffixOverrides=",">
+            <if test="systemName!=null and systemName!=''">#{systemName},</if>
+            <if test="systemIco!=null and systemIco!=''">#{systemIco},</if>
+            <if test="systemUrl!=null and systemUrl!=''">#{systemUrl},</if>
+            <if test="systemParentId!=null and systemParentId!=''">#{systemParentId}</if>
+        </trim>
+        )
+    </insert>
+
+    <!--删除权限-->
+    <delete id="deleteSystemById">
+        delete from system where system_id=#{systemId}
+    </delete>
+</mapper>

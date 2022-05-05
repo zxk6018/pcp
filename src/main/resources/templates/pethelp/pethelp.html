@@ -18,16 +18,16 @@
                 <form class="layui-form layui-form-pane" action="">
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">管理员账号</label>
+                            <label class="layui-form-label">救助队队名</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="adminName" autocomplete="off" class="layui-input">
+                                <input type="text" name="pethelpName" autocomplete="off" class="layui-input">
                             </div>
                         </div>
 
                         <div class="layui-inline">
-                            <label class="layui-form-label">管理员电话</label>
+                            <label class="layui-form-label">救助队电话</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="adminPhone" autocomplete="off" class="layui-input">
+                                <input type="text" name="pethelpUserPhone" autocomplete="off" class="layui-input">
                             </div>
                         </div>
 
@@ -66,7 +66,7 @@
 
         tab1=table.render({
             elem: '#currentTableId',
-            url: '/admin/findAdminList',
+            url: '/pethelp/findPethelpList',
             toolbar: '#toolbarDemo',
             defaultToolbar: ['filter', 'exports', 'print', {
                 title: '提示',
@@ -75,11 +75,19 @@
             }],
             cols: [[
                 {type: "checkbox", width: 50},
-                {field: 'adminId', width: 110, title: '管理员ID', sort: true},
-                {field: 'adminName', width: 180, title: '管理员账号', sort: true},
-                {field: 'adminPhone', width: 180, title: '管理员电话', sort: true},
-                {field: 'adminRoleTime', title: '创建时间', minWidth: 200},
-                {field: 'adminAuthoName', width: 150, title: '权限名', sort: true},
+                {field: 'pethelpId', width: 110, title: '救助队ID', sort: true},
+                {field: 'pethelpName', width: 150, title: '救助队名', sort: true},
+                {field: 'pethelpUserId', width: 150, title: '用户ID（组织者）', sort: true},
+                // {field: 'pethelpImg', title: '队标（图片）', minWidth: 200},
+                {field: 'pethelpUserPhone', width: 150, title: '电话（联系救助电话）', sort: true},
+                {field: 'pethelpAddress', width: 200, title: '救助地区（例：郑州市，洛阳市）', sort: true},
+                // {field: 'pethelpPapersNum', width: 200, title: '证件编号', sort: true},
+                // {field: 'pethelpPapersImg', width: 200, title: '证件图片', sort: true},
+                // {field: 'pethelpHomeAddress', width: 200, title: '救助站地址', sort: true},
+                {field: 'pethelpState', width: 150, title: '审核状态（0待审核 1正常 2异常  3驳回）', sort: true},
+                // {field: 'pethelpAdminId', width: 200, title: '处理人ID（管理员ID）', sort: true},
+                // {field: 'pethelpOpinion', width: 200, title: '处理意见', sort: true},
+                {field: 'pethelpDisposetime', width: 200, title: '处理时间', sort: true},
                 {fixed: 'right',title: '操作', minWidth: 20, toolbar: '#currentTableBar', align: "center"}
             ]],
             limits: [1, 5, 10, 25, 50, 100],
@@ -101,8 +109,8 @@
                     curr: 1
                 }
                 , where: {
-                    "adminName":data.field.adminName,
-                    "adminPhone":data.field.adminPhone
+                    "pethelpName":data.field.pethelpName,
+                    "pethelpUserPhone":data.field.pethelpUserPhone
                 }
             }, 'data');
 
@@ -115,7 +123,7 @@
         table.on('toolbar(currentTableFilter)', function (obj) {
             if (obj.event === 'add') {  // 监听添加操作
                window.parent.open("新增管理员",
-                                   "admin/admin_add.html",
+                                   "/pethelp/pethelp_add.html",
                                    "800px",
                                    "600px",
                                     tab1)
@@ -135,7 +143,7 @@
             var data = obj.data;
             if (obj.event === 'edit') {
                 window.parent.open("修改管理员",
-                    "/admin/findAdminById/"+data.adminId,
+                    "/pethelp/findPethelpById/"+data.pethelpId,
                     "800px",
                     "600px",
                     tab1)
@@ -143,7 +151,7 @@
             } else if (obj.event === 'delete') {
                 layer.confirm('真的删除行么', function (index) {
                     parent.layer.load(1, {shade: [0.1,'#fff'] });//开启遮罩
-                    $.post("/admin/deleteAdminById",{"adminId":data.adminId},function(res){
+                    $.post("/pethelp/deletePethelpById",{"pethelpId":data.pethelpId},function(res){
                         var index = parent.layer.alert(res.msg, function () {
                             // 关闭弹出层
                             obj.del();
@@ -154,8 +162,8 @@
                     layer.close(index);
                 });
             }else if (obj.event == 'see'){
-                window.parent.open("查看管理员信息",
-                    "/admin/seeAdminById/"+data.adminId,
+                window.parent.open("查看救援队详情",
+                    "/pethelp/seePethelpById/"+data.pethelpId,
                     "800px",
                     "600px",
                     tab1)

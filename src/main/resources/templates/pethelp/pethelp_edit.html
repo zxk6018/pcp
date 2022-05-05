@@ -17,40 +17,43 @@
     <body>
     <div class="layui-form layuimini-form">
         <div class="layui-form-item">
-            <label class="layui-form-label required">用户名</label>
+            <label class="layui-form-label required">救助队队名</label>
             <div class="layui-input-block">
-                <input name="userId" type="hidden" th:value="${user.userId}">
-                <input type="text" name="userName" lay-verify="required" lay-reqtext="用户名不能为空" placeholder="请输入用户名" th:value="${user.userName}" class="layui-input">
+                <input name="pethelpId" type="hidden" th:value="${ph.pethelpId}">
+                <input type="text" name="pethelpName" lay-verify="required" lay-reqtext="救助队队名不能为空" placeholder="请输入救助队队名" th:value="${ph.pethelpName}" class="layui-input">
             </div>
         </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label required">用户密码</label>
+        <label class="layui-form-label required">队标</label>
         <div class="layui-input-block">
-            <input type="text" name="userPassword" lay-verify="required" lay-reqtext="用户密码不能为空" placeholder="请输入用户密码" th:value="${user.userPassword}"  class="layui-input">
+            <input type="text" name="pethelpImg" lay-verify="required" lay-reqtext="队标不能为空" placeholder="请输入队标路径" th:value="${ph.pethelpImg}"  class="layui-input">
         </div>
     </div>
-
         <div class="layui-form-item">
             <label class="layui-form-label required">电话</label>
             <div class="layui-input-block">
-                <input type="text" name="userPhone" lay-verify="required" lay-reqtext="电话不能为空" placeholder="请输入电话" th:value="${user.userPhone}"  class="layui-input">
+                <input type="text" name="pethelpUserPhone" lay-verify="required" lay-reqtext="电话不能为空" placeholder="请输入电话" th:value="${ph.pethelpUserPhone}"  class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label required">年龄</label>
+            <label class="layui-form-label required">救助地区</label>
             <div class="layui-input-block">
-                <input type="text" name="userAge" lay-verify="required" lay-reqtext="年龄不能为空" placeholder="请输入年龄" th:value="${user.userAge}" class="layui-input">
+                <input type="text" name="pethelpAddress" lay-verify="required" lay-reqtext="救助地区不能为空" placeholder="请输入救助地区" th:value="${ph.pethelpAddress}" class="layui-input">
             </div>
         </div>
-
         <div class="layui-form-item">
-            <label class="layui-form-label required">电话</label>
+            <label class="layui-form-label required">救助站地址</label>
             <div class="layui-input-block">
-                <input type="text" name="userPhone" lay-verify="required" lay-reqtext="电话不能为空" placeholder="请输入电话" th:value="${user.userPhone}" class="layui-input">
+                <input type="text" name="pethelpHomeAddress" lay-verify="required" lay-reqtext="救助站地址不能为空" placeholder="请输救助站地址" th:value="${ph.pethelpHomeAddress}" class="layui-input">
             </div>
         </div>
-
+    <!--<div class="layui-form-item">
+        <label class="layui-form-label required">创建时间</label>
+        <div class="layui-input-block">
+            <input type="text" placeholder="yyyy-MM-dd" id="creationDate" name="creationDate" lay-verify="required" lay-reqtext="日期不能为空" th:value="${pro.creationDate}" class="layui-input">
+        </div>
+    </div>-->
     <div class="layui-form-item">
         <div class="layui-input-block">
             <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">确认保存</button>
@@ -60,17 +63,20 @@
 <script src="/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
 <script>
     layui.use(['form', 'laydate'], function () {
-
         var form = layui.form,
             layer = layui.layer,
             $ = layui.$,
             laydate = layui.laydate;
 
+        /*//日期
+        laydate.render({
+            elem: '#creationDate'
+        });*/
         //监听提交
         form.on('submit(saveBtn)', function (data) {
             parent.layer.load(1, {shade: [0.1,'#fff'] });//开启遮罩
 
-            $.post("/user/updateUser",data.field,function(res){
+            $.post("/pethelp/updatePethelp",data.field,function(res){
                 var index = parent.layer.alert(res.msg, function () {
 
                     //刷新表格
