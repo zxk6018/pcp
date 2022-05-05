@@ -26,7 +26,7 @@
         select count(1) from  pethelp
         <include refid="pethelp_where"/>
     </select>
-
+    <!--根据ID查询救援队-->
     <select id="findPethelpById" resultType="Pethelp">
         select * from pethelp where pethelp_id=#{pethelpId}
     </select>
