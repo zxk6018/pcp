@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hz.dao.PetHelpDao">
+
+    <sql id="pethelp_where">
+        <where>
+            <if test="pethelpName!=null and pethelpName!=''">
+                pethelp_name like concat('%',#{pethelpName},'%')
+            </if>
+            <if test="pethelpUserPhone!=null and pethelpUserPhone!=''">
+                and pethelp_user_phone like concat('%',#{pethelpUserPhone},'%')
+            </if>
+        </where>
+    </sql>
+
+    <!--查询救助队-->
+    <select id="findPethelpList" resultType="Pethelp">
+        select * from pethelp
+        <include refid="pethelp_where"/>
+        order by pethelp_id asc limit #{pyl},#{pageSize}
+    </select>
+
+    <select id="PethelpCount" resultType="Integer">
+        select count(1) from  pethelp
+        <include refid="pethelp_where"/>
+    </select>
+
+    <select id="findPethelpById" resultType="Pethelp">
+        select * from pethelp where pethelp_id=#{pethelpId}
+    </select>
+    <!--新增救助队-->
+    <insert id="savePethelp">
+        insert into pethelp(
+        <trim suffixOverrides=",">
+            <if test="pethelpName!=null and pethelpName!=''">pethelp_name,</if>
+            <if test="pethelpUserId!=null and pethelpUserId!=''">pethelp_user_id,</if>
+            <if test="pethelpImg!=null and pethelpImg!=''">pethelp_img,</if>
+            <if test="pethelpUserPhone!=null and pethelpUserPhone!=''">pethelp_user_phone,</if>
+            <if test="pethelpAddress!=null and pethelpAddress!=''">pethelp_address,</if>
+            <if test="pethelpPapersNum!=null and pethelpPapersNum!=''">pethelp_papers_num,</if>
+            <if test="pethelpPapersImg!=null and pethelpPapersImg!=''">pethelp_papers_img,</if>
+            <if test="pethelpHomeAddress!=null and pethelpHomeAddress!=''">pethelp_home_address</if>
+        </trim>
+        )
+        values (
+        <trim suffixOverrides=",">
+            <if test="pethelpName!=null and pethelpName!=''">#{pethelpName},</if>
+            <if test="pethelpUserId!=null and pethelpUserId!=''">#{pethelpUserId},</if>
+            <if test="pethelpImg!=null and pethelpImg!=''">#{pethelpImg},</if>
+            <if test="pethelpUserPhone!=null and pethelpUserPhone!=''">#{pethelpUserPhone},</if>
+            <if test="pethelpAddress!=null and pethelpAddress!=''">#{pethelpAddress},</if>
+            <if test="pethelpPapersNum!=null and pethelpPapersNum!=''">#{pethelpPapersNum},</if>
+            <if test="pethelpPapersImg!=null and pethelpPapersImg!=''">#{pethelpPapersImg},</if>
+            <if test="pethelpHomeAddress!=null and pethelpHomeAddress!=''">#{pethelpHomeAddress}</if>
+        </trim>
+        )
+
+    </insert>
+    <!--修改救助队-->
+    <update id="updatePethelp" >
+        update pethelp
+        <set>
+            <if test="pethelpName!=null and pethelpName!=''">pethelp_name=#{pethelpName},</if>
+            <if test="pethelpImg!=null and pethelpImg!=''">pethelp_img=#{pethelpImg},</if>
+            <if test="pethelpUserPhone!=null and pethelpUserPhone!=''">pethelp_user_phone=#{pethelpUserPhone},</if>
+            <if test="pethelpAddress!=null pethelpAddress!=''">pethelp_address=#{pethelpAddress},</if>
+            <if test="pethelpHomeAddress!=null and pethelpHomeAddress!=''">pethelp_home_address=#{pethelpHomeAddress}</if>
+        </set>
+        where pethelp_id=#{pethelpId}
+    </update>
+    <!--删除救助队-->
+    <delete id="deletePethelpById">
+        delete from pethelp where pethelp_id=#{pethelpId}
+    </delete>
+</mapper>
