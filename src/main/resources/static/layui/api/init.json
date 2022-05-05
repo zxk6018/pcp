@@ -28,6 +28,12 @@
               "target": "_self"
             },
             {
+              "title": "角色管理",
+              "href": "role/role.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
               "title": "权限管理",
               "href": "system/system.html",
               "icon": "fa fa-tachometer",
@@ -46,8 +52,20 @@
               "target": "_self"
             },
             {
-              "title": "角色管理",
-              "href": "role/role.html",
+              "title": "救助队队员管理",
+              "href": "helpmember/helpmember.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "宠物管理",
+              "href": "pet/pet.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "宠物类型管理",
+              "href": "pettype/pettype.html",
               "icon": "fa fa-tachometer",
               "target": "_self"
             },
@@ -56,9 +74,16 @@
               "href": "certificate/certificate.html",
               "icon": "fa fa-tachometer",
               "target": "_self"
-            },{
-              "title": "宠物管理",
-              "href": "pet/pet.html",
+            },
+            {
+              "title": "发布领养与寄养信息管理",
+              "href": "adopt/adopt.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "领养寄养联系信息管理",
+              "href": "relation/relation.html",
               "icon": "fa fa-tachometer",
               "target": "_self"
             }

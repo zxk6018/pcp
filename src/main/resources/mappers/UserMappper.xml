@@ -47,7 +47,7 @@
         <trim suffixOverrides=",">
             <if test="userName!=null and userName!=''">user_name,</if>
             <if test="userPassword!=null and userPassword!=''">user_password,</if>
-            <if test="userSex!=null and userSex!=''">user_sex,</if>
+            <if test="userSex!=null">user_sex,</if>
             <if test="userAge!=null and userAge!=''">user_age,</if>
             <if test="userPhone!=null and userPhone!=''">user_phone,</if>
             <if test="userAddress!=null and userAddress!=''">user_address</if>
@@ -57,7 +57,7 @@
         <trim suffixOverrides=",">
             <if test="userName!=null and userName!=''">#{userName},</if>
             <if test="userPassword!=null and userPassword!=''">#{userPassword},</if>
-            <if test="userSex!=null and userSex!=''">#{userSex},</if>
+            <if test="userSex!=null">#{userSex},</if>
             <if test="userAge!=null and userAge!=''">#{userAge},</if>
             <if test="userPhone!=null and userPhone!=''">#{userPhone},</if>
             <if test="userAddress!=null and userAddress!=''">#{userAddress}</if>
