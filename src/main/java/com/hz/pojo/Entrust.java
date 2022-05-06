@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Data
 public class Entrust implements Serializable{
 
-	private static final long serialVersionUID =  2173669603654156524L;
+	private static final long serialVersionUID =  6443588150255992408L;
 
 	/**
 	 * 寄养ID
@@ -35,8 +35,8 @@ public class Entrust implements Serializable{
 	/**
 	 * 身份证号
 	 */
-	@Column(name = "entrust_idcard")
-	private int entrustIdcard;
+	@Column(name = "entrust_user_idcard")
+	private String entrustUserIdcard;
 
 	/**
 	 * 申请信息
