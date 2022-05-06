@@ -17,25 +17,34 @@
     <body>
     <div class="layui-form layuimini-form">
         <div class="layui-form-item">
-            <label class="layui-form-label required">队员电话：</label>
+            <label class="layui-form-label required">管理员账号</label>
             <div class="layui-input-block">
-                <input name="helpmemberId" type="hidden" th:value="${hm.helpmemberId}">
-                <input type="text" name="helpmemberPhone" lay-verify="required" lay-reqtext="队员电话不能为空" placeholder="请输入队员电话" th:value="${hm.helpmemberPhone}" class="layui-input">
+                <input name="adminId" type="hidden" th:value="${ad.adminId}">
+                <input type="text" name="adminName" lay-verify="required" lay-reqtext="管理员账号不能为空" placeholder="请输入管理员账号" th:value="${ad.adminName}" class="layui-input">
             </div>
         </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label required">队员照片：</label>
+        <label class="layui-form-label required">管理员密码</label>
         <div class="layui-input-block">
-            <input type="text" name="helpmemberImg" lay-verify="required" lay-reqtext="队员照片不能为空" placeholder="请输入队员照片路径" th:value="${hm.helpmemberImg}"  class="layui-input">
+            <input type="text" name="adminPassword" lay-verify="required" lay-reqtext="供应商名称不能为空" placeholder="请输入供应商名称" th:value="${ad.adminPassword}"  class="layui-input">
         </div>
     </div>
+
         <div class="layui-form-item">
-            <label class="layui-form-label required">所在地址：</label>
+            <label class="layui-form-label required">管理员手机号</label>
             <div class="layui-input-block">
-                <input type="text" name="helpmemberAddress" lay-verify="required" lay-reqtext="所在地址不能为空" placeholder="请输入所在地址" th:value="${hm.helpmemberAddress}"  class="layui-input">
+                <input type="text" name="adminPhone" lay-verify="required" lay-reqtext="供应商名称不能为空" placeholder="请输入供应商名称" th:value="${ad.adminPhone}"  class="layui-input">
             </div>
         </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label required">权限ID</label>
+            <div class="layui-input-block">
+                <input type="text" name="adminAuthoId" lay-verify="required" lay-reqtext="创建人ID不能为空" placeholder="请输入权限ID" th:value="${ad.adminAuthoId}" class="layui-input">
+            </div>
+        </div>
+
     <div class="layui-form-item">
         <div class="layui-input-block">
             <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">确认保存</button>
@@ -58,7 +67,7 @@
         form.on('submit(saveBtn)', function (data) {
             parent.layer.load(1, {shade: [0.1,'#fff'] });//开启遮罩
 
-            $.post("/helpmember/updateHelpmember",data.field,function(res){
+            $.post("/admin/updateAdmin",data.field,function(res){
                 var index = parent.layer.alert(res.msg, function () {
 
                     //刷新表格

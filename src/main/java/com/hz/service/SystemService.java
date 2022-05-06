@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface SystemService extends IService<System> {
     /**
-     * 查询管理员
+     * 多条件 分页查询
      * @param pyl 偏移量
      * @param pageSize 每页显示数量
      * @return

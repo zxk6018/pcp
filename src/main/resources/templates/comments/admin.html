@@ -18,16 +18,16 @@
                 <form class="layui-form layui-form-pane" action="">
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">救助队队员ID</label>
+                            <label class="layui-form-label">管理员账号</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="helpmemberId" autocomplete="off" class="layui-input">
+                                <input type="text" name="adminName" autocomplete="off" class="layui-input">
                             </div>
                         </div>
 
                         <div class="layui-inline">
-                            <label class="layui-form-label">救助队ID</label>
+                            <label class="layui-form-label">管理员电话</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="helpmemberPethelpId" autocomplete="off" class="layui-input">
+                                <input type="text" name="adminPhone" autocomplete="off" class="layui-input">
                             </div>
                         </div>
 
@@ -66,7 +66,7 @@
 
         tab1=table.render({
             elem: '#currentTableId',
-            url: '/helpmember/findHelpmemberList',
+            url: '/admin/findAdminList',
             toolbar: '#toolbarDemo',
             defaultToolbar: ['filter', 'exports', 'print', {
                 title: '提示',
@@ -75,19 +75,11 @@
             }],
             cols: [[
                 {type: "checkbox", width: 50},
-                {field: 'helpmemberId', width: 110, title: '队员ID', sort: true},
-                {field: 'helpmemberUserId', width: 110, title: '用户ID', sort: true},
-                {field: 'helpmemberPethelpId', width: 180, title: '救助队ID', sort: true},
-                // {field: 'helpmemberPhone', title: '队员电话', minWidth: 200},
-                {field: 'helpmemberRname', title: '真实姓名', minWidth: 200},
-                // {field: 'helpmemberIdcard', title: '身份证号码', minWidth: 200},
-                // {field: 'helpmemberImg', title: '照片', minWidth: 200},
-                // {field: 'helpmemberAddress', title: '所在地址', minWidth: 200},
-                {field: 'helpmemberTime', title: '申请时间', minWidth: 200},
-                // {field: 'helpmemberReason', width: 180, title: '申请理由', sort: true},
-                {field: 'helpmemberState', title: '审核状态（0通过 1未通过）', minWidth: 200},
-                // {field: 'helpmemberPethelpAdminId', title: '处理人ID（用户ID  必须是救助队创建者）', minWidth: 200},
-                // {field: 'helpmemberOpinion', title: '处理意见', minWidth: 200},
+                {field: 'adminId', width: 110, title: '管理员ID', sort: true},
+                {field: 'adminName', width: 180, title: '管理员账号', sort: true},
+                {field: 'adminPhone', width: 180, title: '管理员电话', sort: true},
+                {field: 'adminRoleTime', title: '创建时间', minWidth: 200},
+                {field: 'adminAuthoName', width: 150, title: '权限名', sort: true},
                 {fixed: 'right',title: '操作', minWidth: 20, toolbar: '#currentTableBar', align: "center"}
             ]],
             limits: [1, 5, 10, 25, 50, 100],
@@ -109,8 +101,8 @@
                     curr: 1
                 }
                 , where: {
-                    "helpmemberId":data.field.helpmemberId,
-                    "helpmemberPethelpId":data.field.helpmemberPethelpId
+                    "adminName":data.field.adminName,
+                    "adminPhone":data.field.adminPhone
                 }
             }, 'data');
 
@@ -122,8 +114,8 @@
          */
         table.on('toolbar(currentTableFilter)', function (obj) {
             if (obj.event === 'add') {  // 监听添加操作
-               window.parent.open("新增救助队队员",
-                                   "helpMember/helpmember_add.html",
+               window.parent.open("新增管理员",
+                                   "admin/admin_add.html",
                                    "800px",
                                    "600px",
                                     tab1)
@@ -142,8 +134,8 @@
         table.on('tool(currentTableFilter)', function (obj) {
             var data = obj.data;
             if (obj.event === 'edit') {
-                window.parent.open("修改救助队队员信息",
-                    "/helpmember/findHelpmemberById/"+data.helpmemberId,
+                window.parent.open("修改管理员",
+                    "/admin/findAdminById/"+data.adminId,
                     "800px",
                     "600px",
                     tab1)
@@ -151,7 +143,7 @@
             } else if (obj.event === 'delete') {
                 layer.confirm('真的删除行么', function (index) {
                     parent.layer.load(1, {shade: [0.1,'#fff'] });//开启遮罩
-                    $.post("/helpmember/deletePethelpById",{"helpmemberId":data.helpmemberId},function(res){
+                    $.post("/admin/deleteAdminById",{"adminId":data.adminId},function(res){
                         var index = parent.layer.alert(res.msg, function () {
                             // 关闭弹出层
                             obj.del();
@@ -163,7 +155,7 @@
                 });
             }else if (obj.event == 'see'){
                 window.parent.open("查看管理员信息",
-                    "/helpmember/seeHelpmemberById/"+data.helpmemberId,
+                    "/admin/seeAdminById/"+data.adminId,
                     "800px",
                     "600px",
                     tab1)

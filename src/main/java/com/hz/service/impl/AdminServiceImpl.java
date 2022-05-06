@@ -16,9 +16,6 @@ public class AdminServiceImpl extends ServiceImpl<BaseMapper<Admin>,Admin> imple
 
     @Autowired
     private AdminDao adminDao;
-    @Autowired
-    private RedisUtil redisUtil;
-
 
 
 

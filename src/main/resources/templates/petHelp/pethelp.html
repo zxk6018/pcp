@@ -122,7 +122,7 @@
          */
         table.on('toolbar(currentTableFilter)', function (obj) {
             if (obj.event === 'add') {  // 监听添加操作
-               window.parent.open("新增管理员",
+               window.parent.open("新增救助队",
                                    "/pethelp/pethelp_add.html",
                                    "800px",
                                    "600px",
@@ -142,7 +142,7 @@
         table.on('tool(currentTableFilter)', function (obj) {
             var data = obj.data;
             if (obj.event === 'edit') {
-                window.parent.open("修改管理员",
+                window.parent.open("修改救助队信息",
                     "/pethelp/findPethelpById/"+data.pethelpId,
                     "800px",
                     "600px",
@@ -162,7 +162,7 @@
                     layer.close(index);
                 });
             }else if (obj.event == 'see'){
-                window.parent.open("查看救援队详情",
+                window.parent.open("查看救助队详情",
                     "/pethelp/seePethelpById/"+data.pethelpId,
                     "800px",
                     "600px",

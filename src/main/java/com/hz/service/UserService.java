@@ -52,10 +52,10 @@ public interface UserService {
     User findUserById(Integer userId);
 
     /**
-     * 查看管理员具体信息
+     * 查看用户具体信息
      * @param user
      * @return
      */
-    Integer seeAdmin(User user);
+    Integer seeUser(User user);
 
 }

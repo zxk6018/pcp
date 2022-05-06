@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hz.dao.PetTypeDao">
+    <sql id="pettype_where">
+        <where>
+            <if test="pettypeId!=null and pettypeId!=''">
+                pettype_id like concat('%',#{pettypeId},'%')
+            </if>
+            <if test="pettypeName!=null and pettypeName!=''">
+                and pettype_name like concat('%',#{pettypeName},'%')
+            </if>
+        </where>
+    </sql>
+   <!--分页查询-->
+    <select id="findPettypeList" resultType="Pettype">
+        select * from pettype
+        <include refid="pettype_where"/>
+        order by pettype_id asc limit #{pyl},#{pageSize}
+    </select>
+
+    <select id="PettypeCount" resultType="Integer">
+        select count(1) from  pettype
+        <include refid="pettype_where"/>
+    </select>
+    <!--根据ID查询宠物类型-->
+    <select id="findPettypeById" resultType="Pettype">
+        select * from pettype where pettype_id=#{pettypeId}
+    </select>
+    <!--新增宠物类型-->
+    <insert id="savePettype">
+        insert into pettype(
+        <trim suffixOverrides=",">
+            <if test="pettypeName!=null and pettypeName!=''">pettype_name</if>
+        </trim>
+        )
+        values (
+        <trim suffixOverrides=",">
+            <if test="pettypeName!=null and pettypeName!=''">#{pettypeName}</if>
+        </trim>
+        )
+    </insert>
+    <!--删除宠物类型-->
+    <delete id="deletePettypeById">
+        delete from pettype where pettype_id=#{pettypeId}
+    </delete>
+</mapper>

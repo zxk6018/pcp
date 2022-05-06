@@ -13,7 +13,8 @@ import java.util.List;
 @Controller
         @RequestMapping("/certificate")
 public class CertificateController {
-@Autowired
+
+    @Autowired
     private CertificateService CertificateService;
 
 //新增
@@ -45,7 +46,7 @@ public class CertificateController {
         return jsonMassage;
 }
     /**
-     * 删除
+     * 删除证书
      * @param certPetId
      * @return
      */
@@ -56,7 +57,7 @@ public class CertificateController {
         return new JsonMassage(i);
     }
     /**
-     * 修改
+     * 修改证书
      * @param certificate
      * @return
      */
@@ -66,28 +67,39 @@ public class CertificateController {
         Integer i = CertificateService.updateCertificate(certificate);
         return new JsonMassage(i);
     }
+
     /**
-     * 查看管理员详情
+     * 根据ID查询证书
      * @param certPetId
      * @param model
      * @return
      */
-
     @RequestMapping("/findCertificateById/{certPetId}")
     public String findCertificateById( @PathVariable("certPetId") Integer certPetId, Model model){
-        System.out.println("id========="+certPetId);
         model.addAttribute("sd", CertificateService.findCertificateById(certPetId));
         return  "certificate/certificate_edit";
     }
+
+    /**
+     * 查看证书详情
+     * @param certificate
+     * @return
+     */
     @RequestMapping(value = "/seeCertificate",method = RequestMethod.POST)
     @ResponseBody
     public String seeCertificate(Certificate certificate){
         Integer i = CertificateService.seeCertificate(certificate);
         return "";
     }
+
+    /**
+     * 根据ID查询证书
+     * @param certPetId
+     * @param model
+     * @return
+     */
     @RequestMapping("/seefindCertificateById/{certPetId}")
     public String seefindCertificateById( @PathVariable("certPetId") Integer certPetId, Model model){
-        System.out.println("id========="+certPetId);
         model.addAttribute("sdd", CertificateService.findCertificateById(certPetId));
         return  "certificate/certificate_see";
     }
