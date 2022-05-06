@@ -17,47 +17,33 @@
     <body>
     <div class="layui-form layuimini-form">
         <div class="layui-form-item">
-            <label class="layui-form-label required">类型</label>
+            <label class="layui-form-label required">管理员账号</label>
             <div class="layui-input-block">
-                <input name="adoptId" type="hidden" th:value="${adopt.adoptId}">
-                <input type="text" name="adoptType" lay-verify="required" lay-reqtext="类型不能为空" placeholder="请输入类型" th:value="${adopt.adoptType}" class="layui-input">
+                <input name="adminId" type="hidden" th:value="${ad.adminId}">
+                <input type="text" name="adminName" lay-verify="required" lay-reqtext="管理员账号不能为空" placeholder="请输入管理员账号" th:value="${ad.adminName}" class="layui-input">
             </div>
         </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label required">发布信息</label>
+        <label class="layui-form-label required">管理员密码</label>
         <div class="layui-input-block">
-            <input type="text" name="adoptMessage" lay-verify="required" lay-reqtext="发布信息不能为空" placeholder="请输入发布信息" th:value="${adopt.adoptMessage}"  class="layui-input">
+            <input type="text" name="adminPassword" lay-verify="required" lay-reqtext="供应商名称不能为空" placeholder="请输入供应商名称" th:value="${ad.adminPassword}"  class="layui-input">
         </div>
     </div>
+
         <div class="layui-form-item">
-            <label class="layui-form-label required">是否是救助站</label>
+            <label class="layui-form-label required">管理员手机号</label>
             <div class="layui-input-block">
-                <input type="text" name="adoptPethelps" lay-verify="required" lay-reqtext="是否是救助站不能为空" placeholder="请输入是否是救助站" th:value="${adopt.adoptPethelps}"  class="layui-input">
+                <input type="text" name="adminPhone" lay-verify="required" lay-reqtext="供应商名称不能为空" placeholder="请输入供应商名称" th:value="${ad.adminPhone}"  class="layui-input">
             </div>
         </div>
 
-        <!--<div class="layui-form-item">
-            <label class="layui-form-label required">审核状态</label>
-            <div class="layui-input-block">
-                <input type="text" name="adoptReview" lay-verify="required" lay-reqtext="是否是救助站不能为空" placeholder="请输入是否是救助站" th:value="${adopt.adoptReview}"  class="layui-input">
-            </div>
-        </div>-->
-
         <div class="layui-form-item">
-            <label class="layui-form-label required">逻辑删除</label>
+            <label class="layui-form-label required">权限ID</label>
             <div class="layui-input-block">
-                <input type="text" name="adoptDel" lay-verify="required" lay-reqtext="逻辑删除不能为空" placeholder="请输入逻辑删除" th:value="${adopt.adoptDel}" class="layui-input">
+                <input type="text" name="adminAuthoId" lay-verify="required" lay-reqtext="创建人ID不能为空" placeholder="请输入权限ID" th:value="${ad.adminAuthoId}" class="layui-input">
             </div>
         </div>
-
-        <!--<div class="layui-form-item">
-            <label class="layui-form-label required">审核人ID</label>
-            <div class="layui-input-block">
-                <input type="text" name="adoptAdminId" lay-verify="required" lay-reqtext="审核人ID不能为空" placeholder="请输入审核人ID" th:value="${adopt.adoptAdminId}" class="layui-input">
-
-            </div>
-        </div>-->
 
     <div class="layui-form-item">
         <div class="layui-input-block">
@@ -81,7 +67,7 @@
         form.on('submit(saveBtn)', function (data) {
             parent.layer.load(1, {shade: [0.1,'#fff'] });//开启遮罩
 
-            $.post("/adopt/updateAdopt",data.field,function(res){
+            $.post("/admin/updateAdmin",data.field,function(res){
                 var index = parent.layer.alert(res.msg, function () {
 
                     //刷新表格

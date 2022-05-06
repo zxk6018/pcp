@@ -12,10 +12,10 @@ public interface PetService {
      * @param pageSize
      * @return
      */
-    List<Pet> findPetList( Integer pyl,
-                            Integer pageSize,
-                            String petName,
-                            String pettypeName
+    List<Pet> findPetList(Integer pyl,
+                          Integer pageSize,
+                          String petName,
+                          String pettypeName
     );
     /**
      * 总记录数
@@ -24,28 +24,28 @@ public interface PetService {
     Integer PetCount( String petName,String pettypeName);
 
     /**
-     * 新增
+     * 新增宠物
      * @param pet
      * @return
      */
     Integer savePet(Pet pet);
 
     /**
-     * 删除
+     * 删除宠物
      * @param petId
      * @return
      */
     Integer deletePetById(Integer petId);
 
     /**
-     * 修改
+     * 修改宠物
      * @param pet
      * @return
      */
     Integer updatePet(Pet pet);
 
     /**
-     * 根据ID  获得用户对象
+     * 根据ID  获得宠物
      * @param petId
      * @return
      */

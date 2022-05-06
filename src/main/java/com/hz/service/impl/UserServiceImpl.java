@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Integer seeAdmin(User user) {
-        return userDao.seeAdmin(user);
+    public Integer seeUser(User user) {
+        return userDao.seeUser(user);
     }
 }

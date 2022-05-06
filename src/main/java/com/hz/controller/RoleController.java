@@ -88,15 +88,24 @@ public class RoleController {
         return "role/role_edit";
 
 
+        /**
+         * 根据ID查询角色
+         * @param roleId
+         * @param model
+         * @return
+         */
     }
     @RequestMapping("/seeRoleById/{roleId}")
     public String seeRoleById(@PathVariable("roleId") Integer roleId, Model model) {
         model.addAttribute("role",roleService.findRoleById(roleId));
         return "role/role_see";
-
-
     }
 
+    /**
+     * 查看角色详情
+     * @param role
+     * @return
+     */
     @RequestMapping(value = "/seeRole",method = RequestMethod.POST)
     @ResponseBody
     public String seeRole(Role role){

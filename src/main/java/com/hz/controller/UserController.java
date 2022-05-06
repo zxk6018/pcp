@@ -104,7 +104,7 @@ public class UserController {
     @RequestMapping(value = "/seeUser",method = RequestMethod.POST)
     @ResponseBody
     public String seeAdmin(User user){
-        Integer i = userService.seeAdmin(user);
+        Integer i = userService.seeUser(user);
         return "";
     }
 }

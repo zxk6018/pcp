@@ -42,6 +42,13 @@ public class SystemController {
         return jsonMassage;
 
     }
+
+    /**
+     * 根据ID查询权限
+     * @param systemId
+     * @param model
+     * @return
+     */
     @RequestMapping("/findAdminById/{adminId}")
     public String findAdminById(@PathVariable("systemId") Integer systemId, Model model){
         model.addAttribute("sy",systemService.findSystemById(systemId));

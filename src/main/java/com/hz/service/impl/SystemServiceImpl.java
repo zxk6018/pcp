@@ -36,11 +36,22 @@ public class SystemServiceImpl extends ServiceImpl<BaseMapper<System>,System> im
         return systemDao.findSystemList(pyl,pageSize,systemId,systemName);
     }
 
+    /**
+     * 总记录数
+     * @param systemId
+     * @param systemName
+     * @return
+     */
     @Override
     public Integer SystemCount(String systemId, String systemName) {
         return systemDao.SystemCount(systemId,systemName);
     }
 
+    /**
+     * 根据ID 查询权限
+     * @param systemId
+     * @return
+     */
     @Override
     public System findSystemById(Integer systemId) {
         return systemDao.findSystemById(systemId);

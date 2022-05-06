@@ -44,7 +44,7 @@ public class PetController {
     }
 
     /**
-     * 删除用户
+     * 删除宠物
      * @param petId
      * @return
      */
@@ -56,7 +56,7 @@ public class PetController {
     }
 
     /**
-     * 修改管理员
+     * 修改宠物
      * @param pet
      * @return
      */

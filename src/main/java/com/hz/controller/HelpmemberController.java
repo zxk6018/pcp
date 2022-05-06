@@ -46,6 +46,12 @@ public class HelpmemberController {
         return jsonMassage;
     }
 
+    /**
+     * 根据ID查询救助队队员
+     * @param helpmemberId
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/findHelpmemberById/{helpmemberId}")
     public String findHelpmemberById(@PathVariable("helpmemberId") Integer helpmemberId, Model model) {
         model.addAttribute("hm", helpmemberService.findHelpmemberById(helpmemberId));
@@ -55,7 +61,6 @@ public class HelpmemberController {
 
     /**
      * 新增救助队队员
-     *
      * @param helpmember
      * @return
      */
@@ -69,7 +74,6 @@ public class HelpmemberController {
 
     /**
      * 修改救助队队员
-     *
      * @param helpmember
      * @return
      */
@@ -82,7 +86,6 @@ public class HelpmemberController {
 
     /**
      * 删除救助队队员
-     *
      * @param helpmemberId
      * @return
      */
@@ -95,7 +98,6 @@ public class HelpmemberController {
 
     /**
      * 根据ID查看救助队队员信息
-     *
      * @param HelpmemberId
      * @param model
      * @return
@@ -108,7 +110,6 @@ public class HelpmemberController {
 
     /**
      * 查看救助队队员详细信息
-     *
      * @param helpmember
      * @return
      */
