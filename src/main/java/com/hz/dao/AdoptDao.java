@@ -26,14 +26,14 @@ public interface AdoptDao {
                      @Param("adoptTime") String adoptTime);
 
     /**
-     * 新增
+     * 新增发布领养与寄养信息
      * @param adopt
      * @return
      */
     Integer saveAdopt(Adopt adopt);
 
     /**
-     * 修改
+     * 修改发布领养与寄养信息
      * @param adopt
      * @return
      */
@@ -41,14 +41,14 @@ public interface AdoptDao {
     Integer updateAdopt(Adopt adopt);
 
     /**
-     * 根据ID  获得对象
+     * 根据ID  获得发布领养与寄养信息
      * @param adoptId
      * @return
      */
     Adopt findAdoptById(Integer adoptId);
 
     /**
-     * 删除
+     * 删除发布领养与寄养信息
      * @param adoptId
      * @return
      */
@@ -57,12 +57,10 @@ public interface AdoptDao {
 
 
     /**
-     * 查看详情
+     * 查看发布领养与寄养信息详情
      * @param adopt
      * @return
      */
     Integer seeAdopt(Adopt adopt);
-
-
 
 }
