@@ -39,7 +39,6 @@
               "icon": "fa fa-tachometer",
               "target": "_self"
             }
-
           ]
         },
         {
@@ -61,8 +60,7 @@
               "target": "_self"
             }
           ]
-        }
-      ,
+        },
         {
           "title": "救助队管理",
           "href": "",
@@ -82,9 +80,7 @@
               "target": "_self"
             }
           ]
-        }
-
-      ,
+        },
         {
           "title": "文章管理",
           "href": "",
@@ -96,7 +92,8 @@
               "href": "petCircle/petCircle.html",
               "icon": "fa fa-tachometer",
               "target": "_self"
-            },{
+            },
+            {
               "title": "文章类型管理",
               "href": "circlType/circleType.html",
               "icon": "fa fa-tachometer",
@@ -114,11 +111,8 @@
               "icon": "fa fa-tachometer",
               "target": "_self"
             }
-
           ]
-        }
-      ,
-
+        },
         {
           "title": "宠物管理",
           "href": "",
