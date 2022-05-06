@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hz.dao.HelpMemberDao">
+    <sql id="helpmember_where">
+        <where>
+            <if test="helpmemberId!=null and helpmemberId!=''">
+                helpmember_id like concat('%',#{helpmemberId},'%')
+            </if>
+            <if test="helpmemberPethelpId!=null and helpmemberPethelpId!=''">
+                and helpmember_pethelp_id like concat('%',#{helpmemberPethelpId},'%')
+            </if>
+        </where>
+    </sql>
+    <!--查询救助队队员-->
+    <select id="findHelpmemberList" resultType="Helpmember">
+        select * from helpmember
+        <include refid="helpmember_where"/>
+        order by helpmember_id asc limit #{pyl},#{pageSize}
+    </select>
+
+    <select id="HelpmemberCount" resultType="Integer">
+        select count(1) from  helpmember
+        <include refid="helpmember_where"/>
+    </select>
+    <!--根据ID查询救助队队员-->
+    <select id="findHelpmemberById" resultType="Helpmember">
+        select * from helpmember where helpmember_id=#{helpmemberId}
+    </select>
+    <!--新增救助队队员-->
+    <insert id="saveHelpmember">
+        insert into helpmember(
+        <trim suffixOverrides=",">
+            <if test="helpmemberUserId!=null and helpmemberUserId!=''">helpmember_user_id,</if>
+            <if test="helpmemberPethelpId!=null and helpmemberPethelpId!=''">helpmember_pethelp_id,</if>
+            <if test="helpmemberPhone!=null and helpmemberPhone!=''">helpmember_phone,</if>
+            <if test="helpmemberRname!=null and helpmemberRname!=''">helpmember_rname,</if>
+            <if test="helpmemberIdcard!=null and helpmemberIdcard!=''">helpmember_idcard,</if>
+            <if test="helpmemberImg!=null and helpmemberImg!=''">helpmember_img,</if>
+            <if test="helpmemberAddress!=null and helpmemberAddress!=''">helpmember_address,</if>
+            <if test="helpmemberTime!=null and helpmemberTime!=''">helpmember_time,</if>
+            <if test="helpmemberReason!=null and helpmemberReason!=''">helpmember_reason</if>
+        </trim>
+        )
+        values (
+        <trim suffixOverrides=",">
+            <if test="helpmemberUserId!=null and helpmemberUserId!=''">#{helpmemberUserId},</if>
+            <if test="helpmemberPethelpId!=null and helpmemberPethelpId!=''">#{helpmemberPethelpId},</if>
+            <if test="helpmemberPhone!=null and helpmemberPhone!=''">#{helpmemberPhone},</if>
+            <if test="helpmemberRname!=null and helpmemberRname!=''">#{helpmemberRname},</if>
+            <if test="helpmemberIdcard!=null and helpmemberIdcard!=''">#{helpmemberIdcard},</if>
+            <if test="helpmemberImg!=null and helpmemberImg!=''">#{helpmemberImg},</if>
+            <if test="helpmemberAddress!=null and helpmemberAddress!=''">#{helpmemberAddress},</if>
+            <if test="helpmemberTime!=null and helpmemberTime!=''">#{helpmemberTime},</if>
+            <if test="helpmemberReason!=null and helpmemberReason!=''">#{helpmemberReason}</if>
+        </trim>
+        )
+
+    </insert>
+    <!--修改救助队队员信息-->
+    <update id="updateHelpmember" >
+        update helpmember
+        <set>
+            <if test="helpmemberPhone!=null and helpmemberPhone!=''">helpmember_phone=#{helpmemberPhone},</if>
+            <if test="helpmemberImg!=null and helpmemberImg!=''">helpmember_img=#{helpmemberImg},</if>
+            <if test="helpmemberAddress!=null and helpmemberAddress!=''">helpmember_address=#{helpmemberAddress}</if>
+        </set>
+        where helpmember_id=#{helpmemberId}
+    </update>
+    <!--删除救助队-->
+    <delete id="deleteHelpmemberById">
+        delete from helpmember where helpmember_id=#{helpmemberId}
+    </delete>
+</mapper>

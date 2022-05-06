@@ -17,30 +17,54 @@
 <body>
 <div class="layui-form layuimini-form">
     <div class="layui-form-item">
-        <label class="layui-form-label required">管理员账号</label>
+        <label class="layui-form-label required">用户ID</label>
         <div class="layui-input-block">
-            <input type="text" name="adminName" lay-verify="required" lay-reqtext="管理员账号不能为空" placeholder="请输入管理员账号" value="" class="layui-input">
+            <input type="text" name="helpmemberUserId" lay-verify="required" lay-reqtext="用户ID不能为空" placeholder="请输入用户ID" value="" class="layui-input">
 
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label required">管理员密码</label>
+        <label class="layui-form-label required">救助队ID</label>
         <div class="layui-input-block">
-            <input type="text" name="adminPassword" lay-verify="required" lay-reqtext="管理员密码不能为空" placeholder="请输入管理员密码" value="" class="layui-input">
+            <input type="text" name="helpmemberPethelpId" lay-verify="required" lay-reqtext="救助队ID不能为空" placeholder="请输入救助队ID" value="" class="layui-input">
 
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label required">管理员手机号</label>
+        <label class="layui-form-label required">队员电话</label>
         <div class="layui-input-block">
-            <input type="text" name="adminPhone" lay-verify="required" lay-reqtext="管理员手机号不能为空" placeholder="请输入管理员手机号" value="" class="layui-input">
+            <input type="text" name="helpmemberPhone" lay-verify="required" lay-reqtext="队员电话号码不能为空" placeholder="请输入队员电话号" value="" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label required">创建人ID</label>
+        <label class="layui-form-label required">真实姓名</label>
         <div class="layui-input-block">
-            <input type="text" name="adminRoleAuthoId" lay-verify="required" lay-reqtext="创建人ID不能为空" placeholder="请输入创建人ID" value="" class="layui-input">
+            <input type="text" name="helpmemberRname" lay-verify="required" lay-reqtext="真实姓名不能为空" placeholder="请输入真实姓名" value="" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label required">身份证号码</label>
+        <div class="layui-input-block">
+            <input type="text" name="helpmemberIdcard" lay-verify="required" lay-reqtext="身份证号码不能为空" placeholder="请输入身份证号码" value="" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label required">照片</label>
+        <div class="layui-input-block">
+            <input type="text" name="helpmemberImg" lay-verify="required" lay-reqtext="照片不能为空" placeholder="请输入照片路径" value="" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label required">所在地址</label>
+        <div class="layui-input-block">
+            <input type="text" name="helpmemberAddress" lay-verify="required" lay-reqtext="所在地址不能为空" placeholder="请输入所在地址" value="" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label required">申请理由</label>
+        <div class="layui-input-block">
+            <input type="text" name="helpmemberReason" lay-verify="required" lay-reqtext="申请理由不能为空" placeholder="请输入申请理由" value="" class="layui-input">
         </div>
     </div>
 
@@ -66,7 +90,7 @@
         form.on('submit(saveBtn)', function (data) {
             parent.layer.load(1, {shade: [0.1,'#fff'] });//开启遮罩
 
-            $.post("/admin/saveAdmin",data.field,function(res){
+            $.post("/helpmember/saveHelpmember",data.field,function(res){
                 var index = parent.layer.alert(res.msg, function () {
                     //刷新表格
                     parent.tab.reload();
