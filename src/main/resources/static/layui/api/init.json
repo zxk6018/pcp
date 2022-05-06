@@ -38,6 +38,12 @@
               "href": "system/system.html",
               "icon": "fa fa-tachometer",
               "target": "_self"
+            },
+            {
+              "title": "管理员管理",
+              "href": "config/config.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
             }
           ]
         },
@@ -108,6 +114,12 @@
             {
               "title": "领养寄养联系信息管理",
               "href": "relation/relation.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "评论管理",
+              "href": "comments/comments.html",
               "icon": "fa fa-tachometer",
               "target": "_self"
             }
