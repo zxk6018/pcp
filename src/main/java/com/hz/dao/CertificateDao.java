@@ -24,7 +24,11 @@ public interface CertificateDao {
     Integer certificateCount(@Param("certId") Integer certId,
                              @Param("certPetId") Integer certPetId);
 
-    //新增宠物id
+    /**
+     * 新增证书
+     * @param certificate
+     * @return
+     */
     Integer saveCertificate(Certificate certificate );
 
     /**
@@ -33,16 +37,23 @@ public interface CertificateDao {
      * @return
      */
     Integer seeCertificate(Certificate certificate );
-    //获取宠物ID
-    Certificate findCertificateById(Integer certPetId);
+
     /**
-     * 删除
+     * 根据ID查询证书
+     * @param certPetId
+     * @return
+     */
+    Certificate findCertificateById(Integer certPetId);
+
+    /**
+     * 删除证书
      * @param certPetId
      * @return
      */
     Integer deleteCertificateById(Integer certPetId);
+
     /**
-     * 修改
+     * 修改证书
      * @param certificate
      * @return
      */

@@ -25,27 +25,27 @@ public interface PetDao {
                       @Param("pettypeName") String pettypeName);
 
     /**
-     * 新增
+     * 新增宠物
      * @param pet
      * @return
      */
     Integer savePet(Pet pet);
 
     /**
-     * 删除
+     * 删除宠物
      * @param petId
      * @return
      */
     Integer deletePetById(Integer petId);
 
     /**
-     * 修改用户
+     * 修改宠物
      * @param pet
      * @return
      */
 
     /**
-     * 修改
+     * 修改宠物
      * @param pet
      * @return
      */

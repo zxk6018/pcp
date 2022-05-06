@@ -21,48 +21,51 @@ public interface RoleDao {
                             );
 
 
-    /*
-    * 修改角色
-    * @param role
-    * @return
-    * */
+    /**
+     * 修改角色
+     * @param role
+     * @return
+     */
     Integer updateRole(Role role);
 
-    /*
-    * 总记录数
+    /**
+     * 总记录数
+     * @param roleName
+     * @param roleTime
      * @return
-    * */
+     */
     Integer roleCount(@Param("roleName") String roleName,
                       @Param("roleTime") String roleTime
                       );
 
 
     /*
-    * s删除角色
+    * 删除角色
     * @param roleID
     * @return
     * */
     Integer deleteRoleById(Integer roleId);
 
 
-
-    /*
-    * 新增用户
-    *
-    * */
-    Integer saveRole(Role role);
-    /*
-     * 根据ID  获得用户对象
-     * @param roleId
-     * @return
-     * */
-    Role findRoleById(Integer roleId);
-
-    /*
-    * 查看管理员具体信息
+    /**
+     * 新增角色
      * @param role
      * @return
-    * */
+     */
+    Integer saveRole(Role role);
+
+    /**
+     * 根据ID  获得角色
+     * @param roleId
+     * @return
+     */
+    Role findRoleById(Integer roleId);
+
+    /**
+     * 查看角色具体信息
+     * @param role
+     * @return
+     */
     Integer seeRole(Role role);
 
 }

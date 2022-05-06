@@ -33,21 +33,21 @@ public interface PetTypeDao extends BaseMapper<Pettype> {
                          @Param("pettypeName") String pettypeName);
 
     /**
-     * 根据ID  获得管理员对象
+     * 根据ID  获得宠物类型
      *
      * @param pettypeId
      * @return
      */
     Pettype findPettypeById(Integer pettypeId);
     /**
-     * 新增救助队
+     * 新增宠物类型
      * @param pettype
      * @return
      */
     Integer savePettype(Pettype pettype);
 
     /**
-     * 删除救助队
+     * 删除宠物类型
      * @param pettypeId
      * @return
      */

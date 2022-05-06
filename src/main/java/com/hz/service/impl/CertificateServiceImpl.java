@@ -15,20 +15,32 @@ public class CertificateServiceImpl implements CertificateService {
     @Autowired
         private CertificateDao certificate_dao;
 
+    /**
+     * 新增证书
+     * @param certificate
+     * @return
+     */
     @Override
     public Integer saveCertificate( Certificate certificate ) {
         return certificate_dao.saveCertificate(certificate);
     }
 
-
+    /**
+     * 多条件 分页查询
+     * @param pageNo
+     * @param pageSize
+     * @param certId
+     * @param certPetId
+     * @return
+     */
     @Override
     public List<Certificate> findCertificateList( Integer pageNo, Integer pageSize, Integer certId, Integer certPetId ) {
         Integer pyl = (pageNo-1)*pageSize;
-
         return certificate_dao.findCertificateList( pyl,pageSize,certId,certPetId );
     }
+
     /**
-     * 查看管理员具体信息
+     * 总记录数
      * @param certId
      * @return
      */
@@ -37,12 +49,17 @@ public class CertificateServiceImpl implements CertificateService {
         return certificate_dao.certificateCount( certId,certPetId );
     }
 
+    /**
+     * 查看证书详情
+     * @param certificate
+     * @return
+     */
     @Override
     public Integer seeCertificate( Certificate certificate ) {
         return certificate_dao.seeCertificate(certificate);
     }
     /**
-     * 根据ID查找管理员
+     * 根据ID查找证书
      * @param certPetId
      * @return
      */
@@ -51,7 +68,7 @@ public class CertificateServiceImpl implements CertificateService {
         return certificate_dao.findCertificateById(certPetId  );
     }
     /**
-     * 根据ID删除管理员
+     * 删除证书
      * @param certPetId
      * @return
      */
@@ -60,7 +77,7 @@ public class CertificateServiceImpl implements CertificateService {
         return certificate_dao.deleteCertificateById( certPetId );
     }
     /**
-     * 根据ID修改
+     * 修改证书
      * @param certificate
      * @return
      */
