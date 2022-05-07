@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/layui/lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="/layui/css/public.css" media="all">
+    <style>
+
+        /*添加*/
+        body {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-form layuimini-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label required">用户ID</label>
+        <div class="layui-input-block">
+            <input type="text" name="entrustUserId" lay-verify="required" lay-reqtext="用户ID不能为空" placeholder="请输入用户ID" value="" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label required">真实姓名</label>
+        <div class="layui-input-block">
+            <input type="text" name="entrustRname" lay-verify="required" lay-reqtext="真实姓名不能为空" placeholder="请输入真实姓名" value="" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label required">身份证号</label>
+        <div class="layui-input-block">
+            <input type="text" name="entrustIdcard" lay-verify="required" lay-reqtext="身份证号不能为空" placeholder="请输入身份证号" value="" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label required">申请信息</label>
+        <div class="layui-input-block">
+            <input type="text" name="entrustMessage" lay-verify="required" lay-reqtext="申请信息不能为空" placeholder="请输入申请信息" value="" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label required">家庭环境描述</label>
+        <div class="layui-input-block">
+            <input type="text" name="entrustEnvir" lay-verify="required" lay-reqtext="家庭环境描述不能为空" placeholder="请输入家庭环境描述" value="" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label required">地区ID</label>
+        <div class="layui-input-block">
+            <input type="text" name="entrustAddressId" lay-verify="required" lay-reqtext="地区ID不能为空" placeholder="请输入地区ID" value="" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label required">详细地址</label>
+        <div class="layui-input-block">
+            <input type="text" name="entrustAddress" lay-verify="required" lay-reqtext="详细地址不能为空" placeholder="请输入详细地址" value="" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label required">处理人ID</label>
+        <div class="layui-input-block">
+            <input type="text" name="entrustAdminId" lay-verify="required" lay-reqtext="处理人ID不能为空" placeholder="请输入处理人ID" value="" class="layui-input">
+        </div>
+    </div>
+
+
+
+
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">确认保存</button>
+        </div>
+    </div>
+</div>
+<script src="/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+<script>
+    layui.use(['form','laydate'], function () {
+        var form = layui.form,
+            layer = layui.layer,
+            $ = layui.$,
+            laydate = layui.laydate;
+
+       /* //日期
+        laydate.render({
+            elem: '#adminRoleTime'
+        });*/
+        //监听提交
+        form.on('submit(saveBtn)', function (data) {
+            parent.layer.load(1, {shade: [0.1,'#fff'] });//开启遮罩
+
+            $.post("/entrust/saveEntrust",data.field,function(res){
+                var index = parent.layer.alert(res.msg, function () {
+                    //刷新表格
+                    parent.tab.reload();
+                    // 关闭弹出层
+                    parent.layer.close(index);
+                    parent.layer.closeAll();
+                });
+
+            },"json");
+            return false;
+        });
+
+    });
+</script>
+</body>
+</html>

@@ -17,30 +17,16 @@
 <body>
 <div class="layui-form layuimini-form">
     <div class="layui-form-item">
-        <label class="layui-form-label required">管理员账号</label>
+        <label class="layui-form-label required">文章类型名</label>
         <div class="layui-input-block">
-            <input type="text" name="adminName" lay-verify="required" lay-reqtext="管理员账号不能为空" placeholder="请输入管理员账号" value="" class="layui-input">
-        </div>
-    </div>
-
-    <div class="layui-form-item">
-        <label class="layui-form-label required">管理员密码</label>
-        <div class="layui-input-block">
-            <input type="text" name="adminPassword" lay-verify="required" lay-reqtext="管理员密码不能为空" placeholder="请输入管理员密码" value="" class="layui-input">
-        </div>
-    </div>
-
-    <div class="layui-form-item">
-        <label class="layui-form-label required">管理员手机号</label>
-        <div class="layui-input-block">
-            <input type="text" name="adminPhone" lay-verify="required" lay-reqtext="管理员手机号不能为空" placeholder="请输入管理员手机号" value="" class="layui-input">
+            <input type="text" name="circletypeName" lay-verify="required" lay-reqtext="文章类型名不能为空" placeholder="请输入文章类型名" value="" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label required">创建人ID</label>
         <div class="layui-input-block">
-            <input type="text" name="adminRoleAuthoId" lay-verify="required" lay-reqtext="创建人ID不能为空" placeholder="请输入创建人ID" value="" class="layui-input">
+            <input type="text" name="circletypeUserId" lay-verify="required" lay-reqtext="创建人ID不能为空" placeholder="请输入创建人ID" value="" class="layui-input">
         </div>
     </div>
 
@@ -66,7 +52,7 @@
         form.on('submit(saveBtn)', function (data) {
             parent.layer.load(1, {shade: [0.1,'#fff'] });//开启遮罩
 
-            $.post("/admin/saveAdmin",data.field,function(res){
+            $.post("/circletype/saveCircletype",data.field,function(res){
                 var index = parent.layer.alert(res.msg, function () {
                     //刷新表格
                     parent.tab.reload();

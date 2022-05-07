@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/layui/lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="/layui/css/public.css" media="all">
+    <style>
+        /*查看*/
+        body {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-form layuimini-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label">寄养ID：</label>
+        <div class="layui-input-block">
+            <input type="text" readonly name="entrustId"   th:value="${ent.entrustId}" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户ID</label>
+        <div class="layui-input-block">
+            <input type="text" readonly name="entrustUserId" th:value="${ent.entrustUserId}" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">真实姓名</label>
+        <div class="layui-input-block">
+            <input type="text" readonly name="entrustRname" th:value="${ent.entrustRname}" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">身份证号</label>
+        <div class="layui-input-block">
+            <input type="text" readonly name="entrustIdcard" th:value="${ent.entrustIdcard}"  class="layui-input">
+        </div>
+    </div>
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">申请信息</label>
+        <div class="layui-input-block">
+            <input type="text" readonly name="entrustMessage" th:value="${ent.entrustMessage}"  class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">申请时间</label>
+        <div class="layui-input-block">
+            <input type="text" readonly placeholder="yyyy-MM-dd" id="entrustTime" name="entrustTime" th:value="${ent.entrustTime}" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">家庭环境描述</label>
+        <div class="layui-input-block">
+            <input type="text" readonly name="entrustEnvir" th:value="${ent.entrustEnvir}"  class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">审核状态</label>
+        <div class="layui-input-block">
+            <input type="text" readonly name="entrustReview" th:value="${ent.entrustReview}"  class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">地区ID</label>
+        <div class="layui-input-block">
+            <input type="text" readonly name="entrustAddressId" th:value="${ent.entrustAddressId}"  class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">详细地址</label>
+        <div class="layui-input-block">
+            <input type="text" readonly name="entrustAddress" th:value="${ent.entrustAddress}"  class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">逻辑删除</label>
+        <div class="layui-input-block">
+            <input type="text" readonly name="entrustDel" th:value="${ent.entrustDel}"  class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">处理人ID</label>
+        <div class="layui-input-block">
+            <input type="text" readonly name="entrustAdminId" th:value="${ent.entrustAdminId}"  class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">处理时间</label>
+        <div class="layui-input-block">
+            <input type="text" readonly placeholder="yyyy-MM-dd" id="entrustDisposetime" name="entrustDisposetime" th:value="${ent.entrustDisposetime}" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">关闭</button>
+        </div>
+    </div>
+</div>
+<script src="/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+<script>
+    layui.use(['form', 'laydate'], function () {
+        var form = layui.form,
+            layer = layui.layer,
+            $ = layui.$,
+            laydate = layui.laydate;
+
+        form.on('submit(saveBtn)', function (data) {
+
+                    parent.layer.closeAll();
+
+                });
+        return false;
+            });
+
+</script>
+</body>
+</html>
