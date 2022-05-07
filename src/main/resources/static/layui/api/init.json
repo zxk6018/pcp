@@ -38,8 +38,13 @@
               "href": "system/system.html",
               "icon": "fa fa-tachometer",
               "target": "_self"
+            },
+            {
+              "title": "管理员管理",
+              "href": "config/config.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
             }
-
           ]
         },
         {
@@ -61,8 +66,7 @@
               "target": "_self"
             }
           ]
-        }
-      ,
+        },
         {
           "title": "救助队管理",
           "href": "",
@@ -82,9 +86,7 @@
               "target": "_self"
             }
           ]
-        }
-
-      ,
+        },
         {
           "title": "文章管理",
           "href": "",
@@ -96,9 +98,10 @@
               "href": "petCircle/petCircle.html",
               "icon": "fa fa-tachometer",
               "target": "_self"
-            },{
+            },
+            {
               "title": "文章类型管理",
-              "href": "circlType/circleType.html",
+              "href": "circleType/circleType.html",
               "icon": "fa fa-tachometer",
               "target": "_self"
             },
@@ -113,12 +116,15 @@
               "href": "relation/relation.html",
               "icon": "fa fa-tachometer",
               "target": "_self"
+            },
+            {
+              "title": "评论管理",
+              "href": "comments/comments.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
             }
-
           ]
-        }
-      ,
-
+        },
         {
           "title": "宠物管理",
           "href": "",

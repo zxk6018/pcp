@@ -9,16 +9,21 @@ public interface CertificateService {
     //新增宠物id
     Integer saveCertificate(Certificate certificate );
 
-
+    /**
+     * 多条件 分页查询
+     * @param pyl
+     * @param pageSize
+     * @param certId
+     * @param certPetId
+     * @return
+     */
     List<Certificate>findCertificateList(
-
-            @Param( "pyl" )Integer pyl,
-
-            @Param( "pageSize" )Integer pageSize,
+            Integer pyl,
+            Integer pageSize,
             //证书id
-            @Param( "certId" )Integer certId,
+            Integer certId,
             //宠物id
-            @Param("certPetId" )Integer certPetId
+            Integer certPetId
     );
     Integer certificateCount(Integer certId ,Integer certPetId);
 
@@ -28,16 +33,20 @@ public interface CertificateService {
      * @return
      */
     Integer seeCertificate(Certificate certificate );
-    //根据宠物id获取证书
-    Certificate findCertificateById(Integer certPetId);
+
     /**
-     * 删除
+     * 根据宠物id获取证书
+     */
+    Certificate findCertificateById(Integer certPetId);
+
+    /**
+     * 删除证书
      * @param certPetId
      * @return
      */
     Integer deleteCertificateById(Integer certPetId);
     /**
-     * 修改
+     * 修改证书
      * @param certificate
      * @return
      */

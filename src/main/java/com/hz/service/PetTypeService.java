@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface PetTypeService extends IService<Pettype> {
     /**
-     * 查询管理员
+     * 查询宠物类型
      *
      * @param pyl      偏移量
      * @param pageSize 每页显示数量
@@ -33,21 +33,21 @@ public interface PetTypeService extends IService<Pettype> {
                          @Param("pettypeName") String pettypeName);
 
     /**
-     * 根据ID  获得管理员对象
+     * 根据ID  获得宠物类型
      *
      * @param pettypeId
      * @return
      */
     Pettype findPettypeById(Integer pettypeId);
     /**
-     * 新增救助队
+     * 新增宠物类型
      * @param pettype
      * @return
      */
     Integer savePettype(Pettype pettype);
 
     /**
-     * 删除救助队
+     * 删除宠物类型
      * @param pettypeId
      * @return
      */

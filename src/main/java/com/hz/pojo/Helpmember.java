@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Data
 public class Helpmember implements Serializable{
 
-	private static final long serialVersionUID =  8605030473032369366L;
+	private static final long serialVersionUID =  3725880864344950190L;
 
 	/**
 	 * 队员ID
@@ -62,8 +62,8 @@ public class Helpmember implements Serializable{
 	/**
 	 * 身份证号码
 	 */
-	@Column(name = "helpmember_idcard")
-	private int helpmemberIdcard;
+	@Column(name = "helpmember_user_idcard")
+	private String helpmemberUserIdcard;
 
 	/**
 	 * 照片

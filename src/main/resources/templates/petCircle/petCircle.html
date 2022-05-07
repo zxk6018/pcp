@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/layui/lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="/layui/css/public.css" media="all">
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <fieldset class="table-search-fieldset">
+            <legend>搜索信息</legend>
+            <div style="margin: 10px 10px 10px 10px">
+                <form class="layui-form layui-form-pane" action="">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">文章ID：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="petcircleId" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label">用户ID：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="petcircleCircletypeId" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <button type="submit" class="layui-btn layui-btn-primary"  lay-submit lay-filter="data-search-btn"><i class="layui-icon"></i> 搜 索</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </fieldset>
+
+        <script type="text/html" id="toolbarDemo">
+            <div class="layui-btn-container">
+                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"> 添加 </button>
+                <button class="layui-btn layui-btn-sm layui-btn-danger data-delete-btn" lay-event="delete"> 删除 </button>
+            </div>
+        </script>
+
+        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+
+        <script type="text/html" id="currentTableBar">
+            <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="see">查看</a>
+            <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
+        </script>
+
+    </div>
+</div>
+<script src="/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+<script>
+    var tab1;
+    layui.use(['form', 'table'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            table = layui.table;
+
+        tab1=table.render({
+            elem: '#currentTableId',
+            url: '/petcircle/findPetcircleList',
+            toolbar: '#toolbarDemo',
+            defaultToolbar: ['filter', 'exports', 'print', {
+                title: '提示',
+                layEvent: 'LAYTABLE_TIPS',
+                icon: 'layui-icon-tips'
+            }],
+            cols: [[
+                {type: "checkbox", width: 50},
+                {field: 'petcircleId', width: 100, title: '文章ID', sort: true},
+                {field: 'petcircleUserId', width: 100, title: '用户ID', sort: true},
+                {field: 'petcircleNum', width: 100, title: '阅读量', sort: true},
+                {field: 'petcirclePettypeId', title: '类型ID（宠物类型ID）', minWidth: 200},
+                {field: 'petcircleCircletypeId', width: 100, title: '发布类型'},
+                {field: 'petcircleContent', width: 150, title: '发布内容'},
+                {field: 'petcircleTime', width: 150, title: '发布时间'},
+                {field: 'petcircleGood', width: 100, title: '点赞数', sort: true},
+                {field: 'petcircleReview', width: 110, title: '审核状态（0待审核 1审核通过 2审核失败 3删除）'},
+                {fixed: 'right',title: '操作', minWidth: 20, toolbar: '#currentTableBar', align: "center"}
+            ]],
+            limits: [1, 5, 10, 25, 50, 100],
+            limit: 10,
+            page: true,
+            skin: 'line'
+        });
+
+        // 监听搜索操作
+        form.on('submit(data-search-btn)', function (data) {
+          /*  var result = JSON.stringify(data.field);
+            layer.alert(result, {
+                title: '最终的搜索信息'
+            });*/
+
+            //执行搜索重载
+            table.reload('currentTableId', {
+                page: {
+                    curr: 1
+                }
+                , where: {
+                    "petcircleId":data.field.petcircleId,
+                    "petcircleUserId":data.field.petcircleUserId
+                }
+            }, 'data');
+
+            return false;
+        });
+
+        /**
+         * toolbar监听事件
+         */
+        table.on('toolbar(currentTableFilter)', function (obj) {
+            if (obj.event === 'add') {  // 监听添加操作
+               window.parent.open("新增文章",
+                                   "petCircle/petcircle_add.html",
+                                   "800px",
+                                   "600px",
+                                    tab1)
+            } else if (obj.event === 'delete') {  // 监听删除操作
+                var checkStatus = table.checkStatus('currentTableId')
+                    , data = checkStatus.data;
+                layer.alert(JSON.stringify(data));
+            }
+        });
+
+        //监听表格复选框选择
+        table.on('checkbox(currentTableFilter)', function (obj) {
+            console.log(obj)
+        });
+
+        table.on('tool(currentTableFilter)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'delete') {
+                layer.confirm('真的删除行么', function (index) {
+                    parent.layer.load(1, {shade: [0.1,'#fff'] });//开启遮罩
+                    $.post("/petcircle/deletePetcircleById",{"petcircleId":data.petcircleId},function(res){
+                        var index = parent.layer.alert(res.msg, function () {
+                            // 关闭弹出层
+                            obj.del();
+                            parent.layer.close(index);
+                            parent.layer.closeAll();
+                        });
+                    },"json");
+                    layer.close(index);
+                });
+            }else if (obj.event == 'see'){
+                window.parent.open("查看文章信息",
+                    "/petcircle/seePetcircleById/"+data.petcircleId,
+                    "800px",
+                    "600px",
+                    tab1)
+                return false;
+            }
+        });
+
+    });
+</script>
+</body>
+</html>

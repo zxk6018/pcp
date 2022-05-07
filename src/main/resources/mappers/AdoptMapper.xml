@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hz.dao.AdoptDao">
+    <sql id="adopt_where">
+        <where>
+            <if test="adoptType!=null and adoptType!=''">
+                adopt_type like concat('%',#{adoptType},'%')
+            </if>
+            <if test="adoptTime!=null and adoptTime!=''">
+                and adopt_time like concat('%',#{adoptTime},'%')
+            </if>
+        </where>
+    </sql>
+
+    <select id="findAdoptList" resultType="Adopt">
+        select * from adopt
+        <include refid="adopt_where"/>
+        limit #{pyl},#{pageSize}
+    </select>
+
+    <select id="AdoptCount" resultType="Integer">
+        select count(1) from  adopt
+        <include refid="adopt_where"/>
+    </select>
+
+    <insert id="saveAdopt" >
+        insert into adopt(adopt_user_id,adopt_type,adopt_message,adopt_pethelps,adopt_review,adopt_del,adopt_admin_id)
+        values (#{adoptUserId},#{adoptType},#{adoptMessage},#{adoptPethelps},#{adoptReview},#{adoptDel},#{adoptAdminId})
+    </insert>
+
+    <select id="findAdoptById" resultType="Adopt">
+        select * from adopt where adopt_id=#{adoptId}
+    </select>
+
+
+    <delete id="deleteAdoptById">
+        delete from adopt where adopt_id=#{adoptId}
+    </delete>
+    <update id="updateAdopt" >
+        update adopt
+        <set>
+            <if test="adoptType!=null and adoptType!=''">adopt_type=#{adoptType},</if>
+            <if test="adoptMessage!=null and adoptMessage!=''">adopt_message=#{adoptMessage},</if>
+            <if test="adoptPethelps!=null and adoptPethelps!=''">adopt_pethelps=#{adoptPethelps},</if>
+            <if test="adoptDel!=null and adoptDel!=''">adopt_del=#{adoptDel},</if>
+            <if test="adoptAdminId!=null and adoptAdminId!=''">adopt_admin_id=#{adoptAdminId},</if>
+            <if test="adoptReview!=null ">adopt_review=#{adoptReview}</if>
+        </set>
+        where adopt_id=#{adoptId}
+    </update>
+
+    <select id="seeAdoptById" resultType="Adopt">
+        select * from adopt where adopt_id=#{adoptId}
+    </select>
+</mapper>

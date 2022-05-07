@@ -37,7 +37,7 @@
             <if test="adminPassword!=null and adminPassword!=''">admin_password,</if>
             <if test="adminPhone!=null and adminPhone!=''">admin_phone,</if>
             <if test="adminRoleAuthoId!=null and adminRoleAuthoId!=''">admin_role_autho_id,</if>
-            <if test="adminAuthoId!=null and adminAuthoId!=''">admin_autho_id,</if>
+            <if test="adminAuthoId!=null and adminAuthoId!=''">admin_autho_id</if>
         </trim>
         )
         values (
@@ -46,7 +46,7 @@
             <if test="adminPassword!=null and adminPassword!=''">#{adminPassword},</if>
             <if test="adminPhone!=null and adminPhone!=''">#{adminPhone},</if>
             <if test="adminRoleAuthoId!=null and adminRoleAuthoId!=''">#{adminRoleAuthoId},</if>
-            <if test="adminAuthoId!=null and adminAuthoId!=''">#{adminAuthoId},</if>
+            <if test="adminAuthoId!=null and adminAuthoId!=''">#{adminAuthoId}</if>
         </trim>
         )
     </insert>

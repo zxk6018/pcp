@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/layui/lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="/layui/css/public.css" media="all">
+    <style>
+        body {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-form layuimini-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label">发布ID：</label>
+        <div class="layui-input-block">
+            <input type="text" readonly name="petcircleId" th:value="${pc.petcircleId}" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户ID</label>
+        <div class="layui-input-block">
+            <input type="text" readonly name="petcircleUserId" th:value="${pc.petcircleUserId}" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">阅读量</label>
+        <div class="layui-input-block">
+            <input type="text" readonly name="petcircleNum" th:value="${pc.petcircleNum}" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">类型ID（宠物类型ID）</label>
+        <div class="layui-input-block">
+            <input type="text" readonly name="petcirclePettypeId" th:value="${pc.petcirclePettypeId}"
+                   class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">发布类型ID</label>
+        <div class="layui-input-block">
+            <input type="text" readonly name="petcircleCircletypeId" th:value="${pc.petcircleCircletypeId}"
+                   class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">发布内容</label>
+        <div class="layui-input-block">
+            <input type="text" readonly name="adminAuthoId" th:value="${pc.petcircleContent}" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">发布时间</label>
+        <div class="layui-input-block">
+            <input type="text" readonly placeholder="yyyy-MM-dd" id="petcircleTime" name="petcircleTime"
+                   th:value="${pc.petcircleTime}" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">点赞数</label>
+        <div class="layui-input-block">
+            <input type="text" readonly name="petcircleGood" th:value="${pc.petcircleGood}" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">审核状态（0待审核 1审核通过 2审核失败 3删除）</label>
+        <div class="layui-input-block">
+            <input type="text" readonly name="petcircleReview" th:value="${pc.petcircleReview}" class="layui-input">
+        </div>
+    </div>
+
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">关闭</button>
+        </div>
+    </div>
+</div>
+<script src="/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+<script>
+    layui.use(['form', 'laydate'], function () {
+        var form = layui.form,
+            layer = layui.layer,
+            $ = layui.$,
+            laydate = layui.laydate;
+
+        form.on('submit(saveBtn)', function (data) {
+
+            parent.layer.closeAll();
+
+        });
+        return false;
+    });
+
+</script>
+</body>
+</html>

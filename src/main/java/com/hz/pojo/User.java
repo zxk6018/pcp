@@ -3,11 +3,8 @@ package com.hz.pojo;
 import java.io.Serializable;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.hibernate.annotations.Entity;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 
 @Entity
@@ -15,7 +12,7 @@ import javax.persistence.*;
 @Data
 public class User implements Serializable{
 
-	private static final long serialVersionUID =  3394656727163488389L;
+	private static final long serialVersionUID =  2321622675835499321L;
 
 	/**
 	 * 用户ID
@@ -67,6 +64,12 @@ public class User implements Serializable{
 	 */
 	@Column(name = "user_autonym")
 	private int userAutonym;
+
+	/**
+	 * 身份证号码
+	 */
+	@Column(name = "user_idcard")
+	private String userIdcard;
 
 	/**
 	 * 头像

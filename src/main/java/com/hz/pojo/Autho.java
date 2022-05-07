@@ -12,21 +12,24 @@ import javax.persistence.*;
 @Data
 public class Autho implements Serializable{
 
-	private static final long serialVersionUID =  714182774197089447L;
+	private static final long serialVersionUID =  7158081640083743930L;
+
+	/**
+	 * 管理员ID
+	 */
+	@Column(name = "auhto_admin_id")
+	private int auhtoAdminId;
 
 	/**
 	 * 权限ID
 	 */
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@TableId(type = IdType.AUTO)
-	@Column(name = "autho_id")
-	private int authoId;
+	@Column(name = "autho_system_id")
+	private int authoSystemId;
 
 	/**
 	 * 权限名
 	 */
-	@Column(name = "autho_name")
-	private String authoName;
+	@Column(name = "autho_system_name")
+	private String authoSystemName;
 
 }
