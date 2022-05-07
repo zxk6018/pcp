@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hz.dao.CircletypeDao">
+
+    <sql id="circletype_where">
+        <where>
+            <if test="circletypeName!=null">
+                circletype_name like concat('%',#{circletypeName},'%')
+            </if>
+            <if test="circletypeTime!=null">
+                and circletype_time like concat('%',#{circletypeTime},'%')
+            </if>
+        </where>
+    </sql>
+
+    <select id="findCircletypetList" resultType="Circletype">
+        select * from circletype
+        <include refid="circletype_where"/>
+        limit #{pyl},#{pageSize}
+    </select>
+
+    <select id="circleTypeCount" resultType="Integer">
+        select count(1) from  circletype
+        <include refid="circletype_where"/>
+    </select>
+
+    <insert id="saveCircletype" >
+        insert into Circletype(
+        <trim suffixOverrides=",">
+            <if test="circletypeName!=null and circletypeName!=''">circletype_name,</if>
+            <if test="circletypeTime!=null and circletypeTime!=''">circletype_time,</if>
+            <if test="circletypeUserId!=null and circletypeUserId!=''">circletype_user_id</if>
+
+        </trim>
+        )
+        values (
+        <trim suffixOverrides=",">
+            <if test="circletypeName!=null and circletypeName!=''">#{circletypeName},</if>
+            <if test="circletypeTime!=null and circletypeTime!=''">#{circletypeTime},</if>
+            <if test="circletypeUserId!=null and circletypeUserId!=''">#{circletypeUserId}</if>
+
+        </trim>
+        )
+
+    </insert>
+    <delete id="deleteCircletypeById">
+        delete from circletype where circletype_id=#{circletypeId}
+    </delete>
+
+    <select id="findCircletypeById" resultType="Circletype">
+        select * from circletype where circletype_id=#{circletypeId}
+    </select>
+
+    <update id="updateCircletype" >
+        update circletype
+        <set>
+            <if test="circletypeName!=null and circletypeName!=''">circletype_name=#{circletypeName}</if>
+        </set>
+        where circletype_id=#{circletypeId}
+    </update>
+
+    <select id="seeCircletype" resultType="Circletype">
+        select * from circletype where circletype_id=#{circletypeId}
+    </select>
+</mapper>
