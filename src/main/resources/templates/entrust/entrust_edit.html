@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/layui/lib/layui-v2.5.5/css/layui.css" media="all">
     <link rel="stylesheet" href="/layui/css/public.css" media="all">
     <style>
+        /*编辑*/
         body {
             background-color: #ffffff;
         }
@@ -17,33 +18,48 @@
     <body>
     <div class="layui-form layuimini-form">
         <div class="layui-form-item">
-            <label class="layui-form-label required">管理员账号</label>
+            <label class="layui-form-label required">家庭环境描述</label>
             <div class="layui-input-block">
-                <input name="adminId" type="hidden" th:value="${ad.adminId}">
-                <input type="text" name="adminName" lay-verify="required" lay-reqtext="管理员账号不能为空" placeholder="请输入管理员账号" th:value="${ad.adminName}" class="layui-input">
+                <input name="entrustId" type="hidden" th:value="${ent.entrustId}">
+                <input type="text" name="entrustEnvir" lay-verify="required" lay-reqtext="家庭环境描述不能为空" placeholder="请输入家庭环境描述" th:value="${ent.entrustEnvir}" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label required">审核状态</label>
+            <div class="layui-input-block">
+                <input type="text" name="entrustReview" lay-verify="required" lay-reqtext="审核状态不能为空" placeholder="请输入审核状态" th:value="${ent.entrustReview}"  class="layui-input">
             </div>
         </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label required">管理员密码</label>
+        <label class="layui-form-label required">地区ID</label>
         <div class="layui-input-block">
-            <input type="text" name="adminPassword" lay-verify="required" lay-reqtext="供应商名称不能为空" placeholder="请输入供应商名称" th:value="${ad.adminPassword}"  class="layui-input">
+            <input type="text" name="entrustAddressId" lay-verify="required" lay-reqtext="地区ID不能为空" placeholder="请输入地区ID" th:value="${ent.entrustAddressId}"  class="layui-input">
         </div>
     </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label required">管理员手机号</label>
+            <label class="layui-form-label required">详细地址</label>
             <div class="layui-input-block">
-                <input type="text" name="adminPhone" lay-verify="required" lay-reqtext="供应商名称不能为空" placeholder="请输入供应商名称" th:value="${ad.adminPhone}"  class="layui-input">
+                <input type="text" name="entrustAddress" lay-verify="required" lay-reqtext="详细地址不能为空" placeholder="请输入详细地址" th:value="${ent.entrustAddress}"  class="layui-input">
             </div>
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label required">权限ID</label>
+            <label class="layui-form-label required">逻辑删除</label>
             <div class="layui-input-block">
-                <input type="text" name="adminAuthoId" lay-verify="required" lay-reqtext="创建人ID不能为空" placeholder="请输入权限ID" th:value="${ad.adminAuthoId}" class="layui-input">
+                <input type="text" name="entrustDel" lay-verify="required" lay-reqtext="逻辑删除不能为空" placeholder="请输入逻辑删除" th:value="${ent.entrustDel}"  class="layui-input">
             </div>
         </div>
+
+        <div class="layui-form-item">
+        <label class="layui-form-label required">申请信息</label>
+        <div class="layui-input-block">
+            <input type="text" name="entrustMessage" lay-verify="required" lay-reqtext="申请信息不能为空" placeholder="请输入申请信息" th:value="${ent.entrustMessage}"  class="layui-input">
+        </div>
+        </div>
+
 
     <div class="layui-form-item">
         <div class="layui-input-block">
@@ -59,6 +75,7 @@
             $ = layui.$,
             laydate = layui.laydate;
 
+
         /*//日期
         laydate.render({
             elem: '#creationDate'
@@ -67,7 +84,7 @@
         form.on('submit(saveBtn)', function (data) {
             parent.layer.load(1, {shade: [0.1,'#fff'] });//开启遮罩
 
-            $.post("/admin/updateAdmin",data.field,function(res){
+            $.post("/entrust/updateEntrust",data.field,function(res){
                 var index = parent.layer.alert(res.msg, function () {
 
                     //刷新表格
