@@ -16,33 +16,49 @@
 </head>
 <body>
 <div class="layui-form layuimini-form">
+
+    <!--<div class="layui-form-item">-->
+    <!--<label class="layui-form-label required">寄养联系信息ID</label>-->
+    <!--<div class="layui-input-block">-->
+    <!--<input type="text" name="relationId" lay-verify="required" lay-reqtext="寄养联系信息ID不能为空" placeholder="请输入寄养联系信息ID" value="" class="layui-input">-->
+
+    <!--</div>-->
+    <!--</div>-->
+
+
+
+
     <div class="layui-form-item">
-        <label class="layui-form-label required">管理员账号</label>
+        <label class="layui-form-label required">申请ID（用户ID）</label>
         <div class="layui-input-block">
-            <input type="text" name="adminName" lay-verify="required" lay-reqtext="管理员账号不能为空" placeholder="请输入管理员账号" value="" class="layui-input">
+            <input type="text" name="relationUserId" lay-verify="required" lay-reqtext="申请ID（用户ID）不能为空" placeholder="请输入申请ID（用户ID）" value="" class="layui-input">
+
+
+
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label required">管理员密码</label>
+        <label class="layui-form-label required">申请理由</label>
         <div class="layui-input-block">
-            <input type="text" name="adminPassword" lay-verify="required" lay-reqtext="管理员密码不能为空" placeholder="请输入管理员密码" value="" class="layui-input">
+            <input type="text" name="relationReason" lay-verify="required" lay-reqtext="申请理由不能为空" placeholder="请输入申请理由" value="" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label required">管理员手机号</label>
+        <label class="layui-form-label required">申请人电话</label>
         <div class="layui-input-block">
-            <input type="text" name="adminPhone" lay-verify="required" lay-reqtext="管理员手机号不能为空" placeholder="请输入管理员手机号" value="" class="layui-input">
+            <input type="text" name="relationPhone" lay-verify="required" lay-reqtext="申请人电话不能为空" placeholder="请输入申请人电话" value="" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label required">领养发布ID</label>
+        <div class="layui-input-block">
+            <input type="text" name="relationAdoptId" lay-verify="required" lay-reqtext="领养发布ID不能为空" placeholder="请输入领养发布ID" value="" class="layui-input">
         </div>
     </div>
 
-    <div class="layui-form-item">
-        <label class="layui-form-label required">创建人ID</label>
-        <div class="layui-input-block">
-            <input type="text" name="adminRoleAuthoId" lay-verify="required" lay-reqtext="创建人ID不能为空" placeholder="请输入创建人ID" value="" class="layui-input">
-        </div>
-    </div>
+
 
     <div class="layui-form-item">
         <div class="layui-input-block">
@@ -58,15 +74,15 @@
             $ = layui.$,
             laydate = layui.laydate;
 
-       /* //日期
-        laydate.render({
-            elem: '#adminRoleTime'
-        });*/
+        /* //日期
+         laydate.render({
+             elem: '#adminRoleTime'
+         });*/
         //监听提交
         form.on('submit(saveBtn)', function (data) {
             parent.layer.load(1, {shade: [0.1,'#fff'] });//开启遮罩
 
-            $.post("/admin/saveAdmin",data.field,function(res){
+            $.post("/relation/saveRelation",data.field,function(res){
                 var index = parent.layer.alert(res.msg, function () {
                     //刷新表格
                     parent.tab.reload();

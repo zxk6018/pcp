@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hz.dao.PetCircleDao">
+    <sql id="petcircle_where">
+        <where>
+            <if test="petcircleId!=null and petcircleId!=''">
+                petcircle_id like concat('%',#{petcircleId},'%')
+            </if>
+            <if test="petcircleUserId!=null and petcircleUserId!=''">
+                and petcircle_user_id like concat('%',#{petcircleUserId},'%')
+            </if>
+        </where>
+    </sql>
+
+
+    <!--查询文章-->
+    <select id="findPetcircleList" resultType="Petcircle">
+        select * from petcircle
+        <include refid="petcircle_where"/>
+        order by petcircle_id asc limit #{pyl},#{pageSize}
+    </select>
+    <select id="PetcircleCount" resultType="Integer">
+        select count(1) from  petcircle
+        <include refid="petcircle_where"/>
+    </select>
+    <!--根据ID查询文章-->
+    <select id="findPetcircleById" resultType="Petcircle">
+        select * from petcircle where petcircle_id=#{petcircleId}
+    </select>
+    <!--新增文章-->
+    <insert id="savePetcircle">
+        insert into petcircle(
+        <trim suffixOverrides=",">
+            <if test="petcircleUserId!=null and petcircleUserId!=''">petcircle_user_id,</if>
+            <if test="petcirclePettypeId!=null and petcirclePettypeId!=''">petcircle_pettype_id,</if>
+            <if test="petcircleCircletypeId!=null and petcircleCircletypeId!=''">petcircle_circletype_id,</if>
+            <if test="petcircleContent!=null and petcircleContent!=''">petcircle_content</if>
+        </trim>
+        )
+        values (
+        <trim suffixOverrides=",">
+            <if test="petcircleUserId!=null and petcircleUserId!=''">#{petcircleUserId},</if>
+            <if test="petcirclePettypeId!=null and petcirclePettypeId!=''">#{petcirclePettypeId},</if>
+            <if test="petcircleCircletypeId!=null and petcircleCircletypeId!=''">#{petcircleCircletypeId},</if>
+            <if test="petcircleContent!=null and petcircleContent!=''">#{petcircleContent}</if>
+        </trim>
+        )
+    </insert>
+    <!--删除文章(物理删除)-->
+    <delete id="deletePetcircleById">
+        delete from petcircle where petcircle_id=#{petcircleId}
+    </delete>
+
+</mapper>

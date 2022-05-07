@@ -139,7 +139,7 @@
          */
         table.on('toolbar(currentTableFilter)', function (obj) {
             if (obj.event === 'add') {  // 监听添加操作
-               window.parent.open("新增管理员",
+               window.parent.open("新增发布领养与寄养信息",
                                    "adopt/adopt_add.html",
                                    "800px",
                                    "600px",
@@ -159,7 +159,7 @@
         table.on('tool(currentTableFilter)', function (obj) {
             var data = obj.data;
             if (obj.event === 'edit') {
-                window.parent.open("修改管理员",
+                window.parent.open("修改发布领养与寄养信息",
                     "/adopt/findAdoptById/"+data.adoptId,
                     "800px",
                     "600px",
@@ -179,7 +179,7 @@
                     layer.close(index);
                 });
             }else if (obj.event == 'see'){
-                window.parent.open("查看管理员信息",
+                window.parent.open("查看发布领养与寄养信息",
                     "/adopt/seeAdopt/"+data.adoptId,
                     "800px",
                     "600px",

@@ -25,14 +25,14 @@ public interface AdoptService {
                        String adoptTime);
 
     /**
-     * 新增
+     * 新增发布领养与寄养信息
      * @param adopt
      * @return
      */
     Integer saveAdopt(Adopt adopt);
 
     /**
-     * 修改
+     * 修改发布领养与寄养信息
      * @param adopt
      * @return
      */
@@ -40,7 +40,7 @@ public interface AdoptService {
 
 
     /**
-     * 删除
+     * 删除发布领养与寄养信息
      * @param adoptId
      * @return
      */
@@ -48,14 +48,14 @@ public interface AdoptService {
 
 
     /**
-     * 查看详情
+     * 查看发布领养与寄养信息详情
      * @param adopt
      * @return
      */
     Integer seeAdopt(Adopt adopt);
 
     /**
-     * 根据ID  获得对象
+     * 根据ID  获得发布领养与寄养信息
      * @param adoptId
      * @return
      */

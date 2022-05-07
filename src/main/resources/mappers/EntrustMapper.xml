@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hz.dao.EntrustDao">
+    
+    <sql id="entrust_where">
+        <where>
+            <if test="entrustDisposetime!=null">
+                entrust_disposetime like concat('%',#{entrustDisposetime},'%')
+            </if>
+            <if test="entrustUserId!=null">
+                and entrust_user_id like concat ('%',#{entrustUserId},'%')
+            </if>
+        </where>
+    </sql>
+
+    
+    <!--查询-->
+     
+    <select id="findEntrustList" resultType="Entrust">
+        select * from entrust
+        <include refid="entrust_where"/>
+        limit #{pyl},#{pageSize}
+    </select>
+
+    <!--总记录数-->
+    <select id="entrustCount" resultType="Integer">
+        select count(1) from entrust
+        <include refid="entrust_where"/>
+    </select>
+
+
+    <!--删除角色-->
+    <delete id="deleteEntrustById">
+        delete from entrust where entrust_id=#{entrustId}
+    </delete>
+
+
+    <!--修改寄养人信息-->
+    <update id="updateEntrust" >
+        update entrust
+        <set>
+            <if test="entrustEnvir!=null and entrustEnvir!=''">entrust_envir=#{entrustEnvir},</if>
+            <if test="entrustAddressId!=null ">entrust_address_id=#{entrustAddressId},</if>
+            <if test="entrustAddress!=null and entrustAddress!=''">entrust_address=#{entrustAddress},</if>
+            <if test="entrustMessage!=null and entrustMessage!=''">entrust_message=#{entrustMessage}</if>
+        </set>
+        where entrust_id=#{entrustId}
+    </update>
+
+
+    <!--新增用户-->
+    <insert id="saveEntrust">
+        insert into entrust(
+        <trim suffixOverrides=",">
+            <if test="entrustUserId != null and entrustUserId != ''">entrust_user_id,</if>
+            <if test="entrustRname != null and entrustRname != ''">entrust_rname,</if>
+            <if test="entrustMessage != null and entrustMessage != ''">entrust_message,</if>
+            <if test="entrustEnvir != null and entrustEnvir != ''">entrust_envir,</if>
+            <if test="entrustAddressId != null and entrustAddressId != ''">entrust_address_id,</if>
+            <if test="entrustAddress != null and entrustAddress != ''">entrust_address,</if>
+            <if test="entrustAdminId != null and entrustAdminId != ''">entrust_admin_id,</if>
+            <if test="entrustDisposetime != null and entrustDisposetime != ''">entrust_disposetime</if>
+        </trim>
+        )
+        values(
+        <trim suffixOverrides=",">
+            <if test="entrustUserId != null and entrustUserId != ''">#{entrustUserId},</if>
+            <if test="entrustRname != null and entrustRname != ''">#{entrustRname},</if>
+            <if test="entrustMessage != null and entrustMessage != ''">#{entrustMessage},</if>
+            <if test="entrustEnvir != null and entrustEnvir != ''">#{entrustEnvir},</if>
+            <if test="entrustAddressId != null and entrustAddressId != ''">#{entrustAddressId},</if>
+            <if test="entrustAddress != null and entrustAddress != ''">#{entrustAddress},</if>
+            <if test="entrustAdminId != null and entrustAdminId != ''">#{entrustAdminId},</if>
+            <if test="entrustDisposetime != null and entrustDisposetime != ''">#{entrustDisposetime}</if>
+
+
+        </trim>
+
+        )
+    </insert>
+
+
+
+    <!--根据ID  获得用户对象-->
+    <select id="findEntrustById" resultType="Entrust">
+        select * from entrust where entrust_id=#{entrustId}
+    </select>
+    
+    
+</mapper>
+
+        
