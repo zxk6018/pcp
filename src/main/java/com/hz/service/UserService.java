@@ -1,6 +1,8 @@
 package com.hz.service;
 
 import com.hz.pojo.User;
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 public interface UserService {
@@ -57,5 +59,13 @@ public interface UserService {
      * @return
      */
     Integer seeUser(User user);
+    /**
+     * 登录
+     * @param userName
+     * @param userPassword
+     * @return
+     */
+    User loginUser(@Param("userName") String userName,
+                   @Param("userPassword")  String userPassword);
 
 }

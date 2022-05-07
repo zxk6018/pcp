@@ -107,4 +107,24 @@ public class UserController {
         Integer i = userService.seeUser(user);
         return "";
     }
+    @RequestMapping(value = "loginUser",method = RequestMethod.POST)
+    @ResponseBody
+    public JsonMassage<User> loginUser(String userName,String userPassword){
+        User user = userService.loginUser(userName, userPassword);
+        JsonMassage<User> jsonMassage = new JsonMassage<User>();
+        if (user!=null){
+             jsonMassage = new JsonMassage<User>(0,"登录成功",null,user);
+
+        } else {
+            jsonMassage = new JsonMassage<User>(1,"登录失败",null,null);
+        }
+
+        return jsonMassage;
+    }
+    @RequestMapping(value = "test",method =RequestMethod.POST)
+    @ResponseBody
+    public String test(){
+        System.out.println("测试");
+        return "123456";
+    }
 }

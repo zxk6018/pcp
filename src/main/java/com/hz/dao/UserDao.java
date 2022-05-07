@@ -2,6 +2,8 @@ package com.hz.dao;
 
 import com.hz.pojo.User;
 import org.apache.ibatis.annotations.Param;
+
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 public interface UserDao {
@@ -60,4 +62,13 @@ public interface UserDao {
      * @return
      */
     Integer seeUser(User user);
+
+    /**
+     * 登录
+     * @param userName
+     * @param userPassword
+     * @return
+     */
+    User loginUser(@Param("userName") String userName,
+                   @Param("userPassword")  String userPassword);
 }

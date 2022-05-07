@@ -49,4 +49,9 @@ public class UserServiceImpl implements UserService {
     public Integer seeUser(User user) {
         return userDao.seeUser(user);
     }
+
+    @Override
+    public User loginUser(String userName, String userPassword) {
+        return userDao.loginUser(userName,userPassword);
+    }
 }
