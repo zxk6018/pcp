@@ -82,7 +82,17 @@
                 {field: 'petcircleContent', width: 150, title: '发布内容'},
                 {field: 'petcircleTime', width: 150, title: '发布时间'},
                 {field: 'petcircleGood', width: 100, title: '点赞数', sort: true},
-                {field: 'petcircleReview', width: 110, title: '审核状态（0待审核 1审核通过 2审核失败 3删除）'},
+                {field: 'petcircleReview', width: 110, title: '审核状态',templet:function (res) {
+                        if (res.petcircleReview==0){
+                            return "待审核";
+                        }else if(res.petcircleReview==1){
+                            return "审核通过";
+                        }else if(res.petcircleReview==2){
+                            return "审核失败";
+                        }else {
+                            return "删除";
+                        }
+                    }},
                 {fixed: 'right',title: '操作', minWidth: 20, toolbar: '#currentTableBar', align: "center"}
             ]],
             limits: [1, 5, 10, 25, 50, 100],

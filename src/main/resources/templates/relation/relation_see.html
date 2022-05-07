@@ -17,9 +17,8 @@
 <body>
 <div class="layui-form layuimini-form">
     <div class="layui-form-item">
-        <label class="layui-form-label">寄养联系信息ID</label>
+        <label class="layui-form-label">领养寄养联系信息ID</label>
         <div class="layui-input-block">
-
             <input type="text" readonly name="relationId"   th:value="${wd.relationId}" class="layui-input">
         </div>
     </div>
@@ -30,51 +29,28 @@
             <input type="text" readonly name="relationUserId" th:value="${wd.relationUserId}" class="layui-input">
         </div>
     </div>
+
     <div class="layui-form-item">
         <label class="layui-form-label">申请人电话</label>
         <div class="layui-input-block">
             <input type="text" readonly name="relationPhone" th:value="${wd.relationPhone}" class="layui-input">
         </div>
     </div>
+
     <div class="layui-form-item">
         <label class="layui-form-label">领养发布ID</label>
         <div class="layui-input-block">
             <input type="text" readonly name="relationAdoptId" th:value="${wd.relationAdoptId}" class="layui-input">
         </div>
     </div>
+
     <div class="layui-form-item">
         <label class="layui-form-label">申请时间</label>
         <div class="layui-input-block">
-            <input type="text" readonly placeholder="yyyy-MM-dd" id="relationTime" name="relationTime"
-                   th:value="${wd.relationTime}" class="layui-input">
+            <input type="text" readonly name="relationTime" th:value="${wd.relationTime}" class="layui-input">
         </div>
     </div>
 
-
-    <!--<div class="layui-form-item">-->
-    <!--<label class="layui-form-label">权限ID</label>-->
-    <!--<div class="layui-input-block">-->
-    <!--<input type="text" readonly name="adminAuthoId" th:value="${ad.adminAuthoId}"  class="layui-input">-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<div class="layui-form-item">-->
-    <!--<label class="layui-form-label">权限名</label>-->
-    <!--<div class="layui-input-block">-->
-    <!--<input type="text" readonly name="adminAuthoId" th:value="${ad.adminAuthoName}"  class="layui-input">-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<div class="layui-form-item">-->
-    <!--<label class="layui-form-label">日志操作时间(开始)</label>-->
-    <!--<div class="layui-input-block">-->
-    <!--<input type="text" readonly name="adminAuthoId" th:value="${ad.adminUsertime}"  class="layui-input">-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<div class="layui-form-item">-->
-    <!--<label class="layui-form-label">日志操作时间(结束)</label>-->
-    <!--<div class="layui-input-block">-->
-    <!--<input type="text" readonly name="adminAuthoId" th:value="${ad.adminEndtime}"  class="layui-input">-->
-    <!--</div>-->
-    <!--</div>-->
     <div class="layui-form-item">
         <div class="layui-input-block">
             <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">关闭</button>

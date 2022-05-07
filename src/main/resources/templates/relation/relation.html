@@ -23,13 +23,13 @@
                                 <input type="text" name="relationUserId" autocomplete="off" class="layui-input">
                             </div>
                         </div>
+
                         <div class="layui-inline">
                             <label class="layui-form-label">领养发布ID</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="relationAdoptId" autocomplete="off" class="layui-input">
                             </div>
                         </div>
-
                         <div class="layui-inline">
                             <button type="submit" class="layui-btn layui-btn-primary"  lay-submit lay-filter="data-search-btn"><i class="layui-icon"></i> 搜 索</button>
                         </div>
@@ -76,11 +76,11 @@
 
             cols: [[
                 {type: "checkbox", width: 50},
-                {field: 'relationId', width: 180, title: '寄养联系信息ID', sort: true},
+                {field: 'relationId', width: 180, title: '领养寄养联系信息ID', sort: true},
                 {field: 'relationUserId', width: 180, title: '申请ID（用户ID）', sort: true},
                 {field: 'relationPhone', width: 180, title: '申请人电话'},
                 {field: 'relationReason', width: 180, title: '申请理由'},
-                {field: 'relationAdoptId', title: '领养发布ID', minWidth: 200 , sort: true},
+                {field: 'relationAdoptId', title: '领养寄养发布ID', minWidth: 200 , sort: true},
                 {fixed: 'right',title: '操作', minWidth: 20, toolbar: '#currentTableBar', align: "center"}
 
             ]],
@@ -117,7 +117,7 @@
          */
         table.on('toolbar(currentTableFilter)', function (obj) {
             if (obj.event === 'add') {  // 监听添加操作
-                window.parent.open("新增申请人ID",
+                window.parent.open("新增领养寄养联系信息",
                     "relation/relation_add.html",
                     "800px",
                     "600px",
@@ -137,7 +137,7 @@
         table.on('tool(currentTableFilter)', function (obj) {
             var data = obj.data;
             if (obj.event === 'edit') {
-                window.parent.open("修改寄养人信息",
+                window.parent.open("修改领养寄养联系信息",
                     "/relation/findRelationById/"+data.relationId,
                     "800px",
                     "600px",
@@ -157,7 +157,7 @@
                     layer.close(index);
                 });
             }else if (obj.event == 'see'){
-                window.parent.open("查看寄养人",
+                window.parent.open("查看领养寄养联系信息",
                     "/relation/seeRelationById/"+data.relationId,
                     "800px",
                     "600px",

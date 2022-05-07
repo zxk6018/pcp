@@ -77,7 +77,7 @@
                 {type: "checkbox", width: 50},
                 {field: 'petId', width: 110, title: '宠物ID', sort: true},
                 {field: 'petName', width: 100, title: '宠物名', sort: true},
-                 {field: 'pettypeId', width: 100, title: '宠物类型'},
+                {field: 'pettypeId', width: 100, title: '宠物类型'},
                 {field: 'pettypeName', width: 100, title: '宠物品种', sort: true},
                 {field: 'petSex', width: 100, title: '宠物性别',templet:function (res) {
                         if (res.petSex==0){
@@ -89,11 +89,6 @@
                 {field: 'petUserId', width: 100, title: '所属用户'},
                 {field: 'petAge', width: 100, title: '宠物年龄', sort: true},
                 {field: 'petImg', width: 100, title: '宠物图片', sort: true},
-                // {field: 'adminRoleTime', title: '宠物图片', minWidth: 200},
-                // {field: 'pet_age', width: 90, title: '权限ID', sort: true},
-                // {field: 'adminAuthoName', width: 150, title: '权限名', sort: true},
-                // {field: 'adminUsertime', width: 200, title: '日志操作时间(开始时间)', sort: true},
-                // {field: 'adminEndtime', width: 200, title: '日志操作时间(结束时间)', sort: true},
                 {fixed: 'right',title: '操作', minWidth: 20, toolbar: '#currentTableBar', align: "center"}
             ]],
             limits: [20, 20, 20, 25, 50, 100],
@@ -148,7 +143,7 @@
         table.on('tool(currentTableFilter)', function (obj) {
             var data = obj.data;
             if (obj.event === 'edit') {
-                window.parent.open("修改管理员",
+                window.parent.open("修改宠物信息",
                     "/pet/findPetById/"+data.petId,
                     "800px",
                     "600px",
@@ -168,7 +163,7 @@
                     layer.close(index);
                 });
             }else if (obj.event == 'see'){
-                window.parent.open("查看管理员信息",
+                window.parent.open("查看宠物信息",
                     "/pet/seePetById/"+data.petId,
                     "800px",
                     "600px",

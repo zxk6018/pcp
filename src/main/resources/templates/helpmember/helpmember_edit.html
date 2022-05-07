@@ -30,12 +30,14 @@
             <input type="text" name="helpmemberImg" lay-verify="required" lay-reqtext="队员照片不能为空" placeholder="请输入队员照片路径" th:value="${hm.helpmemberImg}"  class="layui-input">
         </div>
     </div>
+
         <div class="layui-form-item">
             <label class="layui-form-label required">所在地址：</label>
             <div class="layui-input-block">
                 <input type="text" name="helpmemberAddress" lay-verify="required" lay-reqtext="所在地址不能为空" placeholder="请输入所在地址" th:value="${hm.helpmemberAddress}"  class="layui-input">
             </div>
         </div>
+
     <div class="layui-form-item">
         <div class="layui-input-block">
             <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">确认保存</button>

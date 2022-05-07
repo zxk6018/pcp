@@ -16,33 +16,20 @@
     </head>
     <body>
     <div class="layui-form layuimini-form">
-        <!--<div class="layui-form-item">-->
-            <!--<label class="layui-form-label required">宠物ID</label>-->
-            <!--<div class="layui-input-block">-->
-                <!--<input name="certificate" type="hidden" th:value="${sd.certPetId}">-->
-                <!--<input type="text" name="certPetId" lay-verify="required" lay-reqtext="宠物ID不能为空" placeholder="请输入宠物ID" th:value="${sd.certPetId}" class="layui-input">-->
-            <!--</div>-->
-        <!--</div>-->
-
         <div class="layui-form-item">
             <label class="layui-form-label required">证书路径</label>
             <div class="layui-input-block">
                 <input type="text" name="certUrl" lay-verify="required" lay-reqtext="证书路径不能为空" placeholder="请输入证书路径" th:value="${sd.certUrl}"  class="layui-input">
             </div>
         </div>
+
         <div class="layui-form-item">
             <label class="layui-form-label required">证书描述</label>
             <div class="layui-input-block">
                 <input type="text" name="certDesc" lay-verify="required" lay-reqtext="证书描述不能为空" placeholder="请输入证书描述" th:value="${sd.certDesc}" class="layui-input">
-
             </div>
         </div>
-    <!--<div class="layui-form-item">
-        <label class="layui-form-label required">创建时间</label>
-        <div class="layui-input-block">
-            <input type="text" placeholder="yyyy-MM-dd" id="creationDate" name="creationDate" lay-verify="required" lay-reqtext="日期不能为空" th:value="${pro.creationDate}" class="layui-input">
-        </div>
-    </div>-->
+
     <div class="layui-form-item">
         <div class="layui-input-block">
             <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">确认保存</button>

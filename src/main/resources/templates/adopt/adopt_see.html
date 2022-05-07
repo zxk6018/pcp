@@ -19,7 +19,6 @@
     <div class="layui-form-item">
         <label class="layui-form-label">发布领养ID：</label>
         <div class="layui-input-block">
-
             <input type="text" readonly name="adoptId"   th:value="${adopt.adoptId}" class="layui-input">
         </div>
     </div>
@@ -30,37 +29,42 @@
             <input type="text" readonly name="adoptUserId" th:value="${adopt.adoptUserId}" class="layui-input">
         </div>
     </div>
+
     <div class="layui-form-item">
         <label class="layui-form-label">类型</label>
         <div class="layui-input-block">
             <input type="text" readonly name="adoptType" th:value="${adopt.adoptType}" class="layui-input">
         </div>
     </div>
+
     <div class="layui-form-item">
-    <label class="layui-form-label">发布信息</label>
-    <div class="layui-input-block">
-        <input type="text" readonly placeholder="yyyy-MM-dd" id="adminRoleTime" name="adoptMessage"
-         th:value="${adopt.adoptMessage}" class="layui-input">
+        <label class="layui-form-label">发布信息</label>
+        <div class="layui-input-block">
+        <input type="text" readonly   name="adoptMessage" th:value="${adopt.adoptMessage}" class="layui-input">
         </div>
     </div>
+
     <div class="layui-form-item">
         <label class="layui-form-label">发布时间</label>
         <div class="layui-input-block">
             <input type="text" readonly name="adoptTime" th:value="${adopt.adoptTime}"  class="layui-input">
         </div>
     </div>
+
     <div class="layui-form-item">
         <label class="layui-form-label">是否是救援队</label>
         <div class="layui-input-block">
             <input type="text" readonly name="adoptPethelps" th:value="${adopt.adoptPethelps}"  class="layui-input">
         </div>
     </div>
+
     <div class="layui-form-item">
         <label class="layui-form-label">审核状态</label>
         <div class="layui-input-block">
             <input type="text" readonly name="adoptReview" th:value="${adopt.adoptReview}"  class="layui-input">
         </div>
     </div>
+
     <div class="layui-form-item">
         <label class="layui-form-label">逻辑删除</label>
         <div class="layui-input-block">
@@ -81,6 +85,7 @@
             <input type="text" readonly name="adoptDisposetime" th:value="${adopt.adoptDisposetime}"  class="layui-input">
         </div>
     </div>
+
     <div class="layui-form-item">
         <div class="layui-input-block">
             <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">关闭</button>

@@ -63,23 +63,23 @@
     <div class="layui-form-item">
         <label class="layui-form-label">发布时间</label>
         <div class="layui-input-block">
-            <input type="text" readonly placeholder="yyyy-MM-dd" id="petcircleTime" name="petcircleTime"
-                   th:value="${pc.petcircleTime}" class="layui-input">
+            <input type="text" readonly  name="petcircleTime" th:value="${pc.petcircleTime}" class="layui-input">
         </div>
     </div>
+
     <div class="layui-form-item">
         <label class="layui-form-label">点赞数</label>
         <div class="layui-input-block">
             <input type="text" readonly name="petcircleGood" th:value="${pc.petcircleGood}" class="layui-input">
         </div>
     </div>
+
     <div class="layui-form-item">
         <label class="layui-form-label">审核状态（0待审核 1审核通过 2审核失败 3删除）</label>
         <div class="layui-input-block">
             <input type="text" readonly name="petcircleReview" th:value="${pc.petcircleReview}" class="layui-input">
         </div>
     </div>
-
 
     <div class="layui-form-item">
         <div class="layui-input-block">

@@ -31,7 +31,6 @@
                             </div>
                         </div>
 
-
                         <div class="layui-inline">
                             <button type="submit" class="layui-btn layui-btn-primary"  lay-submit lay-filter="data-search-btn"><i class="layui-icon"></i> 搜 索</button>
                         </div>
@@ -76,16 +75,10 @@
             }],
             cols: [[
                 {type: "checkbox", width: 50},
-
                 {field: 'certId', width: 180, title: '证书ID', sort: true},
                 {field: 'certPetId', width: 180, title: '宠物ID', sort: true},
-
-                // {field: 'adminRoleAuthoId', width: 100, title: '创建人ID'},
-                // {field: 'adminAuthoId', width: 90, title: '权限ID', sort: true},
                 {field: 'certUrl', width: 150, title: '证书路径', sort: true},
                 {field: 'certDesc', width: 180, title: '证书详情', sort: true},
-                // {field: 'adminUsertime', width: 200, title: '日志操作时间(开始时间)', sort: true},
-                // {field: 'adminEndtime', width: 200, title: '日志操作时间(结束时间)', sort: true},
                 {fixed: 'right',title: '操作', minWidth: 20, toolbar: '#currentTableBar', align: "center"}
             ]],
             limits: [20, 20, 20, 25, 50, 100],
