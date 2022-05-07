@@ -101,7 +101,7 @@
             },
             {
               "title": "文章类型管理",
-              "href": "circlType/circleType.html",
+              "href": "circleType/circleType.html",
               "icon": "fa fa-tachometer",
               "target": "_self"
             },
