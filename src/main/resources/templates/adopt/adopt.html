@@ -82,7 +82,9 @@
             cols: [[
                 {type: "checkbox", width: 50},
                 {field: 'adoptId', width: 130, title: '领养发布ID', sort: true},
-                {field: 'adoptUserId', width: 110, title: '用户ID', sort: true},
+                {field: 'user.userName', width: 110, title: '用户名', sort: true,templet:function (user) {
+                        return user.user.userName
+                    }},
                 {field: 'adoptType', width: 80, title: '类型' },
                 {field: 'adoptMessage',width: 100, title: '发布信息' },
                 {field: 'adoptTime', width: 100, title: '发布时间' },
@@ -104,7 +106,7 @@
                         return "关闭"
                     }
                  }},
-                {field: 'adoptDel', width: 100, title: '逻辑删除'},
+
                 {field: 'adoptAdminId', width: 100, title: '审核人ID'},
                 {fixed: 'right',title: '操作', minWidth: 20, toolbar: '#currentTableBar', align: "center"}
             ]],
@@ -127,7 +129,7 @@
                 }
                 , where: {
                     "adoptType":data.field.adoptType,
-                    "adoptTime":data.field.adoptTime
+                    "adoptDisposetime":data.field.adoptDisposetime
                 }
             }, 'data');
 

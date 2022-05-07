@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface AdminService extends IService<Admin> {
+public interface AdminService  {
 
 
 
