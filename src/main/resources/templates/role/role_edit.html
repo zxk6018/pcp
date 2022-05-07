@@ -20,7 +20,6 @@
             <label class="layui-form-label required">角色名称</label>
             <div class="layui-input-block">
                 <input name="roleId" type="hidden" th:value="${role.roleId}">
-
                 <input type="text" name="roleName" lay-verify="required" lay-reqtext="角色名称不能为空" placeholder="请输入角色名称" th:value="${role.roleName}" class="layui-input">
             </div>
         </div>
@@ -31,7 +30,6 @@
             <input type="text" name="roleDesc" lay-verify="required" lay-reqtext="角色权限描述不能为空" placeholder="请输入角色权限描述" th:value="${role.roleDesc}"  class="layui-input">
         </div>
     </div>
-
 
     <div class="layui-form-item">
         <label class="layui-form-label required">创建人ID</label>

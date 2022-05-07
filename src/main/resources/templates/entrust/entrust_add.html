@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="/layui/lib/layui-v2.5.5/css/layui.css" media="all">
     <link rel="stylesheet" href="/layui/css/public.css" media="all">
     <style>
+
+        /*添加*/
         body {
             background-color: #ffffff;
         }
@@ -19,56 +21,56 @@
     <div class="layui-form-item">
         <label class="layui-form-label required">用户ID</label>
         <div class="layui-input-block">
-            <input type="text" name="helpmemberUserId" lay-verify="required" lay-reqtext="用户ID不能为空" placeholder="请输入用户ID" value="" class="layui-input">
-        </div>
-    </div>
-
-    <div class="layui-form-item">
-        <label class="layui-form-label required">救助队ID</label>
-        <div class="layui-input-block">
-            <input type="text" name="helpmemberPethelpId" lay-verify="required" lay-reqtext="救助队ID不能为空" placeholder="请输入救助队ID" value="" class="layui-input">
-        </div>
-    </div>
-
-    <div class="layui-form-item">
-        <label class="layui-form-label required">队员电话</label>
-        <div class="layui-input-block">
-            <input type="text" name="helpmemberPhone" lay-verify="required" lay-reqtext="队员电话号码不能为空" placeholder="请输入队员电话号" value="" class="layui-input">
+            <input type="text" name="entrustUserId" lay-verify="required" lay-reqtext="用户ID不能为空" placeholder="请输入用户ID" value="" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label required">真实姓名</label>
         <div class="layui-input-block">
-            <input type="text" name="helpmemberRname" lay-verify="required" lay-reqtext="真实姓名不能为空" placeholder="请输入真实姓名" value="" class="layui-input">
+            <input type="text" name="entrustRname" lay-verify="required" lay-reqtext="真实姓名不能为空" placeholder="请输入真实姓名" value="" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label required">身份证号码</label>
+        <label class="layui-form-label required">身份证号</label>
         <div class="layui-input-block">
-            <input type="text" name="helpmemberIdcard" lay-verify="required" lay-reqtext="身份证号码不能为空" placeholder="请输入身份证号码" value="" class="layui-input">
+            <input type="text" name="entrustIdcard" lay-verify="required" lay-reqtext="身份证号不能为空" placeholder="请输入身份证号" value="" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label required">照片</label>
+        <label class="layui-form-label required">申请信息</label>
         <div class="layui-input-block">
-            <input type="text" name="helpmemberImg" lay-verify="required" lay-reqtext="照片不能为空" placeholder="请输入照片" value="" class="layui-input">
+            <input type="text" name="entrustMessage" lay-verify="required" lay-reqtext="申请信息不能为空" placeholder="请输入申请信息" value="" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label required">所在地址</label>
+        <label class="layui-form-label required">家庭环境描述</label>
         <div class="layui-input-block">
-            <input type="text" name="helpmemberAddress" lay-verify="required" lay-reqtext="所在地址不能为空" placeholder="请输入所在地址" value="" class="layui-input">
+            <input type="text" name="entrustEnvir" lay-verify="required" lay-reqtext="家庭环境描述不能为空" placeholder="请输入家庭环境描述" value="" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label required">申请理由</label>
+        <label class="layui-form-label required">地区ID</label>
         <div class="layui-input-block">
-            <input type="text" name="helpmemberReason" lay-verify="required" lay-reqtext="申请理由不能为空" placeholder="请输入申请理由" value="" class="layui-input">
+            <input type="text" name="entrustAddressId" lay-verify="required" lay-reqtext="地区ID不能为空" placeholder="请输入地区ID" value="" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label required">详细地址</label>
+        <div class="layui-input-block">
+            <input type="text" name="entrustAddress" lay-verify="required" lay-reqtext="详细地址不能为空" placeholder="请输入详细地址" value="" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label required">处理人ID</label>
+        <div class="layui-input-block">
+            <input type="text" name="entrustAdminId" lay-verify="required" lay-reqtext="处理人ID不能为空" placeholder="请输入处理人ID" value="" class="layui-input">
         </div>
     </div>
 
@@ -94,7 +96,7 @@
         form.on('submit(saveBtn)', function (data) {
             parent.layer.load(1, {shade: [0.1,'#fff'] });//开启遮罩
 
-            $.post("/helpmember/saveHelpmember",data.field,function(res){
+            $.post("/entrust/saveEntrust",data.field,function(res){
                 var index = parent.layer.alert(res.msg, function () {
                     //刷新表格
                     parent.tab.reload();

@@ -30,6 +30,7 @@
             <input type="text" name="adoptMessage" lay-verify="required" lay-reqtext="发布信息不能为空" placeholder="请输入发布信息" th:value="${adopt.adoptMessage}"  class="layui-input">
         </div>
     </div>
+
         <div class="layui-form-item">
             <label class="layui-form-label required">是否是救助站</label>
             <div class="layui-input-block">
@@ -37,27 +38,6 @@
             </div>
         </div>
 
-        <!--<div class="layui-form-item">
-            <label class="layui-form-label required">审核状态</label>
-            <div class="layui-input-block">
-                <input type="text" name="adoptReview" lay-verify="required" lay-reqtext="是否是救助站不能为空" placeholder="请输入是否是救助站" th:value="${adopt.adoptReview}"  class="layui-input">
-            </div>
-        </div>-->
-
-        <div class="layui-form-item">
-            <label class="layui-form-label required">逻辑删除</label>
-            <div class="layui-input-block">
-                <input type="text" name="adoptDel" lay-verify="required" lay-reqtext="逻辑删除不能为空" placeholder="请输入逻辑删除" th:value="${adopt.adoptDel}" class="layui-input">
-            </div>
-        </div>
-
-        <!--<div class="layui-form-item">
-            <label class="layui-form-label required">审核人ID</label>
-            <div class="layui-input-block">
-                <input type="text" name="adoptAdminId" lay-verify="required" lay-reqtext="审核人ID不能为空" placeholder="请输入审核人ID" th:value="${adopt.adoptAdminId}" class="layui-input">
-
-            </div>
-        </div>-->
 
     <div class="layui-form-item">
         <div class="layui-input-block">
@@ -73,10 +53,6 @@
             $ = layui.$,
             laydate = layui.laydate;
 
-        /*//日期
-        laydate.render({
-            elem: '#creationDate'
-        });*/
         //监听提交
         form.on('submit(saveBtn)', function (data) {
             parent.layer.load(1, {shade: [0.1,'#fff'] });//开启遮罩

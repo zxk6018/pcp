@@ -17,33 +17,13 @@
     <body>
     <div class="layui-form layuimini-form">
         <div class="layui-form-item">
-            <label class="layui-form-label required">管理员账号</label>
+            <label class="layui-form-label required">文章类型名</label>
             <div class="layui-input-block">
-                <input name="adminId" type="hidden" th:value="${ad.adminId}">
-                <input type="text" name="adminName" lay-verify="required" lay-reqtext="管理员账号不能为空" placeholder="请输入管理员账号" th:value="${ad.adminName}" class="layui-input">
+                <input name="circletypeId" type="hidden" th:value="${circletype.circletypeId}">
+                <input type="text" name="circletypeName" lay-verify="required" lay-reqtext="文章类型名不能为空" placeholder="请输入文章类型名" th:value="${circletype.circletypeName}" class="layui-input">
             </div>
         </div>
 
-    <div class="layui-form-item">
-        <label class="layui-form-label required">管理员密码</label>
-        <div class="layui-input-block">
-            <input type="text" name="adminPassword" lay-verify="required" lay-reqtext="供应商名称不能为空" placeholder="请输入供应商名称" th:value="${ad.adminPassword}"  class="layui-input">
-        </div>
-    </div>
-
-        <div class="layui-form-item">
-            <label class="layui-form-label required">管理员手机号</label>
-            <div class="layui-input-block">
-                <input type="text" name="adminPhone" lay-verify="required" lay-reqtext="供应商名称不能为空" placeholder="请输入供应商名称" th:value="${ad.adminPhone}"  class="layui-input">
-            </div>
-        </div>
-
-        <div class="layui-form-item">
-            <label class="layui-form-label required">权限ID</label>
-            <div class="layui-input-block">
-                <input type="text" name="adminAuthoId" lay-verify="required" lay-reqtext="创建人ID不能为空" placeholder="请输入权限ID" th:value="${ad.adminAuthoId}" class="layui-input">
-            </div>
-        </div>
 
     <div class="layui-form-item">
         <div class="layui-input-block">
@@ -67,7 +47,7 @@
         form.on('submit(saveBtn)', function (data) {
             parent.layer.load(1, {shade: [0.1,'#fff'] });//开启遮罩
 
-            $.post("/admin/updateAdmin",data.field,function(res){
+            $.post("/circletype/updateCircletype",data.field,function(res){
                 var index = parent.layer.alert(res.msg, function () {
 
                     //刷新表格

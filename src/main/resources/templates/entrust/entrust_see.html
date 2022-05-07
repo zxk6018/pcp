@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/layui/lib/layui-v2.5.5/css/layui.css" media="all">
     <link rel="stylesheet" href="/layui/css/public.css" media="all">
     <style>
+        /*查看*/
         body {
             background-color: #ffffff;
         }
@@ -17,100 +18,93 @@
 <body>
 <div class="layui-form layuimini-form">
     <div class="layui-form-item">
-        <label class="layui-form-label">队员ID：</label>
+        <label class="layui-form-label">寄养ID：</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="helpmemberId"   th:value="${hm.helpmemberId}" class="layui-input">
+            <input type="text" readonly name="entrustId"   th:value="${ent.entrustId}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">用户ID</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="helpmemberUserId" th:value="${hm.helpmemberUserId}" class="layui-input">
-        </div>
-    </div>
-
-    <div class="layui-form-item">
-        <label class="layui-form-label">救助队ID</label>
-        <div class="layui-input-block">
-            <input type="text" readonly name="helpmemberPethelpId" th:value="${hm.helpmemberPethelpId}" class="layui-input">
-        </div>
-    </div>
-
-    <div class="layui-form-item">
-        <label class="layui-form-label">队员电话</label>
-        <div class="layui-input-block">
-            <input type="text" readonly name="helpmemberPhone" th:value="${hm.helpmemberPhone}" class="layui-input">
+            <input type="text" readonly name="entrustUserId" th:value="${ent.entrustUserId}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">真实姓名</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="helpmemberRname" th:value="${hm.helpmemberRname}" class="layui-input">
+            <input type="text" readonly name="entrustRname" th:value="${ent.entrustRname}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">身份证号</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="helpmemberUserIdcard" th:value="${hm.helpmemberUserIdcard}" class="layui-input">
+            <input type="text" readonly name="entrustIdcard" th:value="${ent.entrustIdcard}"  class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label">照片</label>
+        <label class="layui-form-label">申请信息</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="helpmemberImg" th:value="${hm.helpmemberImg}" class="layui-input">
-        </div>
-    </div>
-
-    <div class="layui-form-item">
-        <label class="layui-form-label">所在地址</label>
-        <div class="layui-input-block">
-            <input type="text" readonly name="helpmemberAddress" th:value="${hm.helpmemberAddress}" class="layui-input">
+            <input type="text" readonly name="entrustMessage" th:value="${ent.entrustMessage}"  class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">申请时间</label>
         <div class="layui-input-block">
-        <input type="text" readonly placeholder="yyyy-MM-dd" id="helpmemberTime" name="helpmemberTime" th:value="${hm.helpmemberTime}" class="layui-input">
+            <input type="text" readonly  name="entrustTime" th:value="${ent.entrustTime}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label">申请理由</label>
+        <label class="layui-form-label">家庭环境描述</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="helpmemberReason" th:value="${hm.helpmemberReason}"  class="layui-input">
+            <input type="text" readonly name="entrustEnvir" th:value="${ent.entrustEnvir}"  class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">审核状态</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="helpmemberState" th:value="${hm.helpmemberState}"  class="layui-input">
+            <input type="text" readonly name="entrustReview" th:value="${ent.entrustReview}"  class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">地区ID</label>
+        <div class="layui-input-block">
+            <input type="text" readonly name="entrustAddressId" th:value="${ent.entrustAddressId}"  class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">详细地址</label>
+        <div class="layui-input-block">
+            <input type="text" readonly name="entrustAddress" th:value="${ent.entrustAddress}"  class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">逻辑删除</label>
+        <div class="layui-input-block">
+            <input type="text" readonly name="entrustDel" th:value="${ent.entrustDel}"  class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">处理人ID</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="helpmemberPethelpAdminId" th:value="${hm.helpmemberPethelpAdminId}"  class="layui-input">
-        </div>
-    </div>
-
-    <div class="layui-form-item">
-        <label class="layui-form-label">处理意见</label>
-        <div class="layui-input-block">
-            <input type="text" readonly name="helpmemberOpinion" th:value="${hm.helpmemberOpinion}"  class="layui-input">
+            <input type="text" readonly name="entrustAdminId" th:value="${ent.entrustAdminId}"  class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">处理时间</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="helpmemberDisposetime" th:value="${hm.helpmemberDisposetime}"  class="layui-input">
+            <input type="text" readonly   name="entrustDisposetime" th:value="${ent.entrustDisposetime}" class="layui-input">
         </div>
     </div>
 

@@ -20,49 +20,17 @@
         <label class="layui-form-label required">申请人电话</label>
         <div class="layui-input-block">
             <input name="relationId" type="hidden" th:value="${wd.relationId}">
-            <input type="text" name="relationPhone" lay-verify="required" lay-reqtext="寄养联系信息ID不能为空" placeholder="请输入寄养联系信息ID" th:value="${wd.relationPhone}" class="layui-input">
+            <input type="text" name="relationPhone" lay-verify="required" lay-reqtext="申请人电话不能为空" placeholder="请输入申请人电话" th:value="${wd.relationPhone}" class="layui-input">
         </div>
     </div>
 
-    <!--<div class="layui-form-item">-->
-    <!--<label class="layui-form-label required">申请ID（用户ID）</label>-->
-    <!--<div class="layui-input-block">-->
-    <!--<input type="text" name="relationUserId" lay-verify="required" lay-reqtext="申请ID（用户ID）不能为空" placeholder="请输入申请ID（用户ID）" th:value="${ad.adminPassword}"  class="layui-input">-->
-    <!--</div>-->
-    <!--</div>-->
     <div class="layui-form-item">
         <label class="layui-form-label required">申请理由</label>
         <div class="layui-input-block">
             <input type="text" name="relationReason" lay-verify="required" lay-reqtext="申请理由不能为空" placeholder="请输入申请理由" th:value="${wd.relationReason}"  class="layui-input">
         </div>
     </div>
-    <!--<div class="layui-form-item">-->
-    <!--<label class="layui-form-label required">申请人电话</label>-->
-    <!--<div class="layui-input-block">-->
-    <!--<input type="text" name="relationPhone" lay-verify="required" lay-reqtext="申请人电话不能为空" placeholder="请输入申请人电话" th:value="${ad.adminAuthoId}" class="layui-input">-->
 
-    <!--</div>-->
-    <!--</div>-->
-    <!--<div class="layui-form-item">-->
-    <!--<label class="layui-form-label required">领养发布ID</label>-->
-    <!--<div class="layui-input-block">-->
-    <!--<input type="text" name="relationAdoptId" lay-verify="required" lay-reqtext="领养发布ID不能为空" placeholder="请输入领养发布ID" th:value="${ad.adminAuthoId}" class="layui-input">-->
-
-    <!--</div>-->
-    <!--</div>-->
-    <!--<div class="layui-form-item">-->
-    <!--<label class="layui-form-label required">relationTime</label>-->
-    <!--<div class="layui-input-block">-->
-    <!--<input type="text" name="relationTime" lay-verify="required" lay-reqtext="申请时间不能为空" placeholder="请输入申请时间" th:value="${ad.adminAuthoId}" class="layui-input">-->
-
-    <!--</div>-->
-    <!--</div>-->
-    <!--<div class="layui-form-item">-->
-    <!--<label class="layui-form-label required">申请时间</label>-->
-    <!--<div class="layui-input-block">-->
-    <!--<input type="text" placeholder="yyyy-MM-dd" id="relationTime" name="relationTime" lay-verify="required" lay-reqtext="日期不能为空" th:value="${wd}" class="layui-input">-->
-    <!--</div>-->
-    <!--</div>-->
     <div class="layui-form-item">
         <div class="layui-input-block">
             <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">确认保存</button>

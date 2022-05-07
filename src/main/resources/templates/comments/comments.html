@@ -18,16 +18,16 @@
                 <form class="layui-form layui-form-pane" action="">
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">管理员账号</label>
+                            <label class="layui-form-label">评论内容</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="adminName" autocomplete="off" class="layui-input">
+                                <input type="text" name="commentsText" autocomplete="off" class="layui-input">
                             </div>
                         </div>
 
                         <div class="layui-inline">
-                            <label class="layui-form-label">管理员电话</label>
+                            <label class="layui-form-label">评论时间</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="adminPhone" autocomplete="off" class="layui-input">
+                                <input type="text" name="commentsTime" id="commentsTime" autocomplete="off" class="layui-input">
                             </div>
                         </div>
 
@@ -49,8 +49,6 @@
         <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
 
         <script type="text/html" id="currentTableBar">
-            <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="see">查看</a>
-            <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">编辑</a>
             <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
         </script>
 
@@ -59,14 +57,18 @@
 <script src="/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
 <script>
     var tab1;
-    layui.use(['form', 'table'], function () {
+    layui.use(['form', 'table','laydate'], function () {
         var $ = layui.jquery,
             form = layui.form,
-            table = layui.table;
+            table = layui.table,
+            laydate = layui.laydate;
 
+        laydate.render({
+            elem: '#commentsTime'
+        });
         tab1=table.render({
             elem: '#currentTableId',
-            url: '/admin/findAdminList',
+            url: '/comments/findCommentsList',
             toolbar: '#toolbarDemo',
             defaultToolbar: ['filter', 'exports', 'print', {
                 title: '提示',
@@ -75,11 +77,11 @@
             }],
             cols: [[
                 {type: "checkbox", width: 50},
-                {field: 'adminId', width: 110, title: '管理员ID', sort: true},
-                {field: 'adminName', width: 180, title: '管理员账号', sort: true},
-                {field: 'adminPhone', width: 180, title: '管理员电话', sort: true},
-                {field: 'adminRoleTime', title: '创建时间', minWidth: 200},
-                {field: 'adminAuthoName', width: 150, title: '权限名', sort: true},
+                {field: 'commentsId', width: 110, title: '评论ID', sort: true},
+                {field: 'commentsText', width: 180, title: '评论内容'},
+                {field: 'commentsEssayId', width: 180, title: '文章ID'},
+                {field: 'commentsTime', title: '评论时间', minWidth: 200},
+                {field: 'commentsCount', width: 150, title: '点赞数', sort: true},
                 {fixed: 'right',title: '操作', minWidth: 20, toolbar: '#currentTableBar', align: "center"}
             ]],
             limits: [1, 5, 10, 25, 50, 100],
@@ -101,8 +103,8 @@
                     curr: 1
                 }
                 , where: {
-                    "adminName":data.field.adminName,
-                    "adminPhone":data.field.adminPhone
+                    "commentsText":data.field.commentsText,
+                    "commentsTime":data.field.commentsTime
                 }
             }, 'data');
 
@@ -114,8 +116,8 @@
          */
         table.on('toolbar(currentTableFilter)', function (obj) {
             if (obj.event === 'add') {  // 监听添加操作
-               window.parent.open("新增管理员",
-                                   "admin/admin_add.html",
+               window.parent.open("新增评论",
+                                   "comments/comments_add.html",
                                    "800px",
                                    "600px",
                                     tab1)
@@ -133,17 +135,10 @@
 
         table.on('tool(currentTableFilter)', function (obj) {
             var data = obj.data;
-            if (obj.event === 'edit') {
-                window.parent.open("修改管理员",
-                    "/admin/findAdminById/"+data.adminId,
-                    "800px",
-                    "600px",
-                    tab1)
-                return false;
-            } else if (obj.event === 'delete') {
+             if (obj.event === 'delete') {
                 layer.confirm('真的删除行么', function (index) {
                     parent.layer.load(1, {shade: [0.1,'#fff'] });//开启遮罩
-                    $.post("/admin/deleteAdminById",{"adminId":data.adminId},function(res){
+                    $.post("/comments/deleteCommentsById",{"commentsId":data.commentsId},function(res){
                         var index = parent.layer.alert(res.msg, function () {
                             // 关闭弹出层
                             obj.del();
@@ -153,14 +148,9 @@
                     },"json");
                     layer.close(index);
                 });
-            }else if (obj.event == 'see'){
-                window.parent.open("查看管理员信息",
-                    "/admin/seeAdminById/"+data.adminId,
-                    "800px",
-                    "600px",
-                    tab1)
-                return false;
             }
+                return false;
+
         });
 
     });
