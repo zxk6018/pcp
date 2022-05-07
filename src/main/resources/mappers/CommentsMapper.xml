@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hz.dao.CommentsDao">
+
+    <sql id="comments_where">
+        <where>
+            <if test="commentsText!=null and commentsText!=''">
+                comments_text like concat('%',#{commentsText},'%')
+            </if>
+            <if test="commentsTime!=null and commentsTime!=''">
+                and comments_time like concat('%',#{commentsTime},'%')
+            </if>
+
+        </where>
+    </sql>
+
+    <select id="findCommentsList" resultType="Comments">
+        select * from comments
+        <include refid="comments_where"/>
+        order by comments_id asc limit #{pyl},#{pageSize}
+    </select>
+
+    <select id="commentsCount" resultType="Integer">
+        select count(1) from  comments
+        <include refid="comments_where"/>
+    </select>
+
+    <insert id="saveComments" >
+        insert into comments(
+        <trim suffixOverrides=",">
+            <if test="commentsText!=null and commentsText!=''">comments_text</if>
+        </trim>
+        )
+        values (
+        <trim suffixOverrides=",">
+            <if test="commentsText!=null and commentsText!=''">#{commentsText}</if>
+        </trim>
+        )
+    </insert>
+
+    <delete id="deleteCommentsById">
+        delete from comments where comments_id=#{commentsId}
+    </delete>
+</mapper>
