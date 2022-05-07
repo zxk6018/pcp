@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class AdminServiceImpl extends ServiceImpl<BaseMapper<Admin>,Admin> implements AdminService {
+public class AdminServiceImpl  implements AdminService {
 
     @Autowired
     private AdminDao adminDao;

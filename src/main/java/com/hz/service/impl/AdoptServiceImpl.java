@@ -18,24 +18,24 @@ public class AdoptServiceImpl implements AdoptService {
      * @param page
      * @param pageSize
      * @param adoptType
-     * @param adoptTime
+     * @param adoptDisposetime
      * @return
      */
     @Override
-    public List<Adopt> findAdoptList(Integer page, Integer pageSize, String adoptType, String adoptTime) {
+    public List<Adopt> findAdoptList(Integer page, Integer pageSize, String adoptType, String adoptDisposetime) {
         Integer pyl = (page-1)*pageSize;
-        return adoptDao.findAdoptList(pyl,pageSize,adoptType,adoptTime);
+        return adoptDao.findAdoptList(pyl,pageSize,adoptType,adoptDisposetime);
     }
 
     /**
      * 总记录数
      * @param adoptType
-     * @param adoptTime
+     * @param adoptDisposetime
      * @return
      */
     @Override
-    public Integer AdoptCount(String adoptType, String adoptTime) {
-        return adoptDao.AdoptCount(adoptType,adoptTime);
+    public Integer AdoptCount(String adoptType, String adoptDisposetime) {
+        return adoptDao.AdoptCount(adoptType,adoptDisposetime);
     }
 
     /**

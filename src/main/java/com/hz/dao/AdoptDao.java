@@ -16,14 +16,14 @@ public interface AdoptDao {
     List<Adopt> findAdoptList(@Param("pyl") Integer pyl,
                             @Param("pageSize") Integer pageSize,
                             @Param("adoptType") String adoptType,
-                            @Param("adoptTime") String adoptTime
+                            @Param("adoptDisposetime") String adoptDisposetime
     );
     /**
      * 总记录数
      * @return
      */
     Integer AdoptCount(@Param("adoptType") String adoptType,
-                     @Param("adoptTime") String adoptTime);
+                     @Param("adoptDisposetime") String adoptDisposetime);
 
     /**
      * 新增发布领养与寄养信息

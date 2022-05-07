@@ -1,6 +1,8 @@
 package com.hz.pojo;
 
 import java.io.Serializable;
+import java.util.List;
+
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
@@ -76,5 +78,10 @@ public class Adopt implements Serializable{
 	 */
 	@Column(name = "adopt_disposetime")
 	private String adoptDisposetime;
+	/**
+	 * user对象
+ 	 */
+	@Column(name = "user")
+	private User user;
 
 }

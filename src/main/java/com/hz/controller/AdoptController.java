@@ -3,6 +3,7 @@ package com.hz.controller;
 import com.hz.pojo.Adopt;
 import com.hz.service.AdoptService;
 import com.hz.utils.JsonMassage;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,11 +24,11 @@ public class AdoptController {
     @RequestMapping(value = "/findAdoptList",method = RequestMethod.GET)
     @ResponseBody
     public JsonMassage<List<Adopt>> findAdoptList(@RequestParam(value = "page",defaultValue = "1") Integer page,
-                                                @RequestParam(value = "limit",defaultValue ="10") Integer limit,
-                                                String adoptType, String adoptTime){
-        List<Adopt> list = adoptService.findAdoptList(page,limit,adoptType,adoptTime);
-        System.out.println(adoptType);
-        Integer count = adoptService.AdoptCount(adoptType,adoptTime);
+                                                  @RequestParam(value = "limit",defaultValue ="10") Integer limit,
+                                                  String adoptType,
+                                                  String adoptDisposetime){
+        List<Adopt> list = adoptService.findAdoptList(page,limit,adoptType,adoptDisposetime);
+        Integer count = adoptService.AdoptCount(adoptType,adoptDisposetime);
         JsonMassage<List<Adopt>> jsonMassage = new JsonMassage<List<Adopt>>();
         jsonMassage.setCode(0);
         jsonMassage.setMsg("请求成功");
