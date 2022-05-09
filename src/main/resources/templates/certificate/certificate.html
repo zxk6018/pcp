@@ -90,12 +90,11 @@
                 {field: 'certPetId', width: 180, title: '宠物ID', sort: true},
                 {field: "certUrl", title: "图片", width:150,templet: function (item) {
                         return '<img onclick="certUrl(this)" id="certUrl" style="display: inline-block; width: 50%; height: 100%;" src="'+item.certUrl+'">';
-                    }
-                },
+                }},
                 {field: 'certDesc', width: 180, title: '证书详情', sort: true},
                 {fixed: 'right',title: '操作', minWidth: 20, toolbar: '#currentTableBar', align: "center"}
             ]],
-            limits: [20, 20, 20, 25, 50, 100],
+            limits: [1, 5, 10, 20, 50, 100],
             limit: 20,
             page: true,
             skin: 'line'
