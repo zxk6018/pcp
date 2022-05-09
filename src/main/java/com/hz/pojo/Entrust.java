@@ -92,4 +92,9 @@ public class Entrust implements Serializable{
 	@Column(name = "entrust_disposetime")
 	private String entrustDisposetime;
 
+	/**
+	 * user对象
+	 */
+	@Column(name = "user")
+	private User user;
 }

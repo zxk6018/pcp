@@ -77,4 +77,8 @@ public class Admin implements Serializable{
 	@Column(name = "admin_endtime")
 	private String adminEndtime;
 
+/*	*//**
+	 * 角色
+	 *//*
+	private Role role;*/
 }

@@ -4,6 +4,28 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hz.dao.AdminDao">
 
+    <!--<resultMap id="adminMap" type="Admin">
+        <id property="adminId" column="admin_id"></id>
+        <result property="adminName" column="admin_name"></result>
+        <result property="adminPassword" column="admin_password"></result>
+        <result property="adminPhone" column="admin_phone"></result>
+        <result property="adminRoleAuthoId" column="admin_role_autho_id"></result>
+        <result property="adminRoleTime" column="admin_role_time"></result>
+        <result property="adminAuthoId" column="admin_autho_id"></result>
+        <result property="adminAuthoName" column="admin_autho_name"></result>
+        <result property="adminUsertime" column="admin_usertime"></result>
+        <result property="adminEndtime" column="admin_endtime"></result>
+        <association property="role" javaType="Role">
+            <id property="roleId" column="role_id"></id>
+            <result property="roleName" column="role_name"></result>
+            <result property="roleDesc" column="role_desc"></result>
+            <result property="roleRoleId" column="role_role_id"></result>
+            <result property="roleTime" column="role_time"></result>
+            <result property="roleState" column="role_state"></result>
+        </association>
+    </resultMap>-->
+
+
     <sql id="admin_where">
         <where>
             <if test="adminName!=null and adminName!=''">

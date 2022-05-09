@@ -4,7 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hz.dao.AdoptDao">
 
-
     <resultMap id="adoptMap" type="Adopt">
         <id property="adoptId" column="adopt_id"></id>
         <result property="adoptUserId" column="adopt_user_id"></result>

@@ -63,8 +63,8 @@ public class AdminController {
     @ResponseBody
     public JsonMassage<List<Admin>> findProvideList(@RequestParam(value = "page",defaultValue = "1") Integer page,
                                                     @RequestParam(value = "limit",defaultValue ="10") Integer limit,
-                                                    @RequestParam(value = "adminName")String adminName,
-                                                    @RequestParam("adminPhone")String adminPhone){
+                                                    String adminName,
+                                                    String adminPhone){
         List<Admin> list = adminService.findAdminList(page,limit,adminName,adminPhone);
         Integer count = adminService.AdminCount(adminName,adminPhone);
         JsonMassage<List<Admin>> jsonMassage = new JsonMassage<List<Admin>>();

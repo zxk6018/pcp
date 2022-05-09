@@ -77,7 +77,7 @@
                 {type: "checkbox", width: 50},
                 {field: 'certId', width: 180, title: '证书ID', sort: true},
                 {field: 'certPetId', width: 180, title: '宠物ID', sort: true},
-                {field: 'certUrl', width: 150, title: '证书路径', sort: true},
+                {field: 'certUrl', width: 80, title: '证书',templet:'<div><img src="{{d.certUrl}}"/></div>'},
                 {field: 'certDesc', width: 180, title: '证书详情', sort: true},
                 {fixed: 'right',title: '操作', minWidth: 20, toolbar: '#currentTableBar', align: "center"}
             ]],
