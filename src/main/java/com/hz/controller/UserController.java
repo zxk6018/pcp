@@ -4,12 +4,16 @@ package com.hz.controller;
 import com.hz.pojo.User;
 import com.hz.service.UserService;
 import com.hz.utils.JsonMassage;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
@@ -107,9 +111,11 @@ public class UserController {
         Integer i = userService.seeUser(user);
         return "";
     }
-    @RequestMapping(value = "loginUser",method = RequestMethod.POST)
+    @RequestMapping(value = "/loginUser",method = RequestMethod.POST)
     @ResponseBody
-    public JsonMassage<User> loginUser(String userName,String userPassword){
+    public JsonMassage<User> loginUser(@Param("userName") String userName,@Param("userPassword") String userPassword){
+        System.out.println("userName===="+userName);
+        System.out.println("userPassword===="+userPassword);
         User user = userService.loginUser(userName, userPassword);
         JsonMassage<User> jsonMassage = new JsonMassage<User>();
         if (user!=null){
@@ -121,10 +127,6 @@ public class UserController {
 
         return jsonMassage;
     }
-    @RequestMapping(value = "test",method =RequestMethod.POST)
-    @ResponseBody
-    public String test(){
-        System.out.println("测试");
-        return "123456";
-    }
+
+
 }
