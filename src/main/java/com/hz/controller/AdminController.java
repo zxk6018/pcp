@@ -18,6 +18,26 @@ public class AdminController {
     private AdminService adminService;
 
     /**
+     * 管理员登录
+     * @param username
+     * @param password
+     * @return
+     */
+    @RequestMapping(value = "/doLogin",method = RequestMethod.POST)
+    @ResponseBody
+    public JsonMassage<Admin> doLogin(String username,String password){
+        Admin admin = adminService.doLogin(username, password);
+        JsonMassage<Admin> jsonMassage = new JsonMassage<Admin>();
+        if (admin!=null){
+            jsonMassage = new JsonMassage<Admin>(0,"登录成功",null,admin);
+
+        } else {
+            jsonMassage = new JsonMassage<Admin>(1,"登录失败",null,null);
+        }
+
+        return jsonMassage;
+    }
+    /**
      * 删除管理员
      * @param adminId
      * @return

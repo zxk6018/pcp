@@ -36,6 +36,7 @@ public class UserController {
         jsonMassage.setMsg("请求成功");
         jsonMassage.setCount(count);
         jsonMassage.setData(list);
+        System.out.println(jsonMassage.toString());
         return jsonMassage;
     }
 
@@ -107,7 +108,7 @@ public class UserController {
         Integer i = userService.seeUser(user);
         return "";
     }
-    @RequestMapping(value = "loginUser",method = RequestMethod.POST)
+    @RequestMapping(value = "/loginUser",method = RequestMethod.POST)
     @ResponseBody
     public JsonMassage<User> loginUser(String userName,String userPassword){
         User user = userService.loginUser(userName, userPassword);

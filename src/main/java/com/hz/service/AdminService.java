@@ -8,7 +8,13 @@ import java.util.List;
 
 public interface AdminService  {
 
-
+    /**
+     * 管理员登陆
+     * @param username
+     * @param password
+     * @return
+     */
+    Admin doLogin(String username, String password);
 
     /**
      * 删除管理员

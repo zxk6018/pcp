@@ -18,6 +18,10 @@ public class AdminServiceImpl  implements AdminService {
     private AdminDao adminDao;
 
 
+    @Override
+    public Admin doLogin(String username, String password) {
+        return adminDao.doLogin(username,password);
+    }
 
     /**
      * 根据ID删除管理员

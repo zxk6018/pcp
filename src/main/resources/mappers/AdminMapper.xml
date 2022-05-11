@@ -24,7 +24,9 @@
             <result property="roleState" column="role_state"></result>
         </association>
     </resultMap>-->
-
+<select id="doLogin" resultType="Admin">
+    select * from admin where admin_name=#{username} and admin_password=#{password};
+</select>
 
     <sql id="admin_where">
         <where>
