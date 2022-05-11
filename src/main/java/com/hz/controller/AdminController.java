@@ -34,9 +34,9 @@ public class AdminController {
         } else {
             jsonMassage = new JsonMassage<Admin>(1,"登录失败",null,null);
         }
-
         return jsonMassage;
     }
+
     /**
      * 删除管理员
      * @param adminId
