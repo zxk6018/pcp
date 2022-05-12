@@ -103,6 +103,7 @@
                 if(res.code==0){
                     layer.msg(res.msg, function () {
                         window.location = '/index.html';
+                        request.setAttribute("username",data.username);
                     });
                 }else {
                     layer.msg(res.msg);
