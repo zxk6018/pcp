@@ -4,6 +4,7 @@ package com.hz.controller;
 import com.hz.pojo.User;
 import com.hz.service.UserService;
 import com.hz.utils.JsonMassage;
+import com.hz.utils.MD5untils;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -116,7 +117,12 @@ public class UserController {
     public JsonMassage<User> loginUser(@Param("userName") String userName,@Param("userPassword") String userPassword){
         System.out.println("userName===="+userName);
         System.out.println("userPassword===="+userPassword);
-        User user = userService.loginUser(userName, userPassword);
+
+
+        MD5untils md5untils = new MD5untils();
+        String newpassword = md5untils.md5(userPassword);
+        System.out.println("加密后的密码："+newpassword);
+        User user = userService.loginUser(userName, newpassword);
         JsonMassage<User> jsonMassage = new JsonMassage<User>();
         if (user!=null){
              jsonMassage = new JsonMassage<User>(0,"登录成功",null,user);
