@@ -1,6 +1,8 @@
 package com.hz.pojo;
 
 import java.io.Serializable;
+import java.util.List;
+
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
@@ -107,4 +109,13 @@ public class User implements Serializable{
 	@Column(name = "user_state")
 	private int userState;
 
+	/**
+	 * 宠物
+	 */
+	private Pet pet;
+
+	/**
+	 * 宠物证书
+	 */
+	private Certificate certificate;
 }

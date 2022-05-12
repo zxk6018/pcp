@@ -93,6 +93,10 @@
                 {field: 'userAge', width: 120, title: '年龄', sort: true},
                 {field: 'userPhone', width: 150, title: '电话'},
                 {field: 'userAddress', title: '地址', minWidth: 150},
+                {field: 'petName', title: '宠物名字', minWidth: 150,templet:function (res) {
+                        return res.pet.petName;
+                    }},
+                {field: 'certDesc', title: '证书描述', minWidth: 150,templet:'<div>{{d.certificate.certDesc}}</div>'},
                 {fixed: 'right',title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
             ]],
             limits: [1, 5, 10, 20, 50, 100],
@@ -100,6 +104,7 @@
             page: true,
             skin: 'line'
         });
+
 
         // 监听搜索操作
         form.on('submit(data-search-btn)', function (data) {

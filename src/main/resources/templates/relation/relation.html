@@ -73,11 +73,12 @@
                 layEvent: 'LAYTABLE_TIPS',
                 icon: 'layui-icon-tips'
             }],
-
             cols: [[
                 {type: "checkbox", width: 50},
                 {field: 'relationId', width: 180, title: '领养寄养联系信息ID', sort: true},
-                {field: 'relationUserId', width: 180, title: '申请ID（用户ID）', sort: true},
+                {field: 'user.userName', width: 180, title: '申请人',templet:function (user) {
+                            return user.user.userName;
+                    }},
                 {field: 'relationPhone', width: 180, title: '申请人电话'},
                 {field: 'relationReason', width: 180, title: '申请理由'},
                 {field: 'relationAdoptId', title: '领养寄养发布ID', minWidth: 200 , sort: true},

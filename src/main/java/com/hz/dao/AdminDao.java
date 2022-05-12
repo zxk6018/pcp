@@ -8,6 +8,14 @@ import java.util.List;
 
 public interface AdminDao {
 
+    /**
+     * 管理员登陆
+     * @param username
+     * @param password
+     * @return
+     */
+    Admin doLogin(@Param("username") String username,
+                  @Param("password") String password);
 
     /**
      * 删除管理员

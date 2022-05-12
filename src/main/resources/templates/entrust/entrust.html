@@ -81,16 +81,17 @@
             cols: [[
                 {type: "checkbox", width: 50},
                 {field: 'entrustId', width: 100, title: '寄养ID', sort: true},
-                {field: 'entrustUserId', width: 100, title: '用户ID', sort: true},
-                {field: 'entrustRname', width: 110, title: '真实姓名'},
+                {field: 'user.userName', width: 100, title: '用户名', templet:function (user) {
+                        return user.user.userName;
+                    }},
+              /*  {field: 'entrustRname', width: 110, title: '真实姓名'},
                 {field: 'entrustIdcard', width: 100, title: '身份证号'},
                 {field: 'entrustMessage', width: 100, title: '申请信息'},
-                {field: 'entrustTime', title: '申请时间', minWidth: 130},
-                {field: 'entrustEnvir', width: 100, title: '家庭环境描述'},
-                {field: 'entrustAddressId', width: 110, title: '地区ID', sort: true},
-                {field: 'entrustAddress', width: 110, title: '详细地址'},
-                {field: 'entrustAdminId', width: 110, title: '处理人ID', sort: true},
-                {field: 'entrustDisposetime', title: '处理时间', minWidth: 120},
+                {field: 'entrustTime', title: '申请时间', minWidth: 130},*/
+                {field: 'entrustEnvir', width: 400, title: '家庭环境描述'},
+                {field: 'entrustAddress', width: 400, title: '详细地址'},
+             /*   {field: 'entrustAdminId', width: 110, title: '处理人ID', sort: true},
+                {field: 'entrustDisposetime', title: '处理时间', minWidth: 120},*/
                 {fixed: 'right',title: '操作', minWidth: 60, toolbar: '#currentTableBar', align: "center"}
             ]],
             limits: [1, 5, 10, 25, 50, 100],
@@ -125,7 +126,7 @@
          */
         table.on('toolbar(currentTableFilter)', function (obj) {
             if (obj.event === 'add') {  // 监听添加操作
-               window.parent.open("新增管理员",
+               window.parent.open("新增寄养人信息",
                                    "entrust/entrust_add.html",
                                    "800px",
                                    "600px",
@@ -145,7 +146,7 @@
         table.on('tool(currentTableFilter)', function (obj) {
             var data = obj.data;
             if (obj.event === 'edit') {
-                window.parent.open("修改寄养信息",
+                window.parent.open("修改寄养人信息",
                     "entrust/findEntrustById/"+data.entrustId,
                     "800px",
                     "600px",

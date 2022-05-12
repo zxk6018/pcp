@@ -18,6 +18,25 @@ public class AdminController {
     private AdminService adminService;
 
     /**
+     * 管理员登录
+     * @param username
+     * @param password
+     * @return
+     */
+    @RequestMapping(value = "/doLogin",method = RequestMethod.POST)
+    @ResponseBody
+    public JsonMassage<Admin> doLogin(String username,String password){
+        Admin admin = adminService.doLogin(username, password);
+        JsonMassage<Admin> jsonMassage = new JsonMassage<Admin>();
+        if (admin!=null){
+            jsonMassage = new JsonMassage<Admin>(0,"登录成功",null,admin);
+        } else {
+            jsonMassage = new JsonMassage<Admin>(1,"账号或密码错误",null,null);
+        }
+        return jsonMassage;
+    }
+
+    /**
      * 删除管理员
      * @param adminId
      * @return
@@ -63,8 +82,8 @@ public class AdminController {
     @ResponseBody
     public JsonMassage<List<Admin>> findProvideList(@RequestParam(value = "page",defaultValue = "1") Integer page,
                                                     @RequestParam(value = "limit",defaultValue ="10") Integer limit,
-                                                    @RequestParam(value = "adminName")String adminName,
-                                                    @RequestParam("adminPhone")String adminPhone){
+                                                    String adminName,
+                                                    String adminPhone){
         List<Admin> list = adminService.findAdminList(page,limit,adminName,adminPhone);
         Integer count = adminService.AdminCount(adminName,adminPhone);
         JsonMassage<List<Admin>> jsonMassage = new JsonMassage<List<Admin>>();

@@ -77,13 +77,25 @@
                 {type: "checkbox", width: 50},
                 {field: 'petId', width: 110, title: '宠物ID', sort: true},
                 {field: 'petName', width: 100, title: '宠物名', sort: true},
-                {field: 'pettypeId', width: 100, title: '宠物类型'},
+                {field: 'pettypeId', width: 100, title: '宠物类型',templet:function (res) {
+                        if (res.pettypeId==1){
+                            return "狗";
+                        }else if(res.pettypeId==2){
+                            return "猫";
+                        }else if (res.pettypeId==3){
+                            return "鼠";
+                        } else {
+                            return "蛇";
+                        }
+                    }},
                 {field: 'pettypeName', width: 100, title: '宠物品种', sort: true},
                 {field: 'petSex', width: 100, title: '宠物性别',templet:function (res) {
                         if (res.petSex==0){
+                            return "妹妹";
+                        }else if(res.petSex==1){
                             return "弟弟";
                         }else {
-                            return "妹妹";
+                            return "保密";
                         }
                     }},
                 {field: 'petUserId', width: 100, title: '所属用户'},

@@ -78,13 +78,7 @@
                 {field: 'helpmemberId', width: 110, title: '队员ID', sort: true},
                 {field: 'helpmemberUserId', width: 110, title: '用户ID', sort: true},
                 {field: 'helpmemberPethelpId', width: 180, title: '救助队ID', sort: true},
-                // {field: 'helpmemberPhone', title: '队员电话', minWidth: 200},
                 {field: 'helpmemberRname', title: '真实姓名', minWidth: 200},
-                // {field: 'helpmemberIdcard', title: '身份证号码', minWidth: 200},
-                // {field: 'helpmemberImg', title: '照片', minWidth: 200},
-                // {field: 'helpmemberAddress', title: '所在地址', minWidth: 200},
-                {field: 'helpmemberTime', title: '申请时间', minWidth: 200},
-                // {field: 'helpmemberReason', width: 180, title: '申请理由', sort: true},
                 {field: 'helpmemberState', title: '审核状态',templet:function (res) {
                         if (res.helpmemberState==0){
                             return "通过";
@@ -92,8 +86,6 @@
                             return "未通过";
                         } minWidth: 200
                 }},
-                // {field: 'helpmemberPethelpAdminId', title: '处理人ID（用户ID  必须是救助队创建者）', minWidth: 200},
-                // {field: 'helpmemberOpinion', title: '处理意见', minWidth: 200},
                 {fixed: 'right',title: '操作', minWidth: 20, toolbar: '#currentTableBar', align: "center"}
             ]],
             limits: [1, 5, 10, 25, 50, 100],

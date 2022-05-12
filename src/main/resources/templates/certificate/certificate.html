@@ -58,6 +58,17 @@
 </div>
 <script src="/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
 <script>
+    function certUrl(t) {
+        layer.open({
+            type: 1,
+            title: false,
+            closeBtn: 0,
+            area: '516px',
+            skin: 'layui-layer-nobg', //没有背景色
+            shadeClose: true,
+            content: '<img style="display: inline-block; width: 100%; height: 100%;" src="'+t.src+'">'
+        });
+    }
     var tab1;
     layui.use(['form', 'table'], function () {
         var $ = layui.jquery,
@@ -76,12 +87,14 @@
             cols: [[
                 {type: "checkbox", width: 50},
                 {field: 'certId', width: 180, title: '证书ID', sort: true},
-                {field: 'certPetId', width: 180, title: '宠物ID', sort: true},
-                {field: 'certUrl', width: 150, title: '证书路径', sort: true},
+                {field: 'certPetId', width: 180, title: '宠                                                   物ID', sort: true},
+                {field: "certUrl", title: "图片", width:150,templet: function (item) {
+                        return '<img onclick="certUrl(this)" id="certUrl" style="display: inline-block; width: 50%; height: 100%;" src="'+item.certUrl+'">';
+                }},
                 {field: 'certDesc', width: 180, title: '证书详情', sort: true},
                 {fixed: 'right',title: '操作', minWidth: 20, toolbar: '#currentTableBar', align: "center"}
             ]],
-            limits: [20, 20, 20, 25, 50, 100],
+            limits: [1, 5, 10, 20, 50, 100],
             limit: 20,
             page: true,
             skin: 'line'

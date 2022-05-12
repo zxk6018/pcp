@@ -87,7 +87,7 @@
                     }},
                 {field: 'adoptType', width: 80, title: '类型' },
                 {field: 'adoptMessage',width: 100, title: '发布信息' },
-                {field: 'adoptTime', width: 100, title: '发布时间' },
+                {field: 'adoptTime', width: 150, title: '发布时间',templet:"<div>{{layui.util.toDateString(d.ctime, 'yyyy-MM-dd')}}</div> " },
                 {field: 'adoptPethelps', width: 130, title: '是否是救助站', templet:function (res){
                     if(res.adoptPethelps==0){
                         return "否"

@@ -54,7 +54,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label ">是否实名认证</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="userAutonym" th:value="${user.userAutonym}" class="layui-input">
+            <input type="text" readonly  name="userAutonym" th:value="${user.userAutonym}" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
@@ -74,7 +74,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label ">其他认证</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="userApprove" th:value="${user.userApprove}"  class="layui-input">
+            <input type="text" readonly name="userApprove" th:value="if(${user.userApprove}==0)" class="layui-input">
         </div>
     </div>
 

@@ -3,14 +3,46 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hz.dao.EntrustDao">
-    
+
+    <resultMap id="entrustMap" type="Entrust">
+        <id property="entrustId" column="entrust_id"></id>
+        <result property="entrustUserId" column="entrust_user_id"></result>
+        <result property="entrustRname" column="entrust_rname"></result>
+        <result property="entrustIdcard" column="entrust_idcard"></result>
+        <result property="entrustMessage" column="entrust_message"></result>
+        <result property="entrustTime" column="entrust_time"></result>
+        <result property="entrustReview" column="entrust_review"></result>
+        <result property="entrustEnvir" column="entrust_envir"></result>
+        <result property="entrustAddressId" column="entrust_address_id"></result>
+        <result property="entrustAddress" column="entrust_address"></result>
+        <result property="entrustDel" column="entrust_del"></result>
+        <result property="entrustAdminId" column="entrust_admin_id"></result>
+        <result property="entrustDisposetime" column="entrust_disposetime"></result>
+        <collection property="user" ofType="User">
+            <id property="userId" column="user_id"></id>
+            <result property="userAge" column="user_age"></result>
+            <result property="userTime" column="user_time"></result>
+            <result property="userHead" column="user_head"></result>
+            <result property="userPhone" column="user_phone"></result>
+            <result property="userState" column="user_state"></result>
+            <result property="userAutonym" column="user_autonym"></result>
+            <result property="userAddress" column="user_address"></result>
+            <result property="userComment" column="user_comment"></result>
+            <result property="userPassword" column="user_password"></result>
+            <result property="userSex" column="user_sex"></result>
+            <result property="userApprove" column="user_approve"></result>
+            <result property="userName" column="user_name"></result>
+            <result property="userPets" column="user_pets"></result>
+        </collection>
+    </resultMap>
+
     <sql id="entrust_where">
         <where>
             <if test="entrustDisposetime!=null">
-                entrust_disposetime like concat('%',#{entrustDisposetime},'%')
+                a.entrust_disposetime like concat('%',#{entrustDisposetime},'%')
             </if>
             <if test="entrustUserId!=null">
-                and entrust_user_id like concat ('%',#{entrustUserId},'%')
+                and a.entrust_user_id like concat ('%',#{entrustUserId},'%')
             </if>
         </where>
     </sql>
@@ -18,8 +50,8 @@
     
     <!--查询-->
      
-    <select id="findEntrustList" resultType="Entrust">
-        select * from entrust
+    <select id="findEntrustList" resultMap="entrustMap">
+        select * from entrust a left join user b on a.entrust_user_id=b.user_id
         <include refid="entrust_where"/>
         limit #{pyl},#{pageSize}
     </select>

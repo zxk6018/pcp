@@ -39,7 +39,7 @@ public class Relation implements Serializable{
 	 * 申请人电话
 	 */
 	@Column(name = "relation_phone")
-	private int relationPhone;
+	private String relationPhone;
 
 	/**
 	 * 领养发布ID
@@ -53,4 +53,9 @@ public class Relation implements Serializable{
 	@Column(name = "relation_time")
 	private String relationTime;
 
+	/**
+	 * user对象
+	 */
+	@Column(name = "user")
+	private User user;
 }

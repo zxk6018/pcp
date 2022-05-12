@@ -78,6 +78,7 @@ public class Adopt implements Serializable{
 	 */
 	@Column(name = "adopt_disposetime")
 	private String adoptDisposetime;
+
 	/**
 	 * user对象
  	 */

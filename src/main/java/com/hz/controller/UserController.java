@@ -41,6 +41,7 @@ public class UserController {
         jsonMassage.setMsg("请求成功");
         jsonMassage.setCount(count);
         jsonMassage.setData(list);
+        System.out.println(jsonMassage.toString());
         return jsonMassage;
     }
 
