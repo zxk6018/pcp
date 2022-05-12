@@ -30,9 +30,8 @@ public class AdminController {
         JsonMassage<Admin> jsonMassage = new JsonMassage<Admin>();
         if (admin!=null){
             jsonMassage = new JsonMassage<Admin>(0,"登录成功",null,admin);
-
         } else {
-            jsonMassage = new JsonMassage<Admin>(1,"登录失败",null,null);
+            jsonMassage = new JsonMassage<Admin>(1,"账号或密码错误",null,null);
         }
         return jsonMassage;
     }
