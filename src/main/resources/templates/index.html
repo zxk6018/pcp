@@ -132,6 +132,7 @@
             miniAdmin = layui.miniAdmin,
             miniTongji = layui.miniTongji;
 
+        var username = localStorage.getItem("username");
         var options = {
             iniUrl: "/layui/api/init.json",    // 初始化接口
             clearUrl: "/layui/api/clear.json", // 缓存清理接口
