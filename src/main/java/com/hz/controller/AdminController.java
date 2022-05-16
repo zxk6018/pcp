@@ -3,6 +3,7 @@ package com.hz.controller;
 import com.hz.pojo.Admin;
 import com.hz.service.AdminService;
 import com.hz.utils.JsonMassage;
+import com.hz.utils.MD5untils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +27,12 @@ public class AdminController {
     @RequestMapping(value = "/doLogin",method = RequestMethod.POST)
     @ResponseBody
     public JsonMassage<Admin> doLogin(String username,String password){
-        Admin admin = adminService.doLogin(username, password);
+        System.out.println("username==="+username);
+        System.out.println("password==="+password);
+        MD5untils md5untils = new MD5untils();
+        String newpassword = md5untils.md5(password);
+        System.out.println("加密后的密码："+newpassword);
+        Admin admin = adminService.doLogin(username, newpassword);
         JsonMassage<Admin> jsonMassage = new JsonMassage<Admin>();
         if (admin!=null){
             jsonMassage = new JsonMassage<Admin>(0,"登录成功",null,admin);
