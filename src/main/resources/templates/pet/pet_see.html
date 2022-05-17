@@ -33,7 +33,14 @@
     <div class="layui-form-item">
         <label class="layui-form-label">宠物类型</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="pettypeId" th:value="${pet.pettypeId}" class="layui-input">
+            <label>
+            <select th:switch="${pet.pettypeId}">
+                <option th:case="1" >狗</option>
+                <option th:case="2" >猫</option>
+                <option th:case="3" >鼠</option>
+                <option th:case="4" >蛇</option>
+            </select>
+            </label>
         </div>
     </div>
 

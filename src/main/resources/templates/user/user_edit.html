@@ -39,6 +39,15 @@
         </div>
 
         <div class="layui-form-item">
+            <label class="layui-form-label">性别</label>
+            <div class="layui-input-block">
+                <input type="radio" name="userSex" value="1" title="男" th:field="*{user.userSex}">
+                <input type="radio" name="userSex" value="0" title="女" th:field="*{user.userSex}">
+
+            </div>
+        </div>
+
+        <div class="layui-form-item">
             <label class="layui-form-label required">年龄</label>
             <div class="layui-input-block">
                 <input type="text" name="userAge" lay-verify="required" lay-reqtext="年龄不能为空" placeholder="请输入年龄" th:value="${user.userAge}" class="layui-input">

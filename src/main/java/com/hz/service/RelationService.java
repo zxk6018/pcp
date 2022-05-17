@@ -33,18 +33,18 @@ public interface RelationService {
      * @return
      */
     List<Relation> findRelationList(
-            @Param( "pyl" )Integer pyl,
-            @Param( "pageSize" )Integer pageSize,
-            @Param( "relationAdoptId" )Integer relationAdoptId,
-            @Param( "relationUserId" )Integer relationUserId
+            Integer pyl,
+            Integer pageSize,
+            String relationPhone,
+            String relationTime
     );
     /**
      * 总记录数
      * @return
      */
     Integer relationCount(
-            Integer relationAdoptId,
-            Integer relationUserId
+            String relationPhone,
+            String relationTime
     );
     /**
      * 根据ID  获得寄养信息

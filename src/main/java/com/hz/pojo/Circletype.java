@@ -38,7 +38,12 @@ public class Circletype implements Serializable{
 	/**
 	 * 创建人ID
 	 */
-	@Column(name = "circletype_user_id")
-	private int circletypeUserId;
+	@Column(name = "circletype_admin_id")
+	private int circletypeadminId;
+
+	/**
+	 * 管理员
+	 */
+	private Admin admin;
 
 }

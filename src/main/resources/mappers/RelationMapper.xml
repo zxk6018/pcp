@@ -31,11 +31,11 @@
 
     <sql id="relation_where">
         <where>
-            <if test="relationAdoptId!=null and relationAdoptId!=''">
-                a.relation_adopt_id like concat('%',#{relationAdoptId},'%')
+            <if test="relationPhone!=null and relationPhone!=''">
+                b.relatio_phone like concat('%',#{relationPhone},'%')
             </if>
-            <if test="relationUserId!=null and relationUserId!=''">
-                and a.relation_user_id like concat('%',#{relationUserId},'%')
+            <if test="relationTime!=null and relationTime!=''">
+                and a.relation_time like concat('%',#{relationTime},'%')
             </if>
         </where>
     </sql>

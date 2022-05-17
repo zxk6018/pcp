@@ -49,9 +49,9 @@ public class RelationController {
     public JsonMassage<List<Relation>>findProvideList(
             @RequestParam(value = "page",defaultValue = "1")Integer page,
             @RequestParam(value = "limit",defaultValue = "10") Integer limit,
-            Integer relationAdoptId ,Integer relationUserId ){
-        List<Relation> list = relationService.findRelationList( page,limit,relationAdoptId,relationUserId );
-        Integer count = relationService.relationCount( relationAdoptId,relationUserId );
+            String relationPhone, String relationTime){
+        List<Relation> list = relationService.findRelationList( page,limit,relationPhone,relationTime );
+        Integer count = relationService.relationCount( relationPhone,relationTime );
         JsonMassage<List<Relation>> jsonMassage = new JsonMassage<List<Relation>>(  );
         jsonMassage.setCode( 0 );
         jsonMassage.setMsg( "请求成功" );

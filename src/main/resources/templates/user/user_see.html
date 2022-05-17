@@ -74,7 +74,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label ">其他认证</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="userApprove" th:value="if(${user.userApprove}==0)" class="layui-input">
+            <input type="text" readonly name="userApprove" th:value="${user.userApprove}" class="layui-input">
         </div>
     </div>
 
@@ -95,7 +95,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label ">状态</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="userState" th:value="${user.userState}"  class="layui-input">
+            <input type="text" readonly name="userState"  th:if="${user.userState}==0"  value="正常"  class="layui-input">
         </div>
     </div>
 
@@ -114,9 +114,7 @@
             laydate = layui.laydate;
 
         form.on('submit(saveBtn)', function (data) {
-
                     parent.layer.closeAll();
-
                 });
         return false;
             });

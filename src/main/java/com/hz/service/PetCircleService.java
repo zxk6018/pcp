@@ -16,22 +16,22 @@ public interface PetCircleService extends IService<Petcircle> {
      * 根据文章ID和用户ID
      * @param pyl 偏移量
      * @param pageSize 每页显示数量
-     * @param petcircleId 用户ID
-     * @param petcircleUserId 文章类型ID
+     * @param petcircleContent 发布内容
+     * @param petcircleTime 发布时间
      * @return
      */
-    List<Petcircle> findPetcircleList(@Param("pyl") Integer pyl,
-                                      @Param("pageSize") Integer pageSize,
-                                      @Param("petcircleId") String petcircleId,
-                                      @Param("petcircleUserId") String petcircleUserId
+    List<Petcircle> findPetcircleList(Integer pyl,
+                                      Integer pageSize,
+                                      String petcircleContent,
+                                      String petcircleTime
     );
 
     /**
      * 总记录数
      * @return
      */
-    Integer PetcircleCount(@Param("petcircleId") String petcircleId,
-                           @Param("petcircleUserId") String petcircleUserId);
+    Integer PetcircleCount(String petcircleContent,
+                           String petcircleTime);
 
 
 

@@ -71,4 +71,18 @@ public class Petcircle implements Serializable{
 	@Column(name = "petcircle_review")
 	private int petcircleReview;
 
+	/**
+	 * 用户
+	 */
+	private User user;
+
+	/**
+	 * 宠物类型
+	 */
+	private Pettype pettype;
+
+	/**
+	 * 文章类型
+	 */
+	private Circletype circletype;
 }

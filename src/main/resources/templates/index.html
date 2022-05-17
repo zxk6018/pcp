@@ -55,8 +55,8 @@
                 <li class="layui-nav-item mobile layui-hide-xs" lay-unselect>
                     <a href="javascript:;" data-check-screen="full"><i class="fa fa-arrows-alt"></i></a>
                 </li>
-                <li class="layui-nav-item layuimini-setting">
-                    <a href="javascript:;">${username}</a>
+                <li class="layui-nav-item  layuimini-setting">
+                    <a href="javascript:;">admin</a>
                     <dl class="layui-nav-child">
                         <dd>
                             <a href="javascript:;" layuimini-content-href="page/user-setting.html" data-title="基本资料" data-icon="fa fa-gears">基本资料<span class="layui-badge-dot"></span></a>
@@ -132,7 +132,6 @@
             miniAdmin = layui.miniAdmin,
             miniTongji = layui.miniTongji;
 
-        var username = localStorage.getItem("username");
         var options = {
             iniUrl: "/layui/api/init.json",    // 初始化接口
             clearUrl: "/layui/api/clear.json", // 缓存清理接口

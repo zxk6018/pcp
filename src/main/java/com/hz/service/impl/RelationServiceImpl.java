@@ -43,24 +43,24 @@ public class RelationServiceImpl implements RelationService {
      * 分页查询
      * @param pageNo
      * @param pageSize
-     * @param relationAdoptId
-     * @param relationUserId
+     * @param relationPhone
+     * @param relationTime
      * @return
      */
     @Override
-    public List<Relation> findRelationList( Integer pageNo, Integer pageSize, Integer relationAdoptId, Integer relationUserId ) {
+    public List<Relation> findRelationList( Integer pageNo, Integer pageSize, String relationPhone, String relationTime ) {
         Integer pyl =(pageNo-1)*pageSize;
-        return relationDao.findRelationList( pyl,pageSize,relationAdoptId,relationUserId );
+        return relationDao.findRelationList( pyl,pageSize,relationPhone,relationTime );
     }
     /**
      * 获取总数据数
-     * @param relationAdoptId
-     * @param relationUserId
+     * @param relationPhone
+     * @param relationTime
      * @return
      */
     @Override
-    public Integer relationCount( Integer relationAdoptId, Integer relationUserId ) {
-        return relationDao.relationCount( relationAdoptId, relationUserId);
+    public Integer relationCount( String relationPhone, String relationTime ) {
+        return relationDao.relationCount( relationPhone, relationTime);
     }
     /**
      * 根据ID查找

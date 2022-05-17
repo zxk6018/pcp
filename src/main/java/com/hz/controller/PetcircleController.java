@@ -26,17 +26,17 @@ public class PetcircleController {
      * 分页查询
      * @param page
      * @param limit
-     * @param petcircleId
-     * @param petcircleUserId
+     * @param petcircleContent
+     * @param petcircleTime
      * @return
      */
     @RequestMapping(value = "/findPetcircleList",method = RequestMethod.GET)
     @ResponseBody
     public JsonMassage<List<Petcircle>> findPetcircleList(@RequestParam(value = "page",defaultValue = "1") Integer page,
                                                         @RequestParam(value = "limit",defaultValue ="10") Integer limit,
-                                                        String petcircleId, String petcircleUserId){
-        List<Petcircle> list = petCircleService.findPetcircleList(page,limit,petcircleId,petcircleUserId);
-        Integer count = petCircleService.PetcircleCount(petcircleId,petcircleUserId);
+                                                        String petcircleContent, String petcircleTime){
+        List<Petcircle> list = petCircleService.findPetcircleList(page,limit,petcircleContent,petcircleTime);
+        Integer count = petCircleService.PetcircleCount(petcircleContent,petcircleTime);
         JsonMassage<List<Petcircle>> jsonMassage = new JsonMassage<List<Petcircle>>();
         jsonMassage.setCode(0);
         jsonMassage.setMsg("请求成功");

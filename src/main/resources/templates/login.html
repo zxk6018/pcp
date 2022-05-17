@@ -35,7 +35,7 @@
 <div class="layui-container">
     <div class="admin-login-background">
         <div class="layui-form login-form">
-            <form class="layui-form" action="" method="post">
+            <form class="layui-form" >
                 <div class="layui-form-item logo-title">
                     <h1>LayuiMini后台登录</h1>
                 </div>
@@ -103,8 +103,6 @@
                 if(res.code==0){
                     layer.msg(res.msg, function () {
                         window.location = '/index.html';
-                       localStorage.setItem("username",data.username);
-                       request.setItem("username",data.username);
                     });
                 }else {
                     layer.msg(res.msg);

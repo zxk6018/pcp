@@ -18,16 +18,16 @@
                 <form class="layui-form layui-form-pane" action="">
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">文章ID：</label>
+                            <label class="layui-form-label">发布内容</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="petcircleId" autocomplete="off" class="layui-input">
+                                <input type="text" name="petcircleContent" autocomplete="off" class="layui-input">
                             </div>
                         </div>
 
                         <div class="layui-inline">
-                            <label class="layui-form-label">用户ID：</label>
+                            <label class="layui-form-label">发布时间</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="petcircleCircletypeId" autocomplete="off" class="layui-input">
+                                <input type="text" name="petcircleTime" id="petcircleTime" autocomplete="off" class="layui-input">
                             </div>
                         </div>
 
@@ -58,11 +58,16 @@
 <script src="/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
 <script>
     var tab1;
-    layui.use(['form', 'table'], function () {
+    layui.use(['form', 'table','laydate'], function () {
         var $ = layui.jquery,
             form = layui.form,
-            table = layui.table;
+            table = layui.table,
+            laydate=layui.laydate;
 
+        //日期
+        laydate.render({
+            elem: '#petcircleTime'
+        });
         tab1=table.render({
             elem: '#currentTableId',
             url: '/petcircle/findPetcircleList',
@@ -75,13 +80,19 @@
             cols: [[
                 {type: "checkbox", width: 50},
                 {field: 'petcircleId', width: 100, title: '文章ID', sort: true},
-                {field: 'petcircleUserId', width: 100, title: '用户ID', sort: true},
+                {field: 'userName', width: 100, title: '用户名',templet:function (res) {
+                        return res.user.userName;
+                    }},
                 {field: 'petcircleNum', width: 100, title: '阅读量', sort: true},
-                {field: 'petcirclePettypeId', title: '类型ID（宠物类型ID）', minWidth: 200},
-                {field: 'petcircleCircletypeId', width: 100, title: '发布类型'},
+                {field: 'pettypeName', title: '宠物类型', width: 100,templet:function (res) {
+                        return res.pettype.pettypeName;
+                    }},
+                {field: 'circletypeName', width: 100, title: '发布类型',templet:function (res) {
+                        return res.circletype.circletypeName;
+                    }},
                 {field: 'petcircleContent', width: 150, title: '发布内容'},
                 {field: 'petcircleGood', width: 100, title: '点赞数', sort: true},
-                {field: 'petcircleReview', width: 110, title: '审核状态',templet:function (res) {
+                {field: 'petcircleReview', width: 100, title: '审核状态',templet:function (res) {
                         if (res.petcircleReview==0){
                             return "待审核";
                         }else if(res.petcircleReview==1){
@@ -92,6 +103,7 @@
                             return "删除";
                         }
                     }},
+                {field: 'petcircleTime', width: 120, title: '发布时间',templet:"<div>{{layui.util.toDateString(d.petcircleTime, 'yyyy-MM-dd')}}</div> "},
                 {fixed: 'right',title: '操作', minWidth: 20, toolbar: '#currentTableBar', align: "center"}
             ]],
             limits: [1, 5, 10, 25, 50, 100],
@@ -113,8 +125,8 @@
                     curr: 1
                 }
                 , where: {
-                    "petcircleId":data.field.petcircleId,
-                    "petcircleUserId":data.field.petcircleUserId
+                    "petcircleContent":data.field.petcircleContent,
+                    "petcircleTime":data.field.petcircleTime
                 }
             }, 'data');
 
