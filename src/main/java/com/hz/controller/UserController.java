@@ -119,7 +119,6 @@ public class UserController {
         System.out.println("userName===="+userName);
         System.out.println("userPassword===="+userPassword);
 
-
         MD5untils md5untils = new MD5untils();
         String newpassword = md5untils.md5(userPassword);
         System.out.println("加密后的密码："+newpassword);
@@ -127,6 +126,7 @@ public class UserController {
         JsonMassage<User> jsonMassage = new JsonMassage<User>();
         if (user!=null){
              jsonMassage = new JsonMassage<User>(0,"登录成功",null,user);
+            System.out.println("获取到的数据"+jsonMassage.getData());
 
         } else {
             jsonMassage = new JsonMassage<User>(1,"登录失败",null,null);

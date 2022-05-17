@@ -16,6 +16,7 @@ public class JsonMassage<T> {
     public JsonMassage(Integer code){
         this.code = code;
         this.msg = this.code>0?"操作成功":"操作失败";
+        this.data=getData();
     }
 
 
