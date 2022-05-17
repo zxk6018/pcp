@@ -3,32 +3,76 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hz.dao.PetCircleDao">
+
+    <resultMap id="PetcircleMap" type="Petcircle">
+        <id property="petcircleId" column="petcircle_id"></id>
+        <result property="petcircleUserId" column="petcircle_user_id"></result>
+        <result property="petcircleNum" column="petcircle_num"></result>
+        <result property="petcirclePettypeId" column="petcircle_pettype_id"></result>
+        <result property="petcircleCircletypeId" column="petcircle_circletype_id"></result>
+        <result property="petcircleContent" column="petcircle_content"></result>
+        <result property="petcircleTime" column="petcircle_time"></result>
+        <result property="petcircleGood" column="petcircle_good"></result>
+        <result property="petcircleReview" column="petcircle_review"></result>
+        <association property="user" javaType="User">
+        <id property="userId" column="user_id"></id>
+        <result property="userAge" column="user_age"></result>
+        <result property="userTime" column="user_time"></result>
+        <result property="userHead" column="user_head"></result>
+        <result property="userPhone" column="user_phone"></result>
+        <result property="userState" column="user_state"></result>
+        <result property="userAutonym" column="user_autonym"></result>
+        <result property="userAddress" column="user_address"></result>
+        <result property="userComment" column="user_comment"></result>
+        <result property="userPassword" column="user_password"></result>
+        <result property="userSex" column="user_sex"></result>
+        <result property="userApprove" column="user_approve"></result>
+        <result property="userName" column="user_name"></result>
+        <result property="userPets" column="user_pets"></result>
+    </association>
+        <association property="pettype" javaType="Pettype">
+            <id property="pettypeId" column="pettype_id"></id>
+            <result property="pettypeName" column="pettype_name"></result>
+        </association>
+        <association property="circletype" javaType="Circletype">
+            <id property="circletypeId" column="circletype_id"></id>
+            <result property="circletypeName" column="circletype_name"></result>
+            <result property="circletypeTime" column="circletype_time"></result>
+            <result property="circletypeUserId" column="circletype_user_id"></result>
+        </association>
+    </resultMap>
+
     <sql id="petcircle_where">
         <where>
-            <if test="petcircleId!=null and petcircleId!=''">
-                petcircle_id like concat('%',#{petcircleId},'%')
+            <if test="petcircleContent!=null and petcircleContent!=''">
+                petcircle_content like concat('%',#{petcircleContent},'%')
             </if>
-            <if test="petcircleUserId!=null and petcircleUserId!=''">
-                and petcircle_user_id like concat('%',#{petcircleUserId},'%')
+            <if test="petcircleTime!=null and petcircleTime!=''">
+                and  petcircle_time like concat('%',#{petcircleTime},'%')
             </if>
         </where>
     </sql>
 
 
     <!--查询文章-->
-    <select id="findPetcircleList" resultType="Petcircle">
-        select * from petcircle
+    <select id="findPetcircleList" resultMap="PetcircleMap">
+        select * from petcircle a left join user b on a.petcircle_user_id=b.user_id
+        left join pettype c on a.petcircle_pettype_id=c.pettype_id
+        left join circletype d on a.petcircle_circletype_id=d.circletype_id
         <include refid="petcircle_where"/>
         order by petcircle_id asc limit #{pyl},#{pageSize}
     </select>
+
     <select id="PetcircleCount" resultType="Integer">
         select count(1) from  petcircle
         <include refid="petcircle_where"/>
     </select>
+
     <!--根据ID查询文章-->
     <select id="findPetcircleById" resultType="Petcircle">
         select * from petcircle where petcircle_id=#{petcircleId}
     </select>
+
     <!--新增文章-->
     <insert id="savePetcircle">
         insert into petcircle(

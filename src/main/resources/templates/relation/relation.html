@@ -18,18 +18,19 @@
                 <form class="layui-form layui-form-pane" action="">
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">申请人ID（用户id）</label>
+                            <label class="layui-form-label">申请人电话</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="relationUserId" autocomplete="off" class="layui-input">
+                                <input type="text" name="relationPhone" autocomplete="off" class="layui-input">
                             </div>
                         </div>
 
                         <div class="layui-inline">
-                            <label class="layui-form-label">领养发布ID</label>
+                            <label class="layui-form-label">申请时间</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="relationAdoptId" autocomplete="off" class="layui-input">
+                                <input type="text" name="relationTime" id="relationTime" autocomplete="off" class="layui-input">
                             </div>
                         </div>
+
                         <div class="layui-inline">
                             <button type="submit" class="layui-btn layui-btn-primary"  lay-submit lay-filter="data-search-btn"><i class="layui-icon"></i> 搜 索</button>
                         </div>
@@ -59,11 +60,17 @@
 <script>
     var tab1;
 
-    layui.use(['form', 'table'], function () {
+    layui.use(['form', 'table','laydate'], function () {
         var $ = layui.jquery,
             form = layui.form,
-            table = layui.table;
+            table = layui.table,
+            laydate = layui.laydate;
 
+        //日期
+        laydate.render({
+            elem: '#circletypeTime',
+
+        });
         tab1=table.render({
             elem: '#currentTableId',
             url: '/relation/findRelationList',
@@ -76,12 +83,13 @@
             cols: [[
                 {type: "checkbox", width: 50},
                 {field: 'relationId', width: 180, title: '领养寄养联系信息ID', sort: true},
-                {field: 'user.userName', width: 180, title: '申请人',templet:function (user) {
+                {field: 'user.userName', width: 80, title: '申请人',templet:function (user) {
                             return user.user.userName;
                     }},
-                {field: 'relationPhone', width: 180, title: '申请人电话'},
-                {field: 'relationReason', width: 180, title: '申请理由'},
-                {field: 'relationAdoptId', title: '领养寄养发布ID', minWidth: 200 , sort: true},
+                {field: 'relationPhone', width: 120, title: '申请人电话'},
+                {field: 'relationTime', width: 150, title: '申请时间',templet:"<div>{{layui.util.toDateString(d.relationTime, 'yyyy-MM-dd')}}</div> "},
+                {field: 'relationReason', width: 150, title: '申请理由'},
+                {field: 'relationAdoptId', title: '领养寄养发布ID', width: 150 , sort: true},
                 {fixed: 'right',title: '操作', minWidth: 20, toolbar: '#currentTableBar', align: "center"}
 
             ]],
@@ -105,8 +113,8 @@
                     curr: 1
                 }
                 , where: {
-                    "relationUserId":data.field.relationUserId,
-                    "relationAdoptId":data.field.relationAdoptId
+                    "relationPhone":data.field.relationPhone,
+                    "relationTime":data.field.relationTime
                 }
             }, 'data');
 

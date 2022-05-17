@@ -16,17 +16,10 @@
     </head>
     <body>
     <div class="layui-form layuimini-form">
-        <div class="layui-form-item">
-            <label class="layui-form-label required">宠物ID</label>
-            <div class="layui-input-block">
-                <input name="petId" type="hidden" th:value="${pet.petId}">
-                <input type="text" name="petId" lay-verify="required" lay-reqtext="宠物Id不能为空" placeholder="请输入宠物Id账号" th:value="${pet.petId}" class="layui-input">
-            </div>
-        </div>
-
     <div class="layui-form-item">
         <label class="layui-form-label required">宠物名</label>
         <div class="layui-input-block">
+            <input name="petId" type="hidden" th:value="${pet.petId}">
             <input type="text" name="petName" lay-verify="required" lay-reqtext="宠物名不能为空" placeholder="请输入宠物名名称" th:value="${pet.petName}"  class="layui-input">
         </div>
     </div>
@@ -34,7 +27,12 @@
         <div class="layui-form-item">
             <label class="layui-form-label required">宠物类型</label>
             <div class="layui-input-block">
-                <input type="text" name="pettypeId" lay-verify="required" lay-reqtext="宠物类型不能为空" placeholder="请输入宠物类型名称" th:value="${pet.pettypeId}"  class="layui-input">
+                <select  name="pettypeId">
+                    <option value="1" th:field="*{pet.pettypeId}">狗</option>
+                    <option value="2" th:field="*{pet.pettypeId}">猫</option>
+                    <option value="3" th:field="*{pet.pettypeId}">鼠</option>
+                    <option value="4" th:field="*{pet.pettypeId}">蛇</option>
+                </select>
             </div>
         </div>
         <div class="layui-form-item">
@@ -43,12 +41,16 @@
                 <input type="text" name="pettypeName" lay-verify="required" lay-reqtext="宠物品种不能为空" placeholder="请输入宠物品种" th:value="${pet.pettypeName}" class="layui-input">
             </div>
         </div>
+
         <div class="layui-form-item">
-            <label class="layui-form-label required">宠物性别</label>
+            <label class="layui-form-label">宠物性别</label>
             <div class="layui-input-block">
-                <input type="text" name="petSex" lay-verify="required" lay-reqtext="宠物性别不能为空" placeholder="请输入宠物性别" th:value="${pet.petSex}" class="layui-input">
+                <input type="radio" name="petSex" value="1" title="弟弟" th:field="*{pet.petSex}">
+                <input type="radio" name="petSex" value="0" title="妹妹" th:field="*{pet.petSex}">
+                <input type="radio" name="petSex" value="2" title="保密" th:field="*{pet.petSex}">
             </div>
         </div>
+
         <div class="layui-form-item">
             <label class="layui-form-label required">所属用户</label>
             <div class="layui-input-block">

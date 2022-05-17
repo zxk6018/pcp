@@ -35,16 +35,16 @@ public interface RelationDao {
     List<Relation>findRelationList(
             @Param( "pyl" )Integer pyl,
             @Param( "pageSize" )Integer pageSize,
-            @Param( "relationAdoptId" )Integer relationAdoptId,
-            @Param( "relationUserId" )Integer relationUserId
+            @Param( "relationPhone" )String relationPhone,
+            @Param( "relationTime" )String relationTime
     );
     /**
      * 总记录数
      * @return
      */
     Integer relationCount(
-            @Param( "relationAdoptId" )Integer relationAdoptId,
-            @Param( "relationUserId" )Integer relationUserId
+            @Param( "relationPhone" )String relationPhone,
+            @Param( "relationTime" )String relationTime
     );
     /**
      * 根据ID获取领养人信息

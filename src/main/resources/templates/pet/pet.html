@@ -76,7 +76,8 @@
             cols: [[
                 {type: "checkbox", width: 50},
                 {field: 'petId', width: 110, title: '宠物ID', sort: true},
-                {field: 'petName', width: 100, title: '宠物名', sort: true},
+                {field: 'petName', width: 100, title: '宠物名'},
+                {field: 'petAge', width: 100, title: '宠物年龄', sort: true},
                 {field: 'pettypeId', width: 100, title: '宠物类型',templet:function (res) {
                         if (res.pettypeId==1){
                             return "狗";
@@ -88,7 +89,7 @@
                             return "蛇";
                         }
                     }},
-                {field: 'pettypeName', width: 100, title: '宠物品种', sort: true},
+                {field: 'pettypeName', width: 100, title: '宠物品种'},
                 {field: 'petSex', width: 100, title: '宠物性别',templet:function (res) {
                         if (res.petSex==0){
                             return "妹妹";
@@ -99,8 +100,7 @@
                         }
                     }},
                 {field: 'petUserId', width: 100, title: '所属用户'},
-                {field: 'petAge', width: 100, title: '宠物年龄', sort: true},
-                {field: 'petImg', width: 100, title: '宠物图片', sort: true},
+                {field: 'petImg', width: 100, title: '宠物图片'},
                 {fixed: 'right',title: '操作', minWidth: 20, toolbar: '#currentTableBar', align: "center"}
             ]],
             limits: [20, 20, 20, 25, 50, 100],

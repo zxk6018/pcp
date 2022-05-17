@@ -83,7 +83,9 @@
                 {field: 'circletypeId', width: 150, title: '文章类型ID', sort: true},
                 {field: 'circletypeName', width: 180, title: '文章类型名'},
                 {field: 'circletypeTime', title: '创建时间', minWidth: 200},
-                {field: 'circletypeUserId', width: 180, title: '创建人ID', sort: true},
+                {field: 'adminName', width: 180, title: '创建人',templet:function (res) {
+                        return res.admin.adminName;
+                    }},
                 {fixed: 'right',title: '操作', minWidth: 20, toolbar: '#currentTableBar', align: "center"}
             ]],
             limits: [1, 5, 10, 25, 50, 100],

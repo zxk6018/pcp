@@ -4,6 +4,24 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hz.dao.CircletypeDao">
 
+    <resultMap id="CircletypeMap" type="Circletype">
+        <id property="circletypeId" column="circletype_id"></id>
+        <result property="circletypeName" column="circletype_name"></result>
+        <result property="circletypeTime" column="circletype_time"></result>
+        <result property="circletypeUserId" column="circletype_user_id"></result>
+        <association property="admin" javaType="Admin">
+            <id property="adminId" column="admin_id"></id>
+            <result property="adminName" column="admin_name"></result>
+            <result property="adminPassword" column="admin_password"></result>
+            <result property="adminPhone" column="admin_phone"></result>
+            <result property="adminRoleAuthoId" column="admin_role_autho_id"></result>
+            <result property="adminRoleTime" column="admin_role_time"></result>
+            <result property="adminAuthoId" column="admin_autho_id"></result>
+            <result property="adminAuthoName" column="admin_autho_name"></result>
+            <result property="adminUsertime" column="admin_usertime"></result>
+            <result property="adminEndtime" column="admin_endtime"></result>
+        </association>
+    </resultMap>
     <sql id="circletype_where">
         <where>
             <if test="circletypeName!=null">
@@ -15,8 +33,8 @@
         </where>
     </sql>
 
-    <select id="findCircletypetList" resultType="Circletype">
-        select * from circletype
+    <select id="findCircletypetList" resultMap="CircletypeMap">
+        select * from circletype a left join admin b on a.circletype_admin_id=b.admin_id
         <include refid="circletype_where"/>
         limit #{pyl},#{pageSize}
     </select>

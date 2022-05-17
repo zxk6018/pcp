@@ -81,8 +81,8 @@
             cols: [[
                 {type: "checkbox", width: 50},
                 {field: 'entrustId', width: 100, title: '寄养ID', sort: true},
-                {field: 'user.userName', width: 100, title: '用户名', templet:function (user) {
-                        return user.user.userName;
+                {field: 'user.userName', width: 100, title: '用户名', templet:function (res) {
+                        return res.user.userName;
                     }},
               /*  {field: 'entrustRname', width: 110, title: '真实姓名'},
                 {field: 'entrustIdcard', width: 100, title: '身份证号'},

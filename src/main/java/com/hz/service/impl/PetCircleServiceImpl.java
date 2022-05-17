@@ -25,25 +25,25 @@ public class PetCircleServiceImpl extends ServiceImpl<BaseMapper<Petcircle>,Petc
      * 分页查询
      * @param pageNo
      * @param pageSize 每页显示数量
-     * @param petcircleId 文章ID
-     * @param petcircleUserId 用户ID
+     * @param petcircleContent 发布内容
+     * @param petcircleTime 发布时间
      * @return
      */
     @Override
-    public List<Petcircle> findPetcircleList(Integer pageNo, Integer pageSize, String petcircleId, String petcircleUserId) {
+    public List<Petcircle> findPetcircleList(Integer pageNo, Integer pageSize,  String petcircleContent, String petcircleTime) {
         Integer pyl = (pageNo-1)*pageSize;
-        return petCircleDao.findPetcircleList(pyl,pageSize,petcircleId,petcircleUserId);
+        return petCircleDao.findPetcircleList(pyl,pageSize,petcircleContent,petcircleTime);
     }
 
     /**
      * 获取数据总条数
-     * @param petcircleId
-     * @param petcircleUserId
+     * @param petcircleContent
+     * @param petcircleTime
      * @return
      */
     @Override
-    public Integer PetcircleCount(String petcircleId, String petcircleUserId) {
-        return petCircleDao.PetcircleCount(petcircleId,petcircleUserId);
+    public Integer PetcircleCount(String petcircleContent, String petcircleTime) {
+        return petCircleDao.PetcircleCount(petcircleContent,petcircleTime);
     }
 
     /**
