@@ -104,7 +104,7 @@
         select * from user where user_id=#{userId}
     </select>
     <!--登录-->
-    <select id="loginUser" resultType="User">
-        select * from user where user_name=#{userName} and user_password=#{userPassword}
+    <select id="loginUser" resultType="User" resultMap="userMap">
+        select * from user a left join pet b on a.user_id=b.pet_user_id where user_name=#{userName} and user_password=#{userPassword}
     </select>
 </mapper>

@@ -41,6 +41,7 @@ public class UserController {
         jsonMassage.setMsg("请求成功");
         jsonMassage.setCount(count);
         jsonMassage.setData(list);
+        System.out.println(jsonMassage.toString());
         return jsonMassage;
     }
 
@@ -115,13 +116,17 @@ public class UserController {
     @RequestMapping(value = "/loginUser",method = RequestMethod.POST)
     @ResponseBody
     public JsonMassage<User> loginUser(@Param("userName") String userName,@Param("userPassword") String userPassword){
+        System.out.println("userName===="+userName);
+        System.out.println("userPassword===="+userPassword);
+
         MD5untils md5untils = new MD5untils();
         String newpassword = md5untils.md5(userPassword);
-       /* System.out.println("加密后的密码："+newpassword);*/
+        System.out.println("加密后的密码："+newpassword);
         User user = userService.loginUser(userName, newpassword);
         JsonMassage<User> jsonMassage = new JsonMassage<User>();
         if (user!=null){
              jsonMassage = new JsonMassage<User>(0,"登录成功",null,user);
+            System.out.println("获取到的数据"+jsonMassage.getData());
 
         } else {
             jsonMassage = new JsonMassage<User>(1,"登录失败",null,null);
@@ -129,5 +134,6 @@ public class UserController {
 
         return jsonMassage;
     }
+
 
 }
