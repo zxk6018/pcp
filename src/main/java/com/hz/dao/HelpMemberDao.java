@@ -16,22 +16,22 @@ public interface HelpMemberDao extends BaseMapper<Helpmember> {
      * 根据救助队队员ID和救助队ID查询
      * @param pyl 偏移量
      * @param pageSize 每页显示数量
-     * @param helpmemberId 救助队队员UD
-     * @param helpmemberPethelpId 救助队ID
+     * @param helpmemberRname 姓名
+     * @param helpmemberAddress 地址
      * @return
      */
     List<Helpmember> findHelpmemberList(@Param("pyl") Integer pyl,
                                      @Param("pageSize") Integer pageSize,
-                                     @Param("helpmemberId") String helpmemberId,
-                                     @Param("helpmemberPethelpId") String helpmemberPethelpId
+                                     @Param("helpmemberRname") String helpmemberRname,
+                                     @Param("helpmemberAddress") String helpmemberAddress
     );
 
     /**
      * 总记录数
      * @return
      */
-    Integer HelpmemberCount(@Param("helpmemberId") String helpmemberId,
-                         @Param("helpmemberPethelpId") String helpmemberPethelpId);
+    Integer HelpmemberCount(@Param("helpmemberRname") String helpmemberRname,
+                         @Param("helpmemberAddress") String helpmemberAddress);
 
 
     /**

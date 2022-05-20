@@ -27,17 +27,17 @@ public class HelpmemberController {
      *
      * @param page
      * @param limit
-     * @param helpmemberId
-     * @param helpmemberPethelpId
+     * @param helpmemberRname
+     * @param helpmemberAddress
      * @return
      */
     @RequestMapping(value = "/findHelpmemberList", method = RequestMethod.GET)
     @ResponseBody
     public JsonMassage<List<Helpmember>> findHelpmemberList(@RequestParam(value = "page", defaultValue = "1") Integer page,
                                                             @RequestParam(value = "limit", defaultValue = "10") Integer limit,
-                                                            String helpmemberId, String helpmemberPethelpId) {
-        List<Helpmember> list = helpmemberService.findHelpmemberList(page, limit, helpmemberId, helpmemberPethelpId);
-        Integer count = helpmemberService.HelpmemberCount(helpmemberId, helpmemberPethelpId);
+                                                            String helpmemberRname, String helpmemberAddress) {
+        List<Helpmember> list = helpmemberService.findHelpmemberList(page, limit, helpmemberRname, helpmemberAddress);
+        Integer count = helpmemberService.HelpmemberCount(helpmemberRname, helpmemberAddress);
         JsonMassage<List<Helpmember>> jsonMassage = new JsonMassage<List<Helpmember>>();
         jsonMassage.setCode(0);
         jsonMassage.setMsg("请求成功");

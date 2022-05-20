@@ -19,98 +19,101 @@
     <div class="layui-form-item">
         <label class="layui-form-label">队员ID：</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="helpmemberId"   th:value="${hm.helpmemberId}" class="layui-input">
+            <input type="text" readonly  th:value="${hm.helpmemberId}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">用户ID</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="helpmemberUserId" th:value="${hm.helpmemberUserId}" class="layui-input">
+            <input type="text" readonly th:value="${hm.helpmemberUserId}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">救助队ID</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="helpmemberPethelpId" th:value="${hm.helpmemberPethelpId}" class="layui-input">
+            <input type="text" readonly  th:value="${hm.helpmemberPethelpId}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">队员电话</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="helpmemberPhone" th:value="${hm.helpmemberPhone}" class="layui-input">
+            <input type="text" readonly  th:value="${hm.helpmemberPhone}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">真实姓名</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="helpmemberRname" th:value="${hm.helpmemberRname}" class="layui-input">
+            <input type="text" readonly  th:value="${hm.helpmemberRname}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">身份证号</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="helpmemberUserIdcard" th:value="${hm.helpmemberUserIdcard}" class="layui-input">
+            <input type="text" readonly  th:value="${hm.helpmemberUserIdcard}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">照片</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="helpmemberImg" th:value="${hm.helpmemberImg}" class="layui-input">
+            <input type="text" readonly  th:value="${hm.helpmemberImg}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">所在地址</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="helpmemberAddress" th:value="${hm.helpmemberAddress}" class="layui-input">
+            <input type="text" readonly  th:value="${hm.helpmemberAddress}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">申请时间</label>
         <div class="layui-input-block">
-        <input type="text" readonly placeholder="yyyy-MM-dd" id="helpmemberTime" name="helpmemberTime" th:value="${hm.helpmemberTime}" class="layui-input">
+        <input type="text" readonly  th:value="${hm.helpmemberTime}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">申请理由</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="helpmemberReason" th:value="${hm.helpmemberReason}"  class="layui-input">
+            <input type="text" readonly  th:value="${hm.helpmemberReason}"  class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">审核状态</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="helpmemberState" th:value="${hm.helpmemberState}"  class="layui-input">
+            <select th:switch="${hm.helpmemberState}">
+                <option th:case="0" >通过</option>
+                <option th:case="1" >未通过</option>
+            </select>
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">处理人ID</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="helpmemberPethelpAdminId" th:value="${hm.helpmemberPethelpAdminId}"  class="layui-input">
+            <input type="text" readonly  th:value="${hm.helpmemberPethelpAdminId}"  class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">处理意见</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="helpmemberOpinion" th:value="${hm.helpmemberOpinion}"  class="layui-input">
+            <input type="text" readonly  th:value="${hm.helpmemberOpinion}"  class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">处理时间</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="helpmemberDisposetime" th:value="${hm.helpmemberDisposetime}"  class="layui-input">
+            <input type="text" readonly  th:value="${hm.helpmemberDisposetime}"  class="layui-input">
         </div>
     </div>
 

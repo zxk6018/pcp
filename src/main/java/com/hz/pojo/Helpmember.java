@@ -101,4 +101,8 @@ public class Helpmember implements Serializable{
 	@Column(name = "helpmember_disposetime")
 	private String helpmemberDisposetime;
 
+	/**
+	 * 用户
+	 */
+	private User user;
 }

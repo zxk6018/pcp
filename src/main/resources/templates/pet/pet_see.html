@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <title>layui</title>
@@ -19,63 +19,65 @@
     <div class="layui-form-item">
         <label class="layui-form-label">宠物ID：</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="petId"   th:value="${pet.petId}" class="layui-input">
+            <input type="text" readonly  th:value="${pet.petId}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">宠物名</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="petName"   th:value="${pet.petName}"  class="layui-input">
+            <input type="text" readonly th:value="${pet.petName}"  class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">宠物类型</label>
         <div class="layui-input-block">
-            <label>
             <select th:switch="${pet.pettypeId}">
                 <option th:case="1" >狗</option>
                 <option th:case="2" >猫</option>
                 <option th:case="3" >鼠</option>
                 <option th:case="4" >蛇</option>
             </select>
-            </label>
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">宠物品种</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="pettypeName" th:value="${pet.pettypeName}" class="layui-input">
+            <input type="text" readonly  th:value="${pet.pettypeName}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">宠物性别</label>
         <div class="layui-input-block">
-        <input type="text" readonly  name="petSex" th:value="${pet.petSex}" class="layui-input">
+            <select th:switch="${pet.petSex}">
+                <option th:case="0" >妹妹</option>
+                <option th:case="1" >弟弟</option>
+                <option th:case="2" >保密</option>
+            </select>
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">所属用户</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="petUserId" th:value="${pet.petUserId}"  class="layui-input">
+            <input type="text" readonly  th:value="${pet.petUserId}"  class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">宠物年龄</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="petAge" th:value="${pet.petAge}"  class="layui-input">
+            <input type="text" readonly  th:value="${pet.petAge}"  class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">宠物图片</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="petImg" th:value="${pet.petImg}"  class="layui-input">
+            <input type="text" readonly  th:value="${pet.petImg}"  class="layui-input">
         </div>
     </div>
 

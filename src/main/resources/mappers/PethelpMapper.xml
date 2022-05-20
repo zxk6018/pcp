@@ -4,6 +4,38 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hz.dao.PetHelpDao">
 
+    <resultMap id="PethelpMap" type="Pethelp">
+        <id property="pethelpId" column="pethelp_id"></id>
+        <result property="pethelpName" column="pethelp_name"></result>
+        <result property="pethelpUserId" column="pethelp_user_id"></result>
+        <result property="pethelpImg" column="pethelp_img"></result>
+        <result property="pethelpUserPhone" column="pethelp_user_phone"></result>
+        <result property="pethelpAddress" column="pethelp_address"></result>
+        <result property="pethelpPapersNum" column="pethelp_papers_num"></result>
+        <result property="pethelpPapersImg" column="pethelp_papers_img"></result>
+        <result property="pethelpHomeAddress" column="pethelp_home_address"></result>
+        <result property="pethelpState" column="pethelp_state"></result>
+        <result property="pethelpAdminId" column="pethelp_admin_id"></result>
+        <result property="pethelpOpinion" column="pethelp_opinion"></result>
+        <result property="pethelpDisposetime" column="pethelp_disposetime"></result>
+        <association property="user" javaType="User">
+            <id property="userId" column="user_id"></id>
+            <result property="userAge" column="user_age"></result>
+            <result property="userTime" column="user_time"></result>
+            <result property="userHead" column="user_head"></result>
+            <result property="userPhone" column="user_phone"></result>
+            <result property="userState" column="user_state"></result>
+            <result property="userAutonym" column="user_autonym"></result>
+            <result property="userAddress" column="user_address"></result>
+            <result property="userComment" column="user_comment"></result>
+            <result property="userPassword" column="user_password"></result>
+            <result property="userSex" column="user_sex"></result>
+            <result property="userApprove" column="user_approve"></result>
+            <result property="userName" column="user_name"></result>
+            <result property="userPets" column="user_pets"></result>
+        </association>
+
+    </resultMap>
     <sql id="pethelp_where">
         <where>
             <if test="pethelpName!=null and pethelpName!=''">
@@ -16,8 +48,8 @@
     </sql>
 
     <!--查询救助队-->
-    <select id="findPethelpList" resultType="Pethelp">
-        select * from pethelp
+    <select id="findPethelpList" resultMap="PethelpMap">
+        select * from pethelp a left join user b on a.pethelp_user_id=b.user_id
         <include refid="pethelp_where"/>
         order by pethelp_id asc limit #{pyl},#{pageSize}
     </select>

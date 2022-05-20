@@ -3,19 +3,53 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hz.dao.HelpMemberDao">
+
+    <resultMap id="HelpmemberMap" type="Helpmember">
+    <id property="helpmemberId" column="helpmember_id"></id>
+    <result property="helpmemberUserId" column="helpmember_user_id"></result>
+    <result property="helpmemberPethelpId" column="helpmember_pethelp_id"></result>
+    <result property="helpmemberReason" column="helpmember_reason"></result>
+    <result property="helpmemberTime" column="helpmember_time"></result>
+    <result property="helpmemberPhone" column="helpmember_phone"></result>
+    <result property="helpmemberRname" column="helpmember_rname"></result>
+    <result property="helpmemberUserIdcard" column="helpmember_user_idcard"></result>
+    <result property="helpmemberImg" column="helpmember_img"></result>
+    <result property="helpmemberAddress" column="helpmember_address"></result>
+    <result property="helpmemberState" column="helpmember_state"></result>
+    <result property="helpmemberPethelpAdminId" column="helpmember_pethelp_admin_id"></result>
+    <result property="helpmemberOpinion" column="helpmember_opinion"></result>
+    <result property="helpmemberDisposetime" column="helpmember_disposetime"></result>
+    <association property="user" javaType="User">
+        <id property="userId" column="user_id"></id>
+        <result property="userAge" column="user_age"></result>
+        <result property="userTime" column="user_time"></result>
+        <result property="userHead" column="user_head"></result>
+        <result property="userPhone" column="user_phone"></result>
+        <result property="userState" column="user_state"></result>
+        <result property="userAutonym" column="user_autonym"></result>
+        <result property="userAddress" column="user_address"></result>
+        <result property="userComment" column="user_comment"></result>
+        <result property="userPassword" column="user_password"></result>
+        <result property="userSex" column="user_sex"></result>
+        <result property="userApprove" column="user_approve"></result>
+        <result property="userName" column="user_name"></result>
+        <result property="userPets" column="user_pets"></result>
+    </association>
+    </resultMap>
+
     <sql id="helpmember_where">
         <where>
-            <if test="helpmemberId!=null and helpmemberId!=''">
-                helpmember_id like concat('%',#{helpmemberId},'%')
+            <if test="helpmemberRname!=null and helpmemberRname!=''">
+                helpmember_rname like concat('%',#{helpmemberRname},'%')
             </if>
-            <if test="helpmemberPethelpId!=null and helpmemberPethelpId!=''">
-                and helpmember_pethelp_id like concat('%',#{helpmemberPethelpId},'%')
+            <if test="helpmemberAddress!=null and helpmemberAddress!=''">
+                and helpmember_address like concat('%',#{helpmemberAddress},'%')
             </if>
         </where>
     </sql>
     <!--查询救助队队员-->
-    <select id="findHelpmemberList" resultType="Helpmember">
-        select * from helpmember
+    <select id="findHelpmemberList" resultMap="HelpmemberMap">
+        select * from helpmember a left join user b on a.helpmember_user_id=b.user_id
         <include refid="helpmember_where"/>
         order by helpmember_id asc limit #{pyl},#{pageSize}
     </select>

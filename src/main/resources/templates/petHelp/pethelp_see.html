@@ -19,77 +19,82 @@
     <div class="layui-form-item">
         <label class="layui-form-label ">救助队ID：</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="pethelpId"   th:value="${ph.pethelpId}" class="layui-input">
+            <input type="text" readonly  th:value="${ph.pethelpId}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label ">救助队名</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="pethelpName"   th:value="${ph.pethelpName}"  class="layui-input">
+            <input type="text" readonly  th:value="${ph.pethelpName}"  class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label ">用户ID（组织者）</label>
+        <label class="layui-form-label ">组织者ID</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="pethelpUserId" th:value="${ph.pethelpUserId}" class="layui-input">
+            <input type="text" readonly  th:value="${ph.pethelpUserId}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label ">队标（图片）</label>
+        <label class="layui-form-label ">队标</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="pethelpImg" th:value="${ph.pethelpImg}" class="layui-input">
+            <input type="text" readonly  th:value="${ph.pethelpImg}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label ">电话（联系救助电话）</label>
+        <label class="layui-form-label ">联系救助电话</label>
         <div class="layui-input-block">
-           <input type="text" readonly name="pethelpUserPhone" th:value="${ph.pethelpUserPhone}" class="layui-input">
+           <input type="text" readonly  th:value="${ph.pethelpUserPhone}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label ">救助地区（例：郑州市，洛阳市）</label>
+        <label class="layui-form-label ">救助地区</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="pethelpAddress" th:value="${ph.pethelpAddress}"  class="layui-input">
+            <input type="text" readonly  th:value="${ph.pethelpAddress}"  class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label ">证件编号</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="pethelpPapersNum" th:value="${ph.pethelpPapersNum}"  class="layui-input">
+            <input type="text" readonly  th:value="${ph.pethelpPapersNum}"  class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label ">证件图片</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="pethelpPapersImg" th:value="${ph.pethelpPapersImg}"  class="layui-input">
+            <input type="text" readonly  th:value="${ph.pethelpPapersImg}"  class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label ">救助站地址</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="pethelpHomeAddress" th:value="${ph.pethelpHomeAddress}"  class="layui-input">
+            <input type="text" readonly  th:value="${ph.pethelpHomeAddress}"  class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label ">审核状态</label>
+        <label class="layui-form-label">审核状态</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="pethelpState" th:value="${ph.pethelpState}"  class="layui-input">
+            <select th:switch="${ph.pethelpState}">
+                <option th:case="0" >待审核</option>
+                <option th:case="1" >正常</option>
+                <option th:case="2" >异常</option>
+                <option th:case="3" >驳回</option>
+            </select>
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label ">处理时间</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="pethelpDisposetime" th:value="${ph.pethelpDisposetime}"  class="layui-input">
+            <input type="text" readonly th:value="${ph.pethelpDisposetime}"  class="layui-input">
         </div>
     </div>
 

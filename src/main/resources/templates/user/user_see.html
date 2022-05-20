@@ -19,86 +19,95 @@
     <div class="layui-form-item">
         <label class="layui-form-label ">用户名：</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="userPhone"   th:value="${user.userName}" class="layui-input">
+            <input type="text" readonly    th:value="${user.userName}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label ">性别</label>
+        <label class="layui-form-label">性别</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="userSex" th:value="${user.userSex}" class="layui-input">
+            <select th:switch="${user.userSex}">
+                <option th:case="0" >女</option>
+                <option th:case="1" >男</option>
+            </select>
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label ">年龄</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="userAge" th:value="${user.userAge}" class="layui-input">
+            <input type="text" readonly  th:value="${user.userAge}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label ">电话</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="userPhone" th:value="${user.userPhone}" class="layui-input">
+            <input type="text" readonly  th:value="${user.userPhone}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label ">地址</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="userAddress" th:value="${user.userAddress}" class="layui-input">
+            <input type="text" readonly th:value="${user.userAddress}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label ">是否实名认证</label>
+        <label class="layui-form-label">是否实名认证</label>
         <div class="layui-input-block">
-            <input type="text" readonly  name="userAutonym" th:value="${user.userAutonym}" class="layui-input">
+            <select th:switch="${user.userAutonym}">
+                <option th:case="0" >未实名</option>
+                <option th:case="1" >已实名</option>
+            </select>
         </div>
     </div>
+
     <div class="layui-form-item">
-        <label class="layui-form-label ">身份证号：</label>
+        <label class="layui-form-label ">身份证号</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="userIdcard" th:value="${user.userIdcard}" class="layui-input">
+            <input type="text" readonly  th:value="${user.userIdcard}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label ">头像</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="userHead" th:value="${user.userHead}"  class="layui-input">
+            <input type="text" readonly  th:value="${user.userHead}"  class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label ">其他认证</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="userApprove" th:value="${user.userApprove}" class="layui-input">
+            <input type="text" readonly  th:value="${user.userApprove}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label ">宠物数量</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="userPets" th:value="${user.userPets}"  class="layui-input">
+            <input type="text" readonly  th:value="${user.userPets}"  class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label ">注册时间</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="userTime" th:value="${user.userTime}"  class="layui-input">
+            <input type="text" readonly  th:value="${user.userTime}"  class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label ">状态</label>
+        <label class="layui-form-label">状态</label>
         <div class="layui-input-block">
-            <input type="text" readonly  name="userState"   th:value="${user.userState}"  class="layui-input">
+            <select th:switch="${user.userState}">
+                <option th:case="0" >正常</option>
+                <option th:case="1" >冻结</option>
+            </select>
         </div>
     </div>
-
     <div class="layui-form-item">
         <div class="layui-input-block">
             <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">关闭</button>

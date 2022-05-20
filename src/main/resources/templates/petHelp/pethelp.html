@@ -78,9 +78,11 @@
                 // {field: 'pethelpImg', title: '队标（图片）', minWidth: 200},
                 {field: 'pethelpId', width: 110, title: '救助队ID', sort: true},
                 {field: 'pethelpName', width: 150, title: '救助队名', sort: true},
-                {field: 'pethelpUserId', width: 150, title: '用户ID（组织者）', sort: true},
-                {field: 'pethelpUserPhone', width: 150, title: '电话（联系救助电话）', sort: true},
-                {field: 'pethelpAddress', width: 200, title: '救助地区（例：郑州市，洛阳市）', sort: true},
+                {field: 'userName', width: 150, title: '组织者', templet:function (res) {
+                        return res.user.userName;
+                    }},
+                {field: 'pethelpUserPhone', width: 150, title: '联系救助电话', sort: true},
+                {field: 'pethelpAddress', width: 200, title: '救助地区', sort: true},
                 {field: 'pethelpState', width: 150, title: '审核状态', templet:function (res) {
                         if (res.pethelpState==0){
                             return "待审核";

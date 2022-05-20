@@ -25,25 +25,25 @@ public class HelpmemberServiceImpl extends ServiceImpl<BaseMapper<Helpmember>,He
      * 分页查询
      * @param pageNo
      * @param pageSize 每页显示数量
-     * @param helpmemberId 救助队队员UD
-     * @param helpmemberPethelpId 救助队ID
+     * @param helpmemberRname 姓名
+     * @param helpmemberAddress 地址
      * @return
      */
     @Override
-    public List<Helpmember> findHelpmemberList(Integer pageNo, Integer pageSize, String helpmemberId, String helpmemberPethelpId) {
+    public List<Helpmember> findHelpmemberList(Integer pageNo, Integer pageSize, String helpmemberRname, String helpmemberAddress) {
         Integer pyl = (pageNo-1)*pageSize;
-        return helpMemberDao.findHelpmemberList(pyl,pageSize,helpmemberId,helpmemberPethelpId);
+        return helpMemberDao.findHelpmemberList(pyl,pageSize,helpmemberRname,helpmemberAddress);
     }
 
     /**
      * 查询总数
-     * @param helpmemberId
-     * @param helpmemberPethelpId
+     * @param helpmemberRname
+     * @param helpmemberAddress
      * @return
      */
     @Override
-    public Integer HelpmemberCount(String helpmemberId, String helpmemberPethelpId) {
-        return helpMemberDao.HelpmemberCount(helpmemberId,helpmemberPethelpId);
+    public Integer HelpmemberCount(String helpmemberRname, String helpmemberAddress) {
+        return helpMemberDao.HelpmemberCount(helpmemberRname,helpmemberAddress);
     }
 
     /**

@@ -95,4 +95,8 @@ public class Pethelp implements Serializable{
 	@Column(name = "pethelp_disposetime")
 	private String pethelpDisposetime;
 
+	/**
+	 * 用户
+	 */
+	private User user;
 }

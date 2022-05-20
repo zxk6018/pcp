@@ -19,36 +19,35 @@
     <div class="layui-form-item">
         <label class="layui-form-label">发布ID：</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="petcircleId" th:value="${pc.petcircleId}" class="layui-input">
+            <input type="text" readonly  th:value="${pc.petcircleId}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">用户ID</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="petcircleUserId" th:value="${pc.petcircleUserId}" class="layui-input">
+            <input type="text" readonly th:value="${pc.petcircleUserId}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">阅读量</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="petcircleNum" th:value="${pc.petcircleNum}" class="layui-input">
+            <input type="text" readonly  th:value="${pc.petcircleNum}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label">类型ID（宠物类型ID）</label>
+        <label class="layui-form-label">宠物类型ID</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="petcirclePettypeId" th:value="${pc.petcirclePettypeId}"
-                   class="layui-input">
+            <input type="text" readonly  th:value="${pc.petcirclePettypeId}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">发布类型ID</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="petcircleCircletypeId" th:value="${pc.petcircleCircletypeId}"
+            <input type="text" readonly  th:value="${pc.petcircleCircletypeId}"
                    class="layui-input">
         </div>
     </div>
@@ -56,28 +55,33 @@
     <div class="layui-form-item">
         <label class="layui-form-label">发布内容</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="adminAuthoId" th:value="${pc.petcircleContent}" class="layui-input">
+            <textarea type="textarea" readonly  th:text="${pc.petcircleContent}" class="layui-textarea"/>
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">发布时间</label>
         <div class="layui-input-block">
-            <input type="text" readonly  name="petcircleTime" th:value="${pc.petcircleTime}" class="layui-input">
+            <input type="text" readonly  th:value="${pc.petcircleTime}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">点赞数</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="petcircleGood" th:value="${pc.petcircleGood}" class="layui-input">
+            <input type="text" readonly  th:value="${pc.petcircleGood}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label">审核状态（0待审核 1审核通过 2审核失败 3删除）</label>
+        <label class="layui-form-label">审核状态</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="petcircleReview" th:value="${pc.petcircleReview}" class="layui-input">
+            <select th:switch="${pc.petcircleReview}">
+                <option th:case="0" >待审核</option>
+                <option th:case="1" >审核通过</option>
+                <option th:case="2" >审核失败</option>
+                <option th:case="3" >删除</option>
+            </select>
         </div>
     </div>
 

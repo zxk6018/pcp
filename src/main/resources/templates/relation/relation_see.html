@@ -19,35 +19,42 @@
     <div class="layui-form-item">
         <label class="layui-form-label">领养寄养联系信息ID</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="relationId"   th:value="${wd.relationId}" class="layui-input">
-        </div>
-    </div>
-
-    <div class="layui-form-item">
-        <label class="layui-form-label">申请ID（用户ID）</label>
-        <div class="layui-input-block">
-            <input type="text" readonly name="relationUserId" th:value="${wd.relationUserId}" class="layui-input">
-        </div>
-    </div>
-
-    <div class="layui-form-item">
-        <label class="layui-form-label">申请人电话</label>
-        <div class="layui-input-block">
-            <input type="text" readonly name="relationPhone" th:value="${wd.relationPhone}" class="layui-input">
+            <input type="text" readonly   th:value="${wd.relationId}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">领养发布ID</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="relationAdoptId" th:value="${wd.relationAdoptId}" class="layui-input">
+            <input type="text" readonly  th:value="${wd.relationAdoptId}" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户ID</label>
+        <div class="layui-input-block">
+            <input type="text" readonly  th:value="${wd.relationUserId}" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">申请人电话</label>
+        <div class="layui-input-block">
+            <input type="text" readonly  th:value="${wd.relationPhone}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">申请时间</label>
         <div class="layui-input-block">
-            <input type="text" readonly name="relationTime" th:value="${wd.relationTime}" class="layui-input">
+            <input type="text" readonly  th:value="${wd.relationTime}" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">申请理由</label>
+        <div class="layui-input-block">
+            <textarea type="text" readonly th:value="${wd.relationReason}" class="layui-textarea"/>
         </div>
     </div>
 

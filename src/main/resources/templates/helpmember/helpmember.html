@@ -18,16 +18,16 @@
                 <form class="layui-form layui-form-pane" action="">
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">救助队队员ID</label>
+                            <label class="layui-form-label">姓名</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="helpmemberId" autocomplete="off" class="layui-input">
+                                <input type="text" name="helpmemberRname" autocomplete="off" class="layui-input">
                             </div>
                         </div>
 
                         <div class="layui-inline">
-                            <label class="layui-form-label">救助队ID</label>
+                            <label class="layui-form-label">地址</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="helpmemberPethelpId" autocomplete="off" class="layui-input">
+                                <input type="text" name="helpmemberAddress" autocomplete="off" class="layui-input">
                             </div>
                         </div>
 
@@ -75,10 +75,14 @@
             }],
             cols: [[
                 {type: "checkbox", width: 50},
-                {field: 'helpmemberId', width: 110, title: '队员ID', sort: true},
-                {field: 'helpmemberUserId', width: 110, title: '用户ID', sort: true},
-                {field: 'helpmemberPethelpId', width: 180, title: '救助队ID', sort: true},
-                {field: 'helpmemberRname', title: '真实姓名', minWidth: 200},
+                {field: 'helpmemberPethelpId', width: 120, title: '救助队ID', sort: true},
+                {field: 'helpmemberId', width: 100, title: '队员ID', sort: true},
+                {field: 'userName', width: 100, title: '用户名', templet:function (res) {
+                        return res.user.userName;
+                    }},
+                {field: 'helpmemberRname', title: '真实姓名', width: 100},
+                {field: 'helpmemberPhone', title: '电话', width: 130},
+                {field: 'helpmemberAddress', title: '地址', width: 200},
                 {field: 'helpmemberState', title: '审核状态',templet:function (res) {
                         if (res.helpmemberState==0){
                             return "通过";
@@ -107,8 +111,8 @@
                     curr: 1
                 }
                 , where: {
-                    "helpmemberId":data.field.helpmemberId,
-                    "helpmemberPethelpId":data.field.helpmemberPethelpId
+                    "helpmemberRname":data.field.helpmemberRname,
+                    "helpmemberAddress":data.field.helpmemberAddress
                 }
             }, 'data');
 
