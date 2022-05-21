@@ -61,4 +61,12 @@ public interface PetCircleService extends IService<Petcircle> {
      * @return
      */
     Integer seePetcircle(Petcircle petcircle);
+
+
+    /**
+     * 修改文章审核状态
+     * @param petcircleReview
+     * @return
+     */
+    Integer updatePetcircleReview(Petcircle petcircle);
 }

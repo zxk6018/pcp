@@ -59,4 +59,11 @@ public interface PetCircleDao extends BaseMapper<Petcircle> {
      * @return
      */
     Integer seePetcircle(Petcircle petcircle);
+
+    /**
+     * 修改文章审核状态
+     * @param petcircle
+     * @return
+     */
+    Integer updatePetcircleReview(Petcircle petcircle );
 }

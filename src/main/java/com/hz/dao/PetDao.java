@@ -38,11 +38,6 @@ public interface PetDao {
      */
     Integer deletePetById(Integer petId);
 
-    /**
-     * 修改宠物
-     * @param pet
-     * @return
-     */
 
     /**
      * 修改宠物

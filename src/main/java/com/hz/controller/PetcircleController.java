@@ -74,7 +74,7 @@ public class PetcircleController {
         return new JsonMassage(i);
     }
     /**
-     * 根据ID查看救助队
+     * 根据ID查看文章
      * @param petcircleId
      * @param model
      * @return
@@ -86,7 +86,7 @@ public class PetcircleController {
     }
 
     /**
-     * 查看救助队详情
+     * 查看文章详情
      * @param petcircle
      * @return
      */
@@ -96,4 +96,22 @@ public class PetcircleController {
         Integer i = petCircleService.seePetcircle(petcircle);
         return "";
     }
+    /**
+     * 根据ID查看文章
+     * @param petcircleId
+     * @param model
+     * @return
+     */
+    @RequestMapping("/auditPetcircleById/{petcircleId}")
+    public String auditPetcircleById(@PathVariable("petcircleId") Integer petcircleId, Model model){
+        model.addAttribute("pc",petCircleService.findPetcircleById(petcircleId));
+        return  "petCircle/petcircle_audit";
+    }
+    @RequestMapping(value = "/updatePetcircleReview",method = RequestMethod.POST)
+    @ResponseBody
+    public JsonMassage updatePetcircleReview(Petcircle petcircle){
+        Integer i = petCircleService.updatePetcircleReview(petcircle);
+        return new JsonMassage(i);
+    }
+
 }

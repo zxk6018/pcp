@@ -92,6 +92,10 @@
         </trim>
         )
     </insert>
+    <!--修改文章状态-->
+    <update id="updatePetcircleReview">
+        update petcircle set petcircle_review=#{petcircleReview} where petcircle_id=#{petcircleId}
+    </update>
     <!--删除文章(物理删除)-->
     <delete id="deletePetcircleById">
         delete from petcircle where petcircle_id=#{petcircleId}

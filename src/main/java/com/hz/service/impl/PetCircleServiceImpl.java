@@ -85,4 +85,9 @@ public class PetCircleServiceImpl extends ServiceImpl<BaseMapper<Petcircle>,Petc
     public Integer seePetcircle(Petcircle petcircle) {
         return petCircleDao.seePetcircle(petcircle);
     }
+
+    @Override
+    public Integer updatePetcircleReview(Petcircle petcircle) {
+        return petCircleDao.updatePetcircleReview(petcircle);
+    }
 }
