@@ -45,15 +45,20 @@
         <div class="layui-form-item">
             <label class="layui-form-label required">救助站地址</label>
             <div class="layui-input-block">
-                <input type="text" name="pethelpHomeAddress" lay-verify="required" lay-reqtext="救助站地址不能为空" placeholder="请输救助站地址" th:value="${ph.pethelpHomeAddress}" class="layui-input">
+                <input type="text"  th:value="${ph.pethelpHomeAddress}" class="layui-input">
             </div>
         </div>
-    <!--<div class="layui-form-item">
-        <label class="layui-form-label required">创建时间</label>
-        <div class="layui-input-block">
-            <input type="text" placeholder="yyyy-MM-dd" id="creationDate" name="creationDate" lay-verify="required" lay-reqtext="日期不能为空" th:value="${pro.creationDate}" class="layui-input">
+        <div class="layui-form-item">
+            <label class="layui-form-label">审核状态</label>
+            <div class="layui-input-block">
+                <select  name="pethelpState">
+                    <option value="0" th:field="*{ph.pethelpState}">待审核</option>
+                    <option value="1" th:field="*{ph.pethelpState}">正常</option>
+                    <option value="2" th:field="*{ph.pethelpState}">异常</option>
+                    <option value="3" th:field="*{ph.pethelpState}">驳回</option>
+                </select>
+            </div>
         </div>
-    </div>-->
     <div class="layui-form-item">
         <div class="layui-input-block">
             <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">确认保存</button>

@@ -27,17 +27,31 @@
     <div class="layui-form-item">
         <label class="layui-form-label required">发布信息</label>
         <div class="layui-input-block">
-            <input type="text" name="adoptMessage" lay-verify="required" lay-reqtext="发布信息不能为空" placeholder="请输入发布信息" th:value="${adopt.adoptMessage}"  class="layui-input">
+            <textarea type="textarea" name="adoptMessage" lay-verify="required" lay-reqtext="发布信息不能为空" placeholder="请输入发布信息" th:text="${adopt.adoptMessage}"  class="layui-textarea"/>
         </div>
     </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label required">是否是救助站</label>
             <div class="layui-input-block">
-                <input type="text" name="adoptPethelps" lay-verify="required" lay-reqtext="是否是救助站不能为空" placeholder="请输入是否是救助站" th:value="${adopt.adoptPethelps}"  class="layui-input">
+                <select  name="adoptPethelps">
+                    <option value="0" th:field="*{adopt.adoptPethelps}">否</option>
+                    <option value="1" th:field="*{adopt.adoptPethelps}">是</option>
+                </select>
             </div>
         </div>
 
+        <div class="layui-form-item">
+            <label class="layui-form-label">审核状态</label>
+            <div class="layui-input-block">
+                <select  name="adoptReview">
+                    <option value="0" th:field="*{adopt.adoptReview}">待审核</option>
+                    <option value="1" th:field="*{adopt.adoptReview}">审核通过</option>
+                    <option value="2" th:field="*{adopt.adoptReview}">审核失败</option>
+                    <option value="3" th:field="*{adopt.adoptReview}">关闭</option>
+                </select>
+            </div>
+        </div>
 
     <div class="layui-form-item">
         <div class="layui-input-block">

@@ -33,7 +33,11 @@
     <div class="layui-form-item">
         <label class="layui-form-label">类型</label>
         <div class="layui-input-block">
-            <input type="text" readonly  th:value="${adopt.adoptType}" class="layui-input">
+            <select th:switch="${adopt.adoptType}">
+                <option th:case="0" >领养</option>
+                <option th:case="1" >寄养</option>
+                <option th:case="2" >征婚交友</option>
+            </select>
         </div>
     </div>
 
@@ -68,7 +72,10 @@
     <div class="layui-form-item">
         <label class="layui-form-label">逻辑删除</label>
         <div class="layui-input-block">
-            <input type="text" readonly  th:value="${adopt.adoptDel}"  class="layui-input">
+            <select th:switch="${adopt.adoptDel}">
+                <option th:case="0" >否</option>
+                <option th:case="1" >是</option>
+            </select>
         </div>
     </div>
 

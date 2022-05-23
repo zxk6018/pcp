@@ -38,6 +38,15 @@
             </div>
         </div>
 
+        <div class="layui-form-item">
+            <label class="layui-form-label">审核状态</label>
+            <div class="layui-input-block">
+                <select  name="helpmemberState">
+                    <option value="0" th:field="*{hm.helpmemberState}">通过</option>
+                    <option value="1" th:field="*{hm.helpmemberState}">未通过</option>
+                </select>
+            </div>
+        </div>
     <div class="layui-form-item">
         <div class="layui-input-block">
             <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">确认保存</button>

@@ -98,7 +98,8 @@
         <set>
             <if test="helpmemberPhone!=null and helpmemberPhone!=''">helpmember_phone=#{helpmemberPhone},</if>
             <if test="helpmemberImg!=null and helpmemberImg!=''">helpmember_img=#{helpmemberImg},</if>
-            <if test="helpmemberAddress!=null and helpmemberAddress!=''">helpmember_address=#{helpmemberAddress}</if>
+            <if test="helpmemberAddress!=null and helpmemberAddress!=''">helpmember_address=#{helpmemberAddress},</if>
+            <if test="helpmemberState!=null ">helpmember_state=#{helpmemberState}</if>
         </set>
         where helpmember_id=#{helpmemberId}
     </update>

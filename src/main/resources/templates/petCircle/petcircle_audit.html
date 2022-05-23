@@ -17,9 +17,6 @@
 <body>
 <div class="layui-form layuimini-form">
 
-
-
-
     <div class="layui-form-item">
         <label class="layui-form-label required"></label>
         <div class="layui-input-block">
@@ -34,8 +31,9 @@
             <textarea type="textarea" readonly  th:text="${pc.petcircleContent}" class="layui-textarea"/>
         </div>
     </div>
+
     <div class="layui-form-item">
-        <label class="layui-form-label required">审核状态</label>
+        <label class="layui-form-label">审核状态</label>
         <div class="layui-input-block">
             <select  name="petcircleReview">
                 <option value="0" th:field="*{pc.petcircleReview}">待审核</option>

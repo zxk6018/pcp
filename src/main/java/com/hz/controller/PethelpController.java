@@ -44,6 +44,7 @@ public class PethelpController {
         jsonMassage.setCount(count);
         return jsonMassage;
     }
+
     @RequestMapping(value = "/findPethelpById/{pethelpId}")
     public String findPethelpById(@PathVariable("pethelpId") Integer pethelpId, Model model){
         model.addAttribute("ph",pethelpService.findPethelpById(pethelpId));

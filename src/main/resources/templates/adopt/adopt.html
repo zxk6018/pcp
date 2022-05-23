@@ -85,7 +85,15 @@
                 {field: 'user.userName', width: 110, title: '用户名', sort: true,templet:function (user) {
                         return user.user.userName
                     }},
-                {field: 'adoptType', width: 80, title: '类型' },
+                {field: 'adoptType', width: 80, title: '类型' ,templet:function (res) {
+                        if(res.adoptType==0){
+                            return "领养"
+                        }else  if(res.adoptType==1){
+                            return "寄养"
+                        }else {
+                            return "征婚交友"
+                        }
+                    }},
                 {field: 'adoptMessage',width: 100, title: '发布信息' },
                 {field: 'adoptTime', width: 150, title: '发布时间',templet:"<div>{{layui.util.toDateString(d.ctime, 'yyyy-MM-dd')}}</div> " },
                 {field: 'adoptPethelps', width: 130, title: '是否是救助站', templet:function (res){
