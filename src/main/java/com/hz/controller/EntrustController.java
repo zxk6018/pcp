@@ -27,9 +27,9 @@ public class EntrustController {
     @ResponseBody
     public JsonMassage<List<Entrust>> findEntrustList(@RequestParam(value = "page",defaultValue = "1") Integer page,
                                                       @RequestParam(value = "limit",defaultValue = "10") Integer limit,
-                                                      String entrustDisposetime, Integer entrustUserId) {
-        List<Entrust> list = entrustService.findEntrustList(page, limit, entrustDisposetime, entrustUserId);
-        Integer count = entrustService.entrustCount(entrustDisposetime,entrustUserId);
+                                                      String entrustAddress, String userName) {
+        List<Entrust> list = entrustService.findEntrustList(page, limit, entrustAddress, userName);
+        Integer count = entrustService.entrustCount(entrustAddress,userName);
         JsonMassage<List<Entrust>> jsonMassage = new JsonMassage<List<Entrust>>();
         jsonMassage.setCode(0);
         jsonMassage.setMsg("请求成功");

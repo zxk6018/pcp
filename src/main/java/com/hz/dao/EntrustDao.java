@@ -14,8 +14,8 @@ public interface EntrustDao {
      * */
     List<Entrust> findEntrustList(@Param("pyl") Integer pyl,
                               @Param("pageSize") Integer pageSize,
-                              @Param("entrustDisposetime") String entrustDisposetime,
-                              @Param("entrustUserId") Integer entrustUserId
+                              @Param("entrustAddress") String entrustAddress,
+                              @Param("userName") String userName
     );
     /*
      * 修改角色
@@ -29,8 +29,8 @@ public interface EntrustDao {
      * 总记录数
      * @return
      * */
-    Integer entrustCount(@Param("entrustDisposetime") String entrustDisposetime,
-                         @Param("entrustUserId") Integer entrustUserId
+    Integer entrustCount(@Param("entrustAddress") String entrustAddress,
+                         @Param("userName") String userName
     );
 
     /*

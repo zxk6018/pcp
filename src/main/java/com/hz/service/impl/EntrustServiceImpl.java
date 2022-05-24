@@ -14,9 +14,9 @@ public class EntrustServiceImpl implements EntrustService {
     public EntrustDao entrustDao;
 
     @Override
-    public List<Entrust> findEntrustList(Integer page, Integer pageSize, String entrustDisposetime, Integer entrustUserId) {
+    public List<Entrust> findEntrustList(Integer page, Integer pageSize, String entrustAddress, String userName) {
         Integer pyl = (page-1)*pageSize;
-        return entrustDao.findEntrustList(pyl,pageSize,entrustDisposetime,entrustUserId);
+        return entrustDao.findEntrustList(pyl,pageSize,entrustAddress,userName);
     }
 
     @Override
@@ -27,8 +27,8 @@ public class EntrustServiceImpl implements EntrustService {
 
 
     @Override
-    public Integer entrustCount(String entrustDisposetime, Integer entrustUserId) {
-        return entrustDao.entrustCount(entrustDisposetime,entrustUserId);
+    public Integer entrustCount(String entrustAddress, String userName) {
+        return entrustDao.entrustCount(entrustAddress,userName);
     }
 
     @Override

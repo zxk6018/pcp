@@ -38,11 +38,11 @@
 
     <sql id="entrust_where">
         <where>
-            <if test="entrustDisposetime!=null">
-                a.entrust_disposetime like concat('%',#{entrustDisposetime},'%')
+            <if test="entrustAddress!=null">
+                entrust_address like concat('%',#{entrustAddress},'%')
             </if>
-            <if test="entrustUserId!=null">
-                and a.entrust_user_id like concat ('%',#{entrustUserId},'%')
+            <if test="userName!=null and userName!=''">
+                and b.user_name like concat ('%',#{userName},'%')
             </if>
         </where>
     </sql>

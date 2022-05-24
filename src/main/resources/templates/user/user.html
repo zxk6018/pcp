@@ -25,9 +25,9 @@
                         </div>
 
                        <div class="layui-inline">
-                            <label class="layui-form-label">注册时间</label>
+                            <label class="layui-form-label">手机号</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="userTime" id="userTime" lay-verify="date"  autocomplete="off" class="layui-input">
+                                <input type="text" name="userPhone"  autocomplete="off" class="layui-input">
                             </div>
                         </div>
 
@@ -128,7 +128,7 @@
                 }
                 , where: {
                     "userName":data.field.userName,
-                    "userTime":data.field.userTime
+                    "userPhone":data.field.userPhone
                 }
             }, 'data');
 

@@ -36,10 +36,10 @@
     <sql id="adopt_where">
         <where>
             <if test="adoptType!=null and adoptType!=''">
-                a.adopt_type like concat('%',#{adoptType},'%')
+                adopt_type like concat('%',#{adoptType},'%')
             </if>
-            <if test="adoptDisposetime!=null and adoptDisposetime!=''">
-                and a.adopt_disposetime like concat('%',#{adoptDisposetime},'%')
+            <if test="adoptTime!=null and adoptTime!=''">
+                and adopt_time like concat('%',#{adoptTime},'%')
             </if>
         </where>
     </sql>

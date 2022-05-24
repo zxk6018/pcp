@@ -15,9 +15,9 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Override
-    public List<User> findUserList(Integer page, Integer pageSize, String userName,String userTime) {
+    public List<User> findUserList(Integer page, Integer pageSize, String userName,String userPhone) {
         Integer pyl = (page-1)*pageSize;
-        return userDao.findUserList(pyl, pageSize, userName,userTime);
+        return userDao.findUserList(pyl, pageSize, userName,userPhone);
     }
 
     @Override
@@ -26,8 +26,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Integer UserCount(String userName,String userTime) {
-        return userDao.UserCount(userName,userTime);
+    public Integer UserCount(String userName,String userPhone) {
+        return userDao.UserCount(userName,userPhone);
     }
 
     @Override

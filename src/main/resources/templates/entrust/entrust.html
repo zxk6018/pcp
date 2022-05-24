@@ -18,16 +18,16 @@
                 <form class="layui-form layui-form-pane" action="">
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">用户ID</label>
+                            <label class="layui-form-label">用户名</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="entrustUserId" autocomplete="off" class="layui-input">
+                                <input type="text" name="userName" autocomplete="off" class="layui-input">
                             </div>
                         </div>
 
                         <div class="layui-inline">
-                            <label class="layui-form-label">处理时间</label>
+                            <label class="layui-form-label">地址</label>
                             <div class="layui-inline">
-                                <input type="text" id="entrustDisposetime" name="entrustDisposetime" autocomplete="off" class="layui-input">
+                                <input type="text" name="entrustAddress" autocomplete="off" class="layui-input">
                             </div>
                         </div>
 
@@ -113,8 +113,8 @@
                     curr: 1
                 }
                 , where: {
-                    "entrustUserId":data.field.entrustUserId,
-                    "entrustDisposetime":data.field.entrustDisposetime
+                    "userName":data.field.userName,
+                    "entrustAddress":data.field.entrustAddress
                 }
             }, 'data');
 

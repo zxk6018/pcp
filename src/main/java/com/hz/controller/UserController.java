@@ -33,9 +33,9 @@ public class UserController {
     @ResponseBody
     public JsonMassage<List<User>> findUserList(@RequestParam(value = "page",defaultValue = "1") Integer page,
                                                 @RequestParam(value = "limit",defaultValue ="10") Integer limit,
-                                                String userName,String userTime){
-        List<User> list = userService.findUserList(page, limit, userName,userTime);
-        Integer count = userService.UserCount(userName,userTime);
+                                                String userName,String userPhone){
+        List<User> list = userService.findUserList(page, limit, userName,userPhone);
+        Integer count = userService.UserCount(userName,userPhone);
         JsonMassage<List<User>> jsonMassage = new JsonMassage<List<User>>();
         jsonMassage.setCode(0);
         jsonMassage.setMsg("请求成功");

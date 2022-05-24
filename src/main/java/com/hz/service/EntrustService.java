@@ -14,8 +14,8 @@ public interface EntrustService {
      * */
     List<Entrust> findEntrustList(Integer pyl,
                                   Integer pageSize,
-                                  String entrustDisposetime,
-                                  Integer entrustUserId
+                                  String entrustAddress,
+                                  String userName
     );
     /*
      * 修改角色
@@ -29,8 +29,8 @@ public interface EntrustService {
      * 总记录数
      * @return
      * */
-    Integer entrustCount(String entrustDisposetime,
-                         Integer entrustUserId
+    Integer entrustCount(String entrustAddress,
+                         String userName
     );
 
     /*

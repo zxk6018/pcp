@@ -26,9 +26,9 @@ public class AdoptController {
     public JsonMassage<List<Adopt>> findAdoptList(@RequestParam(value = "page",defaultValue = "1") Integer page,
                                                   @RequestParam(value = "limit",defaultValue ="10") Integer limit,
                                                   String adoptType,
-                                                  String adoptDisposetime){
-        List<Adopt> list = adoptService.findAdoptList(page,limit,adoptType,adoptDisposetime);
-        Integer count = adoptService.AdoptCount(adoptType,adoptDisposetime);
+                                                  String adoptTime){
+        List<Adopt> list = adoptService.findAdoptList(page,limit,adoptType,adoptTime);
+        Integer count = adoptService.AdoptCount(adoptType,adoptTime);
         JsonMassage<List<Adopt>> jsonMassage = new JsonMassage<List<Adopt>>();
         jsonMassage.setCode(0);
         jsonMassage.setMsg("请求成功");

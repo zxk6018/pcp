@@ -40,10 +40,10 @@
     <sql id="user_where">
         <where>
             <if test="userName!=null and userName!=''">
-                a.user_name like concat('%',#{userName},'%')
+                user_name like concat('%',#{userName},'%')
             </if>
-            <if test="userTime!=null and userTime!=''">
-                and a.user_time like concat('%',#{userTime},'%')
+            <if test="userPhone!=null and userPhone!=''">
+                and user_phone like concat('%',#{userPhone},'%')
             </if>
         </where>
     </sql>

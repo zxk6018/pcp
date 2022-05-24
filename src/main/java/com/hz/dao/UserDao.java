@@ -18,7 +18,7 @@ public interface UserDao {
     List<User> findUserList(@Param("pyl") Integer pyl,
                             @Param("pageSize") Integer pageSize,
                             @Param("userName") String userName,
-                            @Param("userTime") String userTime
+                            @Param("userPhone") String userPhone
     );
 
     /**
@@ -33,7 +33,7 @@ public interface UserDao {
      * @return
      */
     Integer UserCount(@Param("userName") String userName,
-                      @Param("userTime") String userTime);
+                      @Param("userPhone") String userPhone);
 
     /**
      * 删除用户

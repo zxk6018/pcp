@@ -15,14 +15,14 @@ public interface AdoptService {
     List<Adopt> findAdoptList(Integer pyl,
                               Integer pageSize,
                               String adoptType,
-                              String adoptDisposetime
+                              String adoptTime
     );
     /**
      * 总记录数
      * @return
      */
     Integer AdoptCount(String adoptType,
-                       String adoptDisposetime);
+                       String adoptTime);
 
     /**
      * 新增发布领养与寄养信息

@@ -16,7 +16,7 @@ public interface UserService {
     List<User> findUserList(Integer pyl,
                             Integer pageSize,
                             String userName,
-                            String userTime
+                            String userPhone
     );
 
     /**
@@ -30,7 +30,7 @@ public interface UserService {
      * 总记录数
      * @return
      */
-    Integer UserCount(String userName,String userTime);
+    Integer UserCount(String userName,String userPhone);
 
     /**
      * 删除用户
