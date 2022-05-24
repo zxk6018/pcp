@@ -4,7 +4,7 @@
     "href": "welcome.html?t=1"
   },
   "logoInfo": {
-    "title": "宠物交流平台",
+    "title": "云宠平台",
     "image": "/layui/images/logo.png",
     "href": ""
   },
@@ -36,12 +36,6 @@
             {
               "title": "权限管理",
               "href": "system/system.html",
-              "icon": "fa fa-tachometer",
-              "target": "_self"
-            },
-            {
-              "title": "系统设置管理",
-              "href": "config/config.html",
               "icon": "fa fa-tachometer",
               "target": "_self"
             }
