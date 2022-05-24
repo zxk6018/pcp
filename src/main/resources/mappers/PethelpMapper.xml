@@ -99,6 +99,7 @@
             <if test="pethelpUserPhone!=null and pethelpUserPhone!=''">pethelp_user_phone=#{pethelpUserPhone},</if>
             <if test="pethelpAddress!=null and pethelpAddress!=''">pethelp_address=#{pethelpAddress},</if>
             <if test="pethelpHomeAddress!=null and pethelpHomeAddress!=''">pethelp_home_address=#{pethelpHomeAddress}</if>
+            <if test="pethelpState!=null ">pethelp_state=#{pethelpState}</if>
         </set>
         where pethelp_id=#{pethelpId}
     </update>
